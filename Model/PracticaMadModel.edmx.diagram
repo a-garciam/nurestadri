@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9ff2595e12bc42b9a3f5707e691c4088" Name="Diagram1" >
+        <EntityTypeShape EntityType="Es.UDC.DotNet.PracticaMaDModel.User" Width="1.625" PointX="1.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Es.UDC.DotNet.PracticaMaDModel.Image" Width="1.5" PointX="5.5" PointY="0.625" />
+        <AssociationConnector Association="Es.UDC.DotNet.PracticaMaDModel.UserPost" />
+        <EntityTypeShape EntityType="Es.UDC.DotNet.PracticaMaDModel.Category" Width="1.5" PointX="7.5" PointY="0.875" />
+        <AssociationConnector Association="Es.UDC.DotNet.PracticaMaDModel.ImageCategory" />
+        <EntityTypeShape EntityType="Es.UDC.DotNet.PracticaMaDModel.Comment" Width="1.5" PointX="3.375" PointY="4.75" />
+        <AssociationConnector Association="Es.UDC.DotNet.PracticaMaDModel.ImageComment" />
+        <AssociationConnector Association="Es.UDC.DotNet.PracticaMaDModel.UserComment" />
+        <EntityTypeShape EntityType="Es.UDC.DotNet.PracticaMaDModel.Like" Width="1.5" PointX="3.625" PointY="0.5" />
+        <AssociationConnector Association="Es.UDC.DotNet.PracticaMaDModel.ImageLike" />
+        <AssociationConnector Association="Es.UDC.DotNet.PracticaMaDModel.UserLike" />
+        <AssociationConnector Association="Es.UDC.DotNet.PracticaMaDModel.Follower" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

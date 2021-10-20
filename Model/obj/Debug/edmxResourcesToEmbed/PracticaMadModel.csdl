@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Es.UDC.DotNet.PracticaMaDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PracticaMaDEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserSet" EntityType="Es.UDC.DotNet.PracticaMaDModel.User" />
+    <EntitySet Name="ImageSet" EntityType="Es.UDC.DotNet.PracticaMaDModel.Image" />
+    <AssociationSet Name="UserPost" Association="Es.UDC.DotNet.PracticaMaDModel.UserPost">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Post" EntitySet="ImageSet" />
+    </AssociationSet>
+    <EntitySet Name="CategorySet" EntityType="Es.UDC.DotNet.PracticaMaDModel.Category" />
+    <AssociationSet Name="FK_ImageCategoryId" Association="Es.UDC.DotNet.PracticaMaDModel.ImageCategory">
+      <End Role="Image" EntitySet="ImageSet" />
+      <End Role="Category" EntitySet="CategorySet" />
+    </AssociationSet>
+    <EntitySet Name="CommentSet" EntityType="Es.UDC.DotNet.PracticaMaDModel.Comment" />
+    <AssociationSet Name="FK_ImageCommentId" Association="Es.UDC.DotNet.PracticaMaDModel.ImageComment">
+      <End Role="Image" EntitySet="ImageSet" />
+      <End Role="Comment" EntitySet="CommentSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommentUserId" Association="Es.UDC.DotNet.PracticaMaDModel.UserComment">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Comment" EntitySet="CommentSet" />
+    </AssociationSet>
+    <EntitySet Name="LikeSet" EntityType="Es.UDC.DotNet.PracticaMaDModel.Like" />
+    <AssociationSet Name="FK_LikeImageId" Association="Es.UDC.DotNet.PracticaMaDModel.ImageLike">
+      <End Role="Image" EntitySet="ImageSet" />
+      <End Role="Like" EntitySet="LikeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LikeUserId" Association="Es.UDC.DotNet.PracticaMaDModel.UserLike">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Like" EntitySet="LikeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserUserId" Association="Es.UDC.DotNet.PracticaMaDModel.Follower">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="User1" EntitySet="UserSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="usrId" />
+    </Key>
+    <Property Name="usrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="loginName" Type="String" Nullable="false" />
+    <Property Name="enPassword" Type="String" Nullable="false" />
+    <Property Name="firstName" Type="String" Nullable="false" />
+    <Property Name="lastName" Type="String" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" />
+    <Property Name="country" Type="String" Nullable="false" />
+    <NavigationProperty Name="Post" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserPost" FromRole="User" ToRole="Post" />
+    <NavigationProperty Name="Comment" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserComment" FromRole="User" ToRole="Comment" />
+    <NavigationProperty Name="Like" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserLike" FromRole="User" ToRole="Like" />
+    <NavigationProperty Name="User1" Relationship="Es.UDC.DotNet.PracticaMaDModel.Follower" FromRole="User" ToRole="User1" />
+    <NavigationProperty Name="Follower" Relationship="Es.UDC.DotNet.PracticaMaDModel.Follower" FromRole="User1" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="imageId" />
+    </Key>
+    <Property Name="imageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="likes" Type="String" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserPost" FromRole="Post" ToRole="User" />
+    <Property Name="usrId" Type="String" Nullable="false" />
+    <Property Name="commentId" Type="String" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" />
+    <Property Name="description" Type="String" Nullable="false" />
+    <Property Name="aperture" Type="String" Nullable="false" />
+    <Property Name="balance" Type="String" Nullable="false" />
+    <Property Name="exposure" Type="String" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageCategory" FromRole="Image" ToRole="Category" />
+    <Property Name="categoryId" Type="String" Nullable="false" />
+    <NavigationProperty Name="Comment" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageComment" FromRole="Image" ToRole="Comment" />
+    <NavigationProperty Name="Like" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageLike" FromRole="Image" ToRole="Like" />
+  </EntityType>
+  <Association Name="UserPost">
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.User" Role="User" Multiplicity="1" />
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.Image" Role="Post" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="categoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Image" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageCategory" FromRole="Category" ToRole="Image" />
+    <Property Name="name" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="ImageCategory">
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.Image" Role="Image" Multiplicity="1" />
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.Category" Role="Category" Multiplicity="1" />
+  </Association>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="commentId" />
+    </Key>
+    <Property Name="commentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="String" Nullable="false" />
+    <Property Name="text" Type="String" Nullable="false" />
+    <Property Name="imageId" Type="String" Nullable="false" />
+    <NavigationProperty Name="Image" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageComment" FromRole="Comment" ToRole="Image" />
+    <NavigationProperty Name="User" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserComment" FromRole="Comment" ToRole="User" />
+  </EntityType>
+  <Association Name="ImageComment">
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.Image" Role="Image" Multiplicity="1" />
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.Comment" Role="Comment" Multiplicity="*" />
+  </Association>
+  <Association Name="UserComment">
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.User" Role="User" Multiplicity="1" />
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.Comment" Role="Comment" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Like">
+    <Key>
+      <PropertyRef Name="likeId" />
+    </Key>
+    <Property Name="likeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="String" Nullable="false" />
+    <Property Name="imageId" Type="String" Nullable="false" />
+    <NavigationProperty Name="Image" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageLike" FromRole="Like" ToRole="Image" />
+    <NavigationProperty Name="User" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserLike" FromRole="Like" ToRole="User" />
+  </EntityType>
+  <Association Name="ImageLike">
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.Image" Role="Image" Multiplicity="1" />
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.Like" Role="Like" Multiplicity="*" />
+  </Association>
+  <Association Name="UserLike">
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.User" Role="User" Multiplicity="1" />
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.Like" Role="Like" Multiplicity="*" />
+  </Association>
+  <Association Name="Follower">
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.User" Role="User" Multiplicity="1" />
+    <End Type="Es.UDC.DotNet.PracticaMaDModel.User" Role="User1" Multiplicity="*" />
+  </Association>
+</Schema>
