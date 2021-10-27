@@ -113,6 +113,8 @@
       <DependentUpon>PracticaMadModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ImageService\IImageService.cs" />
+    <Compile Include="Services\ImageService\ImageService.cs" />
     <Compile Include="User.cs">
       <DependentUpon>PracticaMadModel.tt</DependentUpon>
     </Compile>
@@ -146,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\CommentService\" />
-    <Folder Include="Services\ImageService\" />
     <Folder Include="Services\UserService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

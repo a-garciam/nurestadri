@@ -15,8 +15,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     public partial class Like
     {
         public int likeId { get; set; }
-        public string userId { get; set; }
-        public string imageId { get; set; }
+        public int userId { get; set; }
+        public int imageId { get; set; }
     
         public virtual Image Image { get; set; }
         public virtual User User { get; set; }
