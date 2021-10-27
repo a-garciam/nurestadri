@@ -243,19 +243,20 @@
             <PropertyRef Name="imageId" />
           </Key>
           <Property Name="imageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="likes" Type="String" Nullable="false" />
+          <Property Name="likes" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserPost" FromRole="Post" ToRole="User" />
-          <Property Name="usrId" Type="String" Nullable="false" />
-          <Property Name="commentId" Type="String" Nullable="false" />
+          <Property Name="usrId" Type="Int32" Nullable="false" />
+          <Property Name="commentId" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" Nullable="false" />
           <Property Name="description" Type="String" Nullable="false" />
           <Property Name="aperture" Type="String" Nullable="false" />
           <Property Name="balance" Type="String" Nullable="false" />
           <Property Name="exposure" Type="String" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageCategory" FromRole="Image" ToRole="Category" />
-          <Property Name="categoryId" Type="String" Nullable="false" />
+          <Property Name="categoryId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Comment" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageComment" FromRole="Image" ToRole="Comment" />
           <NavigationProperty Name="Like" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageLike" FromRole="Image" ToRole="Like" />
+          <Property Name="imageUrl" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="UserPost">
           <End Type="Es.UDC.DotNet.PracticaMaDModel.User" Role="User" Multiplicity="1" />
@@ -278,9 +279,9 @@
             <PropertyRef Name="commentId" />
           </Key>
           <Property Name="commentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userId" Type="String" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
           <Property Name="text" Type="String" Nullable="false" />
-          <Property Name="imageId" Type="String" Nullable="false" />
+          <Property Name="imageId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Image" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageComment" FromRole="Comment" ToRole="Image" />
           <NavigationProperty Name="User" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserComment" FromRole="Comment" ToRole="User" />
         </EntityType>
@@ -297,8 +298,8 @@
             <PropertyRef Name="likeId" />
           </Key>
           <Property Name="likeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userId" Type="String" Nullable="false" />
-          <Property Name="imageId" Type="String" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="imageId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Image" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageLike" FromRole="Like" ToRole="Image" />
           <NavigationProperty Name="User" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserLike" FromRole="Like" ToRole="User" />
         </EntityType>

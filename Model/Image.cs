@@ -22,15 +22,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         }
     
         public int imageId { get; set; }
-        public string likes { get; set; }
-        public string usrId { get; set; }
-        public string commentId { get; set; }
+        public int likes { get; set; }
+        public int usrId { get; set; }
+        public int commentId { get; set; }
         public string title { get; set; }
         public string description { get; set; }
         public string aperture { get; set; }
         public string balance { get; set; }
         public string exposure { get; set; }
-        public string categoryId { get; set; }
+        public int categoryId { get; set; }
+        public string imageUrl { get; set; }
     
         public virtual User User { get; set; }
         public virtual Category Category { get; set; }
