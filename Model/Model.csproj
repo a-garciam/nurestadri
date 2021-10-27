@@ -81,6 +81,16 @@
     <Compile Include="Comment.cs">
       <DependentUpon>PracticaMadModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Daos\CategoryDaoEntityFramework.cs" />
+    <Compile Include="Daos\CommentDaoEntityFramework.cs" />
+    <Compile Include="Daos\ICategoryDao.cs" />
+    <Compile Include="Daos\ICommentDao.cs" />
+    <Compile Include="Daos\IImageDao.cs" />
+    <Compile Include="Daos\ILikeDao.cs" />
+    <Compile Include="Daos\ImageDaoEntityFramework.cs" />
+    <Compile Include="Daos\IUserDao.cs" />
+    <Compile Include="Daos\LikeDaoEntityFramework.cs" />
+    <Compile Include="Daos\UserDaoEntityFramework.cs" />
     <Compile Include="Image.cs">
       <DependentUpon>PracticaMadModel.tt</DependentUpon>
     </Compile>
@@ -133,6 +143,11 @@
       <DependentUpon>PracticaMadModel.edmx</DependentUpon>
       <LastGenOutput>PracticaMadModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\CommentService\" />
+    <Folder Include="Services\ImageService\" />
+    <Folder Include="Services\UserService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
