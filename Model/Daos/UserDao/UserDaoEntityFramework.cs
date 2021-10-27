@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 {
-    class UserDaoEntityFramework
+    /// <summary>
+    /// Specific Operations for UserProfile
+    /// </summary>
+    public class UserDaoEntityFramework :
+        GenericDaoEntityFramework
     {
     }
 }

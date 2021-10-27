@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 {
-    class IUserDao
+    public interface IUserDao : IGenericDao<User, Int64>
     {
+        /// <summary>
+        /// Finds a User by loginName
+        /// </summary>
+        /// <param name="loginName">loginName</param>
+        /// <returns>The UserProfile</returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        User FindByLoginName(String loginName);
     }
 }
