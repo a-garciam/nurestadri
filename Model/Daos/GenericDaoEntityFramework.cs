@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Core;
 using Ninject;
 
-namespace Es.Udc.DotNet.ModelUtil.Dao
+namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 {
     public class  GenericDaoEntityFramework<E, PK> : IGenericDao<E, PK>
         where E : class

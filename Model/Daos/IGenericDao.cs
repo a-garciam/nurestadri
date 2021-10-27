@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Es.Udc.DotNet.ModelUtil.Exceptions;
 
-namespace Es.Udc.DotNet.ModelUtil.Dao
+namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 {
     /// <summary>
     /// Interfaces with Generic Dao Operations
