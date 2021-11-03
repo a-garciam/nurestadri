@@ -15,9 +15,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     public partial class Comment
     {
         public int commentId { get; set; }
-        public int userId { get; set; }
         public string text { get; set; }
-        public int imageId { get; set; }
     
         public virtual Image Image { get; set; }
         public virtual User User { get; set; }
