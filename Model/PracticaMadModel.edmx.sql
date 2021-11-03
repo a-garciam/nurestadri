@@ -36,6 +36,7 @@ CREATE TABLE [dbo].[UserSet] (
     [lastName] nvarchar(max)  NOT NULL,
     [email] nvarchar(max)  NOT NULL,
     [country] nvarchar(max)  NOT NULL,
+    [language] nvarchar(max)  NOT NULL,
     [Follower_usrId] int  NOT NULL
 );
 GO
@@ -45,15 +46,12 @@ CREATE TABLE [dbo].[ImageSet] (
     [imageId] int IDENTITY(1,1) NOT NULL,
     [likes] nvarchar(max)  NOT NULL,
     [usrId] nvarchar(max)  NOT NULL,
-    [commentId] nvarchar(max)  NOT NULL,
     [title] nvarchar(max)  NOT NULL,
     [description] nvarchar(max)  NOT NULL,
     [aperture] nvarchar(max)  NOT NULL,
     [balance] nvarchar(max)  NOT NULL,
     [exposure] nvarchar(max)  NOT NULL,
-    [categoryId] nvarchar(max)  NOT NULL,
-    [User_usrId] int  NOT NULL,
-    [Category_categoryId] int  NOT NULL
+    [categoryId] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -69,9 +67,7 @@ CREATE TABLE [dbo].[CommentSet] (
     [commentId] int IDENTITY(1,1) NOT NULL,
     [userId] nvarchar(max)  NOT NULL,
     [text] nvarchar(max)  NOT NULL,
-    [imageId] nvarchar(max)  NOT NULL,
-    [Image_imageId] int  NOT NULL,
-    [User_usrId] int  NOT NULL
+    [imageId] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -79,9 +75,7 @@ GO
 CREATE TABLE [dbo].[LikeSet] (
     [likeId] int IDENTITY(1,1) NOT NULL,
     [userId] nvarchar(max)  NOT NULL,
-    [imageId] nvarchar(max)  NOT NULL,
-    [Image_imageId] int  NOT NULL,
-    [User_usrId] int  NOT NULL
+    [imageId] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -126,7 +120,7 @@ GO
 -- Creating foreign key on [User_usrId] in table 'ImageSet'
 ALTER TABLE [dbo].[ImageSet]
 ADD CONSTRAINT [FK_UserPost]
-    FOREIGN KEY ([User_usrId])
+    FOREIGN KEY ([usrId])
     REFERENCES [dbo].[UserSet]
         ([usrId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -135,13 +129,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserPost'
 CREATE INDEX [IX_FK_UserPost]
 ON [dbo].[ImageSet]
-    ([User_usrId]);
+    ([usrId]);
 GO
 
 -- Creating foreign key on [Category_categoryId] in table 'ImageSet'
 ALTER TABLE [dbo].[ImageSet]
 ADD CONSTRAINT [FK_ImageCategory]
-    FOREIGN KEY ([Category_categoryId])
+    FOREIGN KEY ([categoryId])
     REFERENCES [dbo].[CategorySet]
         ([categoryId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -150,13 +144,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ImageCategory'
 CREATE INDEX [IX_FK_ImageCategory]
 ON [dbo].[ImageSet]
-    ([Category_categoryId]);
+    ([categoryId]);
 GO
 
 -- Creating foreign key on [Image_imageId] in table 'CommentSet'
 ALTER TABLE [dbo].[CommentSet]
 ADD CONSTRAINT [FK_ImageComment]
-    FOREIGN KEY ([Image_imageId])
+    FOREIGN KEY ([imageId])
     REFERENCES [dbo].[ImageSet]
         ([imageId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -165,13 +159,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ImageComment'
 CREATE INDEX [IX_FK_ImageComment]
 ON [dbo].[CommentSet]
-    ([Image_imageId]);
+    ([imageId]);
 GO
 
 -- Creating foreign key on [User_usrId] in table 'CommentSet'
 ALTER TABLE [dbo].[CommentSet]
 ADD CONSTRAINT [FK_UserComment]
-    FOREIGN KEY ([User_usrId])
+    FOREIGN KEY ([usrId])
     REFERENCES [dbo].[UserSet]
         ([usrId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -180,13 +174,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserComment'
 CREATE INDEX [IX_FK_UserComment]
 ON [dbo].[CommentSet]
-    ([User_usrId]);
+    ([usrId]);
 GO
 
 -- Creating foreign key on [Image_imageId] in table 'LikeSet'
 ALTER TABLE [dbo].[LikeSet]
 ADD CONSTRAINT [FK_ImageLike]
-    FOREIGN KEY ([Image_imageId])
+    FOREIGN KEY ([imageId])
     REFERENCES [dbo].[ImageSet]
         ([imageId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -195,13 +189,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ImageLike'
 CREATE INDEX [IX_FK_ImageLike]
 ON [dbo].[LikeSet]
-    ([Image_imageId]);
+    ([imageId]);
 GO
 
 -- Creating foreign key on [User_usrId] in table 'LikeSet'
 ALTER TABLE [dbo].[LikeSet]
 ADD CONSTRAINT [FK_UserLike]
-    FOREIGN KEY ([User_usrId])
+    FOREIGN KEY ([usrId])
     REFERENCES [dbo].[UserSet]
         ([usrId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -210,7 +204,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserLike'
 CREATE INDEX [IX_FK_UserLike]
 ON [dbo].[LikeSet]
-    ([User_usrId]);
+    ([usrId]);
 GO
 
 -- Creating foreign key on [Follower_usrId] in table 'UserSet'
