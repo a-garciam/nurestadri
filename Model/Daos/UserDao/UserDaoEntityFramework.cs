@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Common;
 using System.Data.Entity;
+using Es.Udc.DotNet.ModelUtil.Dao;
 
-namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
+namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao
 {
     /// <summary>
     /// Specific Operations for User
@@ -28,15 +29,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 
         #endregion Public Constructors
 
-        #region IUserDao Members. Specific Operations
-
         /// <summary>
         /// Finds a User by his loginName
         /// </summary>
         /// <param name="loginName"></param>
         /// <returns></returns>
         /// <exception cref="InstanceNotFoundException"></exception>
-        public UserProfile FindByLoginName(string loginName)
+        public User FindByLoginName(string loginName)
         {
             User user = null;
 
@@ -54,5 +53,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
                     typeof(User).FullName);
 
             return user;
+        }
     }
 }

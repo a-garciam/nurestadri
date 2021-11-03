@@ -236,7 +236,8 @@
           <NavigationProperty Name="Comment" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserComment" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Like" Relationship="Es.UDC.DotNet.PracticaMaDModel.UserLike" FromRole="User" ToRole="Like" />
           <NavigationProperty Name="User1" Relationship="Es.UDC.DotNet.PracticaMaDModel.Follower" FromRole="User" ToRole="User1" />
-          <NavigationProperty Name="Follower" Relationship="Es.UDC.DotNet.PracticaMaDModel.Follower" FromRole="User1" ToRole="User" />
+          <NavigationProperty Name="Follower" Relationship="Es.UDC.DotNet.PracticaMaDModel.Follower" FromRole="User" ToRole="User1" />
+          <Property Name="language" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Image">
           <Key>

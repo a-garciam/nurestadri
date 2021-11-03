@@ -21,6 +21,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
             this.Comment = new HashSet<Comment>();
             this.Like = new HashSet<Like>();
             this.User1 = new HashSet<User>();
+            this.Follower = new HashSet<User>();
         }
     
         public int usrId { get; set; }
@@ -30,6 +31,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         public string lastName { get; set; }
         public string email { get; set; }
         public string country { get; set; }
+        public string language { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Post { get; set; }
@@ -39,6 +41,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         public virtual ICollection<Like> Like { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> User1 { get; set; }
-        public virtual User Follower { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Follower { get; set; }
     }
 }

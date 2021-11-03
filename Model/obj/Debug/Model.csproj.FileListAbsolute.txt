@@ -25,3 +25,7 @@ C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Model\obj\Debug\Model.csproj.Co
 C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Model\obj\Debug\Es.Udc.DotNet.PracticaMaD.Model.dll
 C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Model\obj\Debug\Es.Udc.DotNet.PracticaMaD.Model.pdb
+C:\Users\monos\Source\Repos\nurestadri\Model\obj\Debug\Model.csproj.AssemblyReference.cache
+C:\Users\monos\Source\Repos\nurestadri\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\monos\Source\Repos\nurestadri\Model\obj\Debug\Es.Udc.DotNet.PracticaMaD.Model.dll
+C:\Users\monos\Source\Repos\nurestadri\Model\obj\Debug\Es.Udc.DotNet.PracticaMaD.Model.pdb

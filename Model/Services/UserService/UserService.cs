@@ -3,6 +3,8 @@ using Es.Udc.DotNet.ModelUtil.Exceptions;
 using Es.Udc.DotNet.ModelUtil.Transactions;
 using Ninject;
 using System;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Util;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Exceptions;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
 {
@@ -17,19 +19,141 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         public void ChangePassword(long userId, string oldClearPassword,
             string newClearPassword)
         {
-            UserProfile userProfile = UserProfileDao.Find(userProfileId);
-            String storedPassword = userProfile.enPassword;
+            User user = UserDao.Find(userId);
+            String storedPassword = user.enPassword;
 
             if (!PasswordEncrypter.IsClearPasswordCorrect(oldClearPassword,
                  storedPassword))
             {
-                throw new IncorrectPasswordException(userProfile.loginName);
+                throw new IncorrectPasswordException(user.loginName);
             }
 
-            userProfile.enPassword =
+            user.enPassword =
             PasswordEncrypter.Crypt(newClearPassword);
 
-            UserProfileDao.Update(userProfile);
+            UserDao.Update(user);
+        }
+
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        public UserDetails FindUserDetails(long userId)
+        {
+            User user = UserDao.Find(userId);
+
+            UserDetails userDetails =
+                new UserDetails(user.firstName,
+                    user.lastName, user.email,
+                    user.language, user.country);
+
+            return userDetails;
+        }
+
+        /// <exception cref="InstanceNotFoundException"/>
+        /// <exception cref="IncorrectPasswordException"/>
+        [Transactional]
+        public LoginResult Login(string loginName, string password, bool passwordIsEncrypted)
+        {
+            User user = UserDao.FindByLoginName(loginName);
+
+            String storedPassword = user.enPassword;
+
+            if (passwordIsEncrypted)
+            {
+                if (!password.Equals(storedPassword))
+                {
+                    throw new IncorrectPasswordException(loginName);
+                }
+            }
+            else
+            {
+                if (!PasswordEncrypter.IsClearPasswordCorrect(password,
+                        storedPassword))
+                {
+                    throw new IncorrectPasswordException(loginName);
+                }
+            }
+
+            return new LoginResult(user.usrId, user.firstName,
+                storedPassword, user.language, user.country);
+        }
+
+        /// <exception cref="DuplicateInstanceException"/>
+        [Transactional]
+        public long RegisterUser(string loginName, string clearPassword,
+            UserDetails userDetails)
+        {
+            try
+            {
+                UserDao.FindByLoginName(loginName);
+
+                throw new DuplicateInstanceException(loginName,
+                    typeof(User).FullName);
+            }
+            catch (InstanceNotFoundException)
+            {
+                String encryptedPassword = PasswordEncrypter.Crypt(clearPassword);
+
+                User user = new User();
+
+                user.loginName = loginName;
+                user.enPassword = encryptedPassword;
+                user.firstName = userDetails.FirstName;
+                user.lastName = userDetails.LastName;
+                user.email = userDetails.Email;
+                user.language = userDetails.Language;
+                user.country = userDetails.Country;
+
+                UserDao.Create(user);
+
+                return user.usrId;
+            }
+        }
+
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        public void UpdateUserDetails(long userId,
+            UserDetails userDetails)
+        {
+            User user =
+                UserDao.Find(userId);
+
+            user.firstName = userDetails.FirstName;
+            user.lastName = userDetails.LastName;
+            user.email = userDetails.Email;
+            user.language = userDetails.Language;
+            user.country = userDetails.Country;
+            UserDao.Update(user);
+        }
+
+        public bool UserExists(string loginName)
+        {
+
+            try
+            {
+                User user = UserDao.FindByLoginName(loginName);
+            }
+            catch (InstanceNotFoundException e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void ViewUserProfile(string loginName)
+        {
+            User user = UserDao.FindByLoginName(loginName);
+            if (user.Post.Count > 0)
+                Console.WriteLine("Number of posts: {user.Post.Count}");
+            if(user.Like.Count > 0)
+                foreach(Like like in user.Like)
+                {
+                    User likeUser = UserDao.Find(like.userId);
+                    string name = likeUser.loginName;
+                    Console.WriteLine("You gave a like to: {name}");
+                }
+            Console.WriteLine("user: {user.loginName}");
+            Console.WriteLine("Name: {user.firstName} {user.lastName}");
         }
     }
 }

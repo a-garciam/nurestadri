@@ -1,5 +1,4 @@
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
-using Es.Udc.DotNet.MiniPortal.Model.UserService.Exceptions;
 using Es.Udc.DotNet.ModelUtil.Exceptions;
 using Es.Udc.DotNet.ModelUtil.Transactions;
 using Ninject;
@@ -9,8 +8,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
 {
     public interface IUserService
     {
-        [Inject]
-        IUserDao UserDao { set; }
 
         /// <summary>
         /// Changes the password.
@@ -20,17 +17,17 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         /// <param name="newClearPassword"> The new clear password. </param>
         /// <exception cref="IncorrectPasswordException"/>
         /// <exception cref="InstanceNotFoundException"/>
-        void ChangePassword(long userProfileId, String oldClearPassword,
+        void ChangePassword(long userId, String oldClearPassword,
             String newClearPassword);
 
         /// <summary>
         /// Finds the user profile details.
         /// </summary>
-        /// <param name="userProfileId"> The user profile id. </param>
+        /// <param name="userId"> The user profile id. </param>
         /// <returns> The user profile details </returns>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        UserProfileDetails FindUserProfileDetails(long userProfileId);
+        UserDetails FindUserDetails(long userId);
 
         /// <summary>
         /// Logins the specified login name.
@@ -50,21 +47,21 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         /// </summary>
         /// <param name="loginName"> Name of the login. </param>
         /// <param name="clearPassword"> The clear password. </param>
-        /// <param name="userProfileDetails"> The user profile details. </param>
+        /// <param name="userDetails"> The user profile details. </param>
         /// <exception cref="DuplicateInstanceException"/>
         [Transactional]
         long RegisterUser(String loginName, String clearPassword,
-            UserProfileDetails userProfileDetails);
+            UserDetails userProfileDetails);
 
         /// <summary>
         /// Updates the user profile details.
         /// </summary>
-        /// <param name="userProfileId"> The user profile id. </param>
-        /// <param name="userProfileDetails"> The user profile details. </param>
+        /// <param name="userId"> The user profile id. </param>
+        /// <param name="userDetails"> The user profile details. </param>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        void UpdateUserProfileDetails(long userProfileId,
-            UserProfileDetails userProfileDetails);
+        void UpdateUserDetails(long userId,
+            UserDetails userDetails);
 
         /// <summary>
         /// Checks if the specified loginName corresponds to a valid user.
@@ -72,5 +69,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         /// <param name="loginName"> User loginName. </param>
         /// <returns> Boolean to indicate if the loginName exists </returns>
         bool UserExists(string loginName);
+
+        void ViewUserProfile(string loginName);
     }
 }
