@@ -148,9 +148,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
             if(user.Like.Count > 0)
                 foreach(Like like in user.Like)
                 {
-                    User likeUser = UserDao.Find(like.userId);
+                    User likeUser = UserDao.Find(like.User.usrId);
                     string name = likeUser.loginName;
-                    Console.WriteLine("You gave a like to: {name}");
+                    Console.WriteLine("You gave a like to: {name}",name);
                 }
             Console.WriteLine("user: {user.loginName}");
             Console.WriteLine("Name: {user.firstName} {user.lastName}");

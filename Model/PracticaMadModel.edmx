@@ -65,7 +65,7 @@
     <Property Name="aperture" Type="nvarchar(max)" Nullable="false" />
     <Property Name="balance" Type="nvarchar(max)" Nullable="false" />
     <Property Name="exposure" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="imageData" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imageData" Type="varbinary(max)" Nullable="false" />
     <Property Name="User_usrId" Type="int" Nullable="false" />
     <Property Name="Category_categoryId" Type="int" Nullable="false" />
   </EntityType>
@@ -249,7 +249,7 @@
           <NavigationProperty Name="Category" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageCategory" FromRole="Image" ToRole="Category" />
           <NavigationProperty Name="Comment" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageComment" FromRole="Image" ToRole="Comment" />
           <NavigationProperty Name="Like" Relationship="Es.UDC.DotNet.PracticaMaDModel.ImageLike" FromRole="Image" ToRole="Like" />
-          <Property Name="imageData" Type="String" Nullable="false" />
+          <Property Name="imageData" Type="Binary" Nullable="false" />
         </EntityType>
         <Association Name="UserPost">
           <End Type="Es.UDC.DotNet.PracticaMaDModel.User" Role="User" Multiplicity="1" />

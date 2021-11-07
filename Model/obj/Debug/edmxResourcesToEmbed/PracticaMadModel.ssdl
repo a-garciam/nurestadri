@@ -46,22 +46,21 @@
     <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="country" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Follower_usrId" Type="int" Nullable="false" />
+    <Property Name="language" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Follower_User1_usrId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ImageSet">
     <Key>
       <PropertyRef Name="imageId" />
     </Key>
     <Property Name="imageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="likes" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="usrId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="commentId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="likes" Type="int" Nullable="false" />
     <Property Name="title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="aperture" Type="nvarchar(max)" Nullable="false" />
     <Property Name="balance" Type="nvarchar(max)" Nullable="false" />
     <Property Name="exposure" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="categoryId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imageData" Type="varbinary(max)" Nullable="false" />
     <Property Name="User_usrId" Type="int" Nullable="false" />
     <Property Name="Category_categoryId" Type="int" Nullable="false" />
   </EntityType>
@@ -77,9 +76,7 @@
       <PropertyRef Name="commentId" />
     </Key>
     <Property Name="commentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="userId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="imageId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Image_imageId" Type="int" Nullable="false" />
     <Property Name="User_usrId" Type="int" Nullable="false" />
   </EntityType>
@@ -88,8 +85,6 @@
       <PropertyRef Name="likeId" />
     </Key>
     <Property Name="likeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="userId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="imageId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Image_imageId" Type="int" Nullable="false" />
     <Property Name="User_usrId" Type="int" Nullable="false" />
   </EntityType>
@@ -173,7 +168,7 @@
         <PropertyRef Name="usrId" />
       </Principal>
       <Dependent Role="User1">
-        <PropertyRef Name="Follower_usrId" />
+        <PropertyRef Name="Follower_User1_usrId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

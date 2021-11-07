@@ -24,5 +24,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.LikeDao
         /// <returns>Boolean</returns>
         /// <exception cref="InstanceNotFoundException"/>
         Boolean ExistsLike(Int32 imageId, Int32 userId);
+        IEnumerable<Like> FindByImageId(int imageId);
     }
 }

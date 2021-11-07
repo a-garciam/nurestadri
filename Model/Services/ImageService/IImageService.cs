@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 {
     public interface IImageService
     {
-        long UploadImage();
+        int UploadImage(int userId, int categoryId, string title, string description, string aperture, byte[] image);
+
+        void DeleteImage(int imageId);
+
+        IList<ImageOutput> FindImagesByFilter(string keywords);
+
+        ImageOutput FindImageById(int imageId);
     }
 }

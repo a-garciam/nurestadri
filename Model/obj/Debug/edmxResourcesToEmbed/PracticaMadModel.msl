@@ -11,6 +11,7 @@
           <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="language" ColumnName="language" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -19,14 +20,12 @@
         <MappingFragment StoreEntitySet="ImageSet">
           <ScalarProperty Name="imageId" ColumnName="imageId" />
           <ScalarProperty Name="likes" ColumnName="likes" />
-          <ScalarProperty Name="usrId" ColumnName="usrId" />
-          <ScalarProperty Name="commentId" ColumnName="commentId" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="aperture" ColumnName="aperture" />
           <ScalarProperty Name="balance" ColumnName="balance" />
           <ScalarProperty Name="exposure" ColumnName="exposure" />
-          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="imageData" ColumnName="imageData" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -42,9 +41,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(Es.UDC.DotNet.PracticaMaDModel.Comment)">
         <MappingFragment StoreEntitySet="CommentSet">
           <ScalarProperty Name="commentId" ColumnName="commentId" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
           <ScalarProperty Name="text" ColumnName="text" />
-          <ScalarProperty Name="imageId" ColumnName="imageId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -52,8 +49,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(Es.UDC.DotNet.PracticaMaDModel.Like)">
         <MappingFragment StoreEntitySet="LikeSet">
           <ScalarProperty Name="likeId" ColumnName="likeId" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
-          <ScalarProperty Name="imageId" ColumnName="imageId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -107,7 +102,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_UserUserId" TypeName="Es.UDC.DotNet.PracticaMaDModel.Follower" StoreEntitySet="UserSet">
       <EndProperty Name="User">
-        <ScalarProperty Name="usrId" ColumnName="Follower_usrId" />
+        <ScalarProperty Name="usrId" ColumnName="Follower_User1_usrId" />
       </EndProperty>
       <EndProperty Name="User1">
         <ScalarProperty Name="usrId" ColumnName="usrId" />

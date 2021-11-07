@@ -45,5 +45,26 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.LikeDao
 
             return like != null;
         }
+
+        public IEnumerable<Like> FindByImageId(int imageId)
+        {
+                List<Like> likesList = null;
+
+                DbSet<Like> likes = Context.Set<Like>();
+
+                var result =
+                    (from like in likes
+                     where like.Image.imageId == imageId
+                     select like);
+
+                likesList = result.ToList();
+
+                if (likesList == null)
+                    throw new InstanceNotFoundException(imageId,
+                        typeof(Like).FullName);
+
+                return likesList;
+            
+        }
     }
 }

@@ -35,7 +35,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         public long CommentImage(User user, Image image, String text)
         {
-            Comment comment = new(user, image, text);
+            Comment comment = new Comment() 
+            {
+                User = user,
+                Image = image, 
+                text = text
+            };
             CommentDao.Create(comment);
 
             return comment.commentId;
@@ -107,7 +112,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         public long LikeImage(Image image, User user)
         {
-            Like like = new(image, user);
+            Like like = new Like(){
+                Image = image,
+                User = user
+            };
             if (LikeDao.Exists(like.likeId))
             {
                 LikeDao.Remove(like.likeId);

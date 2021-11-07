@@ -10,11 +10,11 @@
 namespace Es.Udc.DotNet.PracticaMaD.Model
 {
     using System;
+    using System.Text;
     using System.Collections.Generic;
     
     public partial class Image
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Image()
         {
             this.Comment = new HashSet<Comment>();
@@ -28,13 +28,127 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         public string aperture { get; set; }
         public string balance { get; set; }
         public string exposure { get; set; }
-        public string imageData { get; set; }
+        public byte[] imageData { get; set; }
     
+        
+        /// <summary>
+        /// Relationship Name (Foreign Key in ER-Model): UserPost
+        /// </summary>
         public virtual User User { get; set; }
+        
+        /// <summary>
+        /// Relationship Name (Foreign Key in ER-Model): ImageCategory
+        /// </summary>
         public virtual Category Category { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        
+        /// <summary>
+        /// Relationship Name (Foreign Key in ER-Model): ImageComment
+        /// </summary>
         public virtual ICollection<Comment> Comment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        
+        /// <summary>
+        /// Relationship Name (Foreign Key in ER-Model): ImageLike
+        /// </summary>
         public virtual ICollection<Like> Like { get; set; }
+    
+    	/// <summary>
+    	/// A hash code for this instance, suitable for use in hashing algorithms and data structures 
+    	/// like a hash table. It uses the Josh Bloch implementation from "Effective Java"
+        /// Primary key of entity is not included in the hash calculation to avoid errors
+    	/// with Entity Framework creation of key values.
+    	/// </summary>
+    	/// <returns>
+    	/// Returns a hash code for this instance.
+    	/// </returns>
+    	public override int GetHashCode()
+    	{
+    	    unchecked
+    	    {
+    			int multiplier = 31;
+    			int hash = GetType().GetHashCode();
+    
+    			hash = hash * multiplier + likes.GetHashCode();
+    			hash = hash * multiplier + (title == null ? 0 : title.GetHashCode());
+    			hash = hash * multiplier + (description == null ? 0 : description.GetHashCode());
+    			hash = hash * multiplier + (aperture == null ? 0 : aperture.GetHashCode());
+    			hash = hash * multiplier + (balance == null ? 0 : balance.GetHashCode());
+    			hash = hash * multiplier + (exposure == null ? 0 : exposure.GetHashCode());
+    			hash = hash * multiplier + imageData.GetHashCode();
+    
+    			return hash;
+    	    }
+    
+    	}
+        
+        /// <summary>
+        /// Compare this object against another instance using a value approach (field-by-field) 
+        /// </summary>
+        /// <remarks>See http://www.loganfranken.com/blog/687/overriding-equals-in-c-part-1/ for detailed info </remarks>
+    	public override bool Equals(object obj)
+    	{
+    
+            if (ReferenceEquals(null, obj)) return false;        // Is Null?
+            if (ReferenceEquals(this, obj)) return true;         // Is same object?
+            if (obj.GetType() != this.GetType()) return false;   // Is same type? 
+    
+            Image target = obj as Image;
+    
+    		return true
+               &&  (this.imageId == target.imageId )       
+               &&  (this.likes == target.likes )       
+               &&  (this.title == target.title )       
+               &&  (this.description == target.description )       
+               &&  (this.aperture == target.aperture )       
+               &&  (this.balance == target.balance )       
+               &&  (this.exposure == target.exposure )       
+               &&  (this.imageData == target.imageData )       
+               ;
+    
+        }
+    
+    
+    	public static bool operator ==(Image  objA, Image  objB)
+        {
+            // Check if the objets are the same Image entity
+            if(Object.ReferenceEquals(objA, objB))
+                return true;
+      
+            return objA.Equals(objB);
+    }
+    
+    
+    	public static bool operator !=(Image  objA, Image  objB)
+        {
+            return !(objA == objB);
+        }
+    
+    
+        /// <summary>
+        /// Returns a <see cref="T:System.String"></see> that represents the 
+        /// current <see cref="T:System.Object"></see>.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.String"></see> that represents the current 
+        /// <see cref="T:System.Object"></see>.
+        /// </returns>
+    	public override String ToString()
+    	{
+    	    StringBuilder strImage = new StringBuilder();
+    
+    		strImage.Append("[ ");
+           strImage.Append(" imageId = " + imageId + " | " );       
+           strImage.Append(" likes = " + likes + " | " );       
+           strImage.Append(" title = " + title + " | " );       
+           strImage.Append(" description = " + description + " | " );       
+           strImage.Append(" aperture = " + aperture + " | " );       
+           strImage.Append(" balance = " + balance + " | " );       
+           strImage.Append(" exposure = " + exposure + " | " );       
+           strImage.Append(" imageData = " + imageData + " | " );       
+            strImage.Append("] ");    
+    
+    		return strImage.ToString();
+        }
+    
+    
     }
 }

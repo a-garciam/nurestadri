@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/03/2021 17:42:05
+-- Date Created: 11/07/2021 21:02:27
 -- Generated from EDMX file: C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Model\PracticaMadModel.edmx
 -- --------------------------------------------------
 
@@ -86,7 +86,7 @@ CREATE TABLE [dbo].[ImageSet] (
     [aperture] nvarchar(max)  NOT NULL,
     [balance] nvarchar(max)  NOT NULL,
     [exposure] nvarchar(max)  NOT NULL,
-    [imageData] nvarchar(max)  NOT NULL,
+    [imageData] varbinary(max)  NOT NULL,
     [User_usrId] int  NOT NULL,
     [Category_categoryId] int  NOT NULL
 );
