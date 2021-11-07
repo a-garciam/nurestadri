@@ -72,7 +72,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 
         }
 
-        public ImageOutput FindImagesById(int imageId)
+        public ImageOutput FindImageById(int imageId)
         {
             Image image = ImageDao.Find(imageId);
             Category category = CategoryDao.Find(image.Category.categoryId);
