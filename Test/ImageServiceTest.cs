@@ -37,9 +37,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             using (var scope = new TransactionScope())
             {
                 // Register user and find profile
-                var imageId = imageService.UploadImage();
+                //var imageId = imageService.UploadImage();
 
-                var imageProfile = imageDao.Find(imageId);
+                //var imageProfile = imageDao.Find(imageId);
 
                 // transaction.Complete() is not called, so Rollback is executed.
             }
