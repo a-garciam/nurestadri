@@ -32,3 +32,6 @@ C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Test\obj\Debug\Test.csproj.Core
 C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Test\obj\Debug\Test.csproj.CopyComplete
 C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Test\obj\Debug\Es.Udc.DotNet.PracticaMaD.Test.dll
 C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Test\obj\Debug\Es.Udc.DotNet.PracticaMaD.Test.pdb
+C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Test\bin\Debug\Es.Udc.DotNet.PracticaMaD.Model.dll
+C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Test\bin\Debug\Es.Udc.DotNet.PracticaMaD.Model.pdb
+C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Test\bin\Debug\Es.Udc.DotNet.PracticaMaD.Model.dll.config

@@ -88,7 +88,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             return imageOutput;
         }
 
-        public int UploadImage(int userId, int categoryId, string title, string description, string aperture, byte[] imageData)
+        public int UploadImage(int userId, int categoryId, string title, string description, string aperture, string exposure, string balance, byte[] imageData)
         {
             User user = UserDao.Find(userId);
 
@@ -106,6 +106,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 title = title,
                 description = description,
                 aperture = aperture,
+                exposure = exposure,
+                balance = balance,
                 imageData = imageData
             };
             ImageDao.Create(image); 
