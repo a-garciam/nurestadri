@@ -49,9 +49,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         /// </summary>
         /// <param name="commentId"> The comment id. </param>
 
-        public long DeleteComment(Comment comm)
+        public long DeleteComment(int commentId)
         {
-            Comment comment = CommentDao.Find(comm.commentId);
+            Comment comment = CommentDao.Find(commentId);
             if (comment != null)
             {
                 CommentDao.Remove(comment.commentId);
