@@ -12,7 +12,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         /// <summary>
         /// Changes the password.
         /// </summary>
-        /// <param name="userProfileId"> The user profile id. </param>
+        /// <param name="userId"> The user profile id. </param>
         /// <param name="oldClearPassword"> The old clear password. </param>
         /// <param name="newClearPassword"> The new clear password. </param>
         /// <exception cref="IncorrectPasswordException"/>

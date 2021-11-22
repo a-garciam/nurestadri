@@ -2,9 +2,11 @@
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 using Ninject;
 using System;
 using System.Transactions;
+using System.Linq;
 
 namespace Es.Udc.DotNet.PracticaMaD.Test
 {

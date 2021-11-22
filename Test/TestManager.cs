@@ -25,7 +25,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 To<UserService>();
 
             string connectionString =
-                ConfigurationManager.ConnectionStrings["PracticaMaDEntities"].ConnectionString;
+                ConfigurationManager.ConnectionStrings[0].ConnectionString;
 
             kernel.Bind<DbContext>().
                 ToSelf().

@@ -3,6 +3,7 @@ using Es.Udc.DotNet.ModelUtil.Exceptions;
 using Es.Udc.DotNet.ModelUtil.Transactions;
 using Ninject;
 using System;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Util;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Exceptions;
 
@@ -19,6 +20,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         public void ChangePassword(long userId, string oldClearPassword,
             string newClearPassword)
         {
+            if (!UserDao.Exists(userId))
+            {
+                throw new Exceptions.InstanceNotFoundException("user");
+            }
             User user = UserDao.Find(userId);
             String storedPassword = user.enPassword;
 
@@ -89,7 +94,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
                 throw new DuplicateInstanceException(loginName,
                     typeof(User).FullName);
             }
-            catch (InstanceNotFoundException)
+            catch (Exceptions.InstanceNotFoundException)
             {
                 String encryptedPassword = PasswordEncrypter.Crypt(clearPassword);
 
@@ -132,7 +137,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
             {
                 User user = UserDao.FindByLoginName(loginName);
             }
-            catch (InstanceNotFoundException e)
+            catch (Exceptions.InstanceNotFoundException e)
             {
                 return false;
             }

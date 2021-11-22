@@ -35,7 +35,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         public long CommentImage(User user, Image image, String text)
         {
-            Comment comment = new();
+            Comment comment = new Comment();
             comment.User = user;
             comment.Image = image;
             comment.text = text;
@@ -110,7 +110,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         public long LikeImage(Image image, User user)
         {
-            Like like = new();
+            Like like = new Like();
             like.Image = image;
             like.User = user;
             if (LikeDao.Exists(like.likeId))

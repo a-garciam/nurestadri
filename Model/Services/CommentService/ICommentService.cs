@@ -17,7 +17,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         long CommentImage(User user, Image image, String text);
 
-        long DeleteComment(Comment comment);
+        long DeleteComment(int commentId);
 
         long EditComment(Comment comment, String newText);
 

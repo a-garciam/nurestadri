@@ -116,6 +116,7 @@
     <Compile Include="Services\ImageService\ImageService.cs" />
     <Compile Include="Services\ImageService\Resources\Output\ImageOutput.cs" />
     <Compile Include="Services\UserService\Exceptions\IncorrectPasswordException.cs" />
+    <Compile Include="Services\UserService\Exceptions\InstanceNotFoundException.cs" />
     <Compile Include="Services\UserService\IUserService.cs" />
     <Compile Include="Services\UserService\LoginResult.cs" />
     <Compile Include="Services\UserService\UserDetails.cs" />

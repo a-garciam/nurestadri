@@ -5,7 +5,7 @@ using Es.Udc.DotNet.PracticaMaD.Model;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Es.Udc.DotNet.MiniPortal.Test
+namespace Es.Udc.DotNet.PracticaMaD.Test
 {
     [TestClass]
     public class UserTest

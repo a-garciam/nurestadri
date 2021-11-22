@@ -27,7 +27,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         private const string country = "ES";
         private const long NON_EXISTENT_USER_ID = -1;
         private static IKernel kernel;
-        private static IUserService userService;
+        private static IUserService userService = new UserService();
         private static IUserDao UserDao;
 
         private TransactionScope transaction;
@@ -38,33 +38,42 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         /// </summary>
         public TestContext TestContext { get; set; }
 
+        [TestInitialize()]
+        public void testInit()
+        {
+            transaction = new TransactionScope();
+        }
+
+        [TestCleanup()]
+        public void testClean()
+        {
+            transaction.Dispose();
+        }
+
         /// <summary>
         /// A test for RegisterUser
         /// </summary>
         [TestMethod]
         public void RegisterUserTest()
         {
-            using (var scope = new TransactionScope())
-            {
-                // Register user and find profile
-                var userId =
-                    userService.RegisterUser(loginName, clearPassword,
-                        new UserDetails(firstName, lastName, email, language, country));
+            // Register user and find profile
+            var userId =
+                userService.RegisterUser(loginName, clearPassword,
+                    new UserDetails(firstName, lastName, email, language, country));
 
-                var User = UserDao.Find(userId);
+            var User = UserDao.Find(userId);
 
-                // Check data
-                Assert.AreEqual(userId, User.usrId);
-                Assert.AreEqual(loginName, User.loginName);
-                Assert.AreEqual(PasswordEncrypter.Crypt(clearPassword), User.enPassword);
-                Assert.AreEqual(firstName, User.firstName);
-                Assert.AreEqual(lastName, User.lastName);
-                Assert.AreEqual(email, User.email);
-                Assert.AreEqual(language, User.language);
-                Assert.AreEqual(country, User.country);
+            // Check data
+            Assert.AreEqual(userId, User.usrId);
+            Assert.AreEqual(loginName, User.loginName);
+            Assert.AreEqual(PasswordEncrypter.Crypt(clearPassword), User.enPassword);
+            Assert.AreEqual(firstName, User.firstName);
+            Assert.AreEqual(lastName, User.lastName);
+            Assert.AreEqual(email, User.email);
+            Assert.AreEqual(language, User.language);
+            Assert.AreEqual(country, User.country);
 
-                // transaction.Complete() is not called, so Rollback is executed.
-            }
+            // transaction.Complete() is not called, so Rollback is executed.
         }
 
         /// <summary>
@@ -217,9 +226,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         {
             using (var scope = new TransactionScope())
             {
+                UserDetails usDet = new UserDetails(firstName, lastName, email, language, country);
                 // Register user and update profile details
-                var userId = userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                var userId = userService.RegisterUser(loginName, clearPassword, usDet);
 
                 var expected =
                     new UserDetails(firstName + "X", lastName + "X",
@@ -302,7 +311,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         /// A test for ChangePassword when the user does not exist
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(IncorrectPasswordException))] //InstanceNotFoundException
+        [ExpectedException(typeof(InstanceNotFoundException))] //InstanceNotFoundException
         public void ChangePasswordForNonExistingUserTest()
         {
             userService.ChangePassword(NON_EXISTENT_USER_ID,
@@ -364,18 +373,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         public static void MyClassCleanup()
         {
             TestManager.ClearNInjectKernel(kernel);
-        }
-
-        //Use TestInitialize to run code before running each test
-        [TestInitialize]
-        public void MyTestInitialize()
-        {
-        }
-
-        //Use TestCleanup to run code after each test has run
-        [TestCleanup]
-        public void MyTestCleanup()
-        {
         }
 
         #endregion Additional test attributes
