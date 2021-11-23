@@ -85,15 +85,10 @@
     <Compile Include="Daos\CategoryDao\ICategoryDao.cs" />
     <Compile Include="Daos\CommentDao\ICommentDao.cs" />
     <Compile Include="Daos\ImageDao\IImageDao.cs" />
-    <Compile Include="Daos\LikeDao\ILikeDao.cs" />
     <Compile Include="Daos\ImageDao\ImageDaoEntityFramework.cs" />
     <Compile Include="Daos\UserDao\IUserDao.cs" />
-    <Compile Include="Daos\LikeDao\LikeDaoEntityFramework.cs" />
     <Compile Include="Daos\UserDao\UserDaoEntityFramework.cs" />
     <Compile Include="Image.cs">
-      <DependentUpon>PracticaMadModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Like.cs">
       <DependentUpon>PracticaMadModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PracticaMadModel.Context.cs">

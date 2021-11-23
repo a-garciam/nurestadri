@@ -15,14 +15,19 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     
     public partial class Category
     {
-        public int categoryId { get; set; }
+        public Category()
+        {
+            this.Images = new HashSet<Image>();
+        }
+    
+        public long categoryId { get; set; }
         public string name { get; set; }
     
         
         /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): ImageCategory
+        /// Relationship Name (Foreign Key in ER-Model): FK_ImageCategory
         /// </summary>
-        public virtual Image Image { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
     
     	/// <summary>
     	/// A hash code for this instance, suitable for use in hashing algorithms and data structures 

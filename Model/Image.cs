@@ -17,11 +17,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     {
         public Image()
         {
-            this.Comment = new HashSet<Comment>();
-            this.Like = new HashSet<Like>();
+            this.Comments = new HashSet<Comment>();
+            this.UserLikes = new HashSet<User>();
         }
     
-        public int imageId { get; set; }
+        public long imageId { get; set; }
         public int likes { get; set; }
         public string title { get; set; }
         public string description { get; set; }
@@ -29,27 +29,29 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         public string balance { get; set; }
         public string exposure { get; set; }
         public byte[] imageData { get; set; }
+        public long usrId { get; set; }
+        public long categoryId { get; set; }
     
         
         /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): UserPost
-        /// </summary>
-        public virtual User User { get; set; }
-        
-        /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): ImageCategory
+        /// Relationship Name (Foreign Key in ER-Model): FK_ImageCategory
         /// </summary>
         public virtual Category Category { get; set; }
         
         /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): ImageComment
+        /// Relationship Name (Foreign Key in ER-Model): FK_ImageComment
         /// </summary>
-        public virtual ICollection<Comment> Comment { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
         
         /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): ImageLike
+        /// Relationship Name (Foreign Key in ER-Model): FK_UserPost
         /// </summary>
-        public virtual ICollection<Like> Like { get; set; }
+        public virtual User User { get; set; }
+        
+        /// <summary>
+        /// Relationship Name (Foreign Key in ER-Model): Like
+        /// </summary>
+        public virtual ICollection<User> UserLikes { get; set; }
     
     	/// <summary>
     	/// A hash code for this instance, suitable for use in hashing algorithms and data structures 
@@ -74,6 +76,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     			hash = hash * multiplier + (balance == null ? 0 : balance.GetHashCode());
     			hash = hash * multiplier + (exposure == null ? 0 : exposure.GetHashCode());
     			hash = hash * multiplier + imageData.GetHashCode();
+    			hash = hash * multiplier + usrId.GetHashCode();
+    			hash = hash * multiplier + categoryId.GetHashCode();
     
     			return hash;
     	    }
@@ -102,6 +106,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
                &&  (this.balance == target.balance )       
                &&  (this.exposure == target.exposure )       
                &&  (this.imageData == target.imageData )       
+               &&  (this.usrId == target.usrId )       
+               &&  (this.categoryId == target.categoryId )       
                ;
     
         }
@@ -144,6 +150,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
            strImage.Append(" balance = " + balance + " | " );       
            strImage.Append(" exposure = " + exposure + " | " );       
            strImage.Append(" imageData = " + imageData + " | " );       
+           strImage.Append(" usrId = " + usrId + " | " );       
+           strImage.Append(" categoryId = " + categoryId + " | " );       
             strImage.Append("] ");    
     
     		return strImage.ToString();

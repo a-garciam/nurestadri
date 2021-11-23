@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ebf9b6b6b8043e1940d0ceeea001e3a" Name="Diagram1">
+        <EntityTypeShape EntityType="PracticaMaDModel.Category" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaMaDModel.Comment" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaMaDModel.Follower" Width="1.5" PointX="2.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaMaDModel.Image" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaMaDModel.Like" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticaMaDModel.User" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="PracticaMaDModel.FK_ImageCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaMaDModel.FK_ImageComment" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaMaDModel.FK_UserComment" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaMaDModel.FK_ImageLike" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaMaDModel.FK_UserPost" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaMaDModel.FK_UserLike" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticaMaDModel.FK_Follower" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

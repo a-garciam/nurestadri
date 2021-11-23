@@ -15,17 +15,19 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     
     public partial class Comment
     {
-        public int commentId { get; set; }
+        public long commentId { get; set; }
         public string text { get; set; }
+        public long imageId { get; set; }
+        public long usrId { get; set; }
     
         
         /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): ImageComment
+        /// Relationship Name (Foreign Key in ER-Model): FK_ImageComment
         /// </summary>
         public virtual Image Image { get; set; }
         
         /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): UserComment
+        /// Relationship Name (Foreign Key in ER-Model): FK_UserComment
         /// </summary>
         public virtual User User { get; set; }
     
@@ -46,6 +48,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     			int hash = GetType().GetHashCode();
     
     			hash = hash * multiplier + (text == null ? 0 : text.GetHashCode());
+    			hash = hash * multiplier + imageId.GetHashCode();
+    			hash = hash * multiplier + usrId.GetHashCode();
     
     			return hash;
     	    }
@@ -68,6 +72,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     		return true
                &&  (this.commentId == target.commentId )       
                &&  (this.text == target.text )       
+               &&  (this.imageId == target.imageId )       
+               &&  (this.usrId == target.usrId )       
                ;
     
         }
@@ -104,6 +110,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     		strComment.Append("[ ");
            strComment.Append(" commentId = " + commentId + " | " );       
            strComment.Append(" text = " + text + " | " );       
+           strComment.Append(" imageId = " + imageId + " | " );       
+           strComment.Append(" usrId = " + usrId + " | " );       
             strComment.Append("] ");    
     
     		return strComment.ToString();

@@ -27,7 +27,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Follower> Followers { get; set; }
         public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<Like> Likes { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

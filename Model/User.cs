@@ -17,14 +17,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     {
         public User()
         {
-            this.Post = new HashSet<Image>();
-            this.Comment = new HashSet<Comment>();
-            this.Like = new HashSet<Like>();
-            this.User1 = new HashSet<User>();
-            this.Follower = new HashSet<User>();
+            this.Comments = new HashSet<Comment>();
+            this.Images = new HashSet<Image>();
+            this.Followed = new HashSet<User>();
+            this.Followers = new HashSet<User>();
+            this.ImageLikes = new HashSet<Image>();
         }
     
-        public int usrId { get; set; }
+        public long usrId { get; set; }
         public string loginName { get; set; }
         public string enPassword { get; set; }
         public string firstName { get; set; }
@@ -35,29 +35,29 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     
         
         /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): UserPost
+        /// Relationship Name (Foreign Key in ER-Model): FK_UserComment
         /// </summary>
-        public virtual ICollection<Image> Post { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
         
         /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): UserComment
+        /// Relationship Name (Foreign Key in ER-Model): FK_UserPost
         /// </summary>
-        public virtual ICollection<Comment> Comment { get; set; }
-        
-        /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): UserLike
-        /// </summary>
-        public virtual ICollection<Like> Like { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
         
         /// <summary>
         /// Relationship Name (Foreign Key in ER-Model): Follower
         /// </summary>
-        public virtual ICollection<User> User1 { get; set; }
+        public virtual ICollection<User> Followed { get; set; }
         
         /// <summary>
         /// Relationship Name (Foreign Key in ER-Model): Follower
         /// </summary>
-        public virtual ICollection<User> Follower { get; set; }
+        public virtual ICollection<User> Followers { get; set; }
+        
+        /// <summary>
+        /// Relationship Name (Foreign Key in ER-Model): Like
+        /// </summary>
+        public virtual ICollection<Image> ImageLikes { get; set; }
     
     	/// <summary>
     	/// A hash code for this instance, suitable for use in hashing algorithms and data structures 
