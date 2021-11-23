@@ -257,8 +257,8 @@
           <Property Name="language" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_UserComment" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Images" Relationship="Self.FK_UserPost" FromRole="User" ToRole="Image" />
-          <NavigationProperty Name="Followed" Relationship="Self.Follower" FromRole="User" ToRole="User1" />
-          <NavigationProperty Name="Followers" Relationship="Self.Follower" FromRole="User1" ToRole="User" />
+          <NavigationProperty Name="Followers" Relationship="Self.Follower" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="Followed" Relationship="Self.Follower" FromRole="User1" ToRole="User" />
           <NavigationProperty Name="ImageLikes" Relationship="Self.Like" FromRole="User" ToRole="Image" />
         </EntityType>
         <Association Name="FK_ImageCategory">

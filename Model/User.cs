@@ -19,8 +19,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         {
             this.Comments = new HashSet<Comment>();
             this.Images = new HashSet<Image>();
-            this.Followed = new HashSet<User>();
             this.Followers = new HashSet<User>();
+            this.Followed = new HashSet<User>();
             this.ImageLikes = new HashSet<Image>();
         }
     
@@ -47,12 +47,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         /// <summary>
         /// Relationship Name (Foreign Key in ER-Model): Follower
         /// </summary>
-        public virtual ICollection<User> Followed { get; set; }
+        public virtual ICollection<User> Followers { get; set; }
         
         /// <summary>
         /// Relationship Name (Foreign Key in ER-Model): Follower
         /// </summary>
-        public virtual ICollection<User> Followers { get; set; }
+        public virtual ICollection<User> Followed { get; set; }
         
         /// <summary>
         /// Relationship Name (Foreign Key in ER-Model): Like
