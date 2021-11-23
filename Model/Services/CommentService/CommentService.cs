@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
-using Es.Udc.DotNet.PracticaMaD.Model.Daos.LikeDao;
 using Ninject;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
@@ -15,8 +14,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         [Inject]
         public ICommentDao CommentDao { private get; set; }
 
-        [Inject]
-        public ILikeDao LikeDao { private get; set; }
 
         // Añadir comentario.
         // Un usuario puede añadir comentarios relativos a una imagen.
@@ -108,20 +105,20 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         /// <param name="imageId"> The image id. </param>
         /// <param name="userId"> The user id. </param>
 
-        public long LikeImage(Image image, User user)
-        {
-            Like like = new Like();
-            like.Image = image;
-            like.User = user;
-            if (LikeDao.Exists(like.likeId))
-            {
-                LikeDao.Remove(like.likeId);
-            }
-            else {
-                LikeDao.Create(like);
-            }
-            return like.likeId;
-        }
+        //public long LikeImage(Image image, User user)
+        //{
+        //    Like like = new Like();
+        //    like.Image = image;
+        //    like.User = user;
+        //    if (LikeDao.Exists(like.likeId))
+        //    {
+        //        LikeDao.Remove(like.likeId);
+        //    }
+        //    else {
+        //        LikeDao.Create(like);
+        //    }
+        //    return like.likeId;
+        //}
 
 
     }

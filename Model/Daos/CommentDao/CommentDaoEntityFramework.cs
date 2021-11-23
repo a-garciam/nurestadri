@@ -10,7 +10,7 @@ using Es.Udc.DotNet.ModelUtil.Dao;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
 {
-    public class CommentDaoEntityFramework : GenericDaoEntityFramework<Comment, Int32>, ICommentDao
+    public class CommentDaoEntityFramework : GenericDaoEntityFramework<Comment, long>, ICommentDao
     {
         /// <summary>
         /// Public Constructor
@@ -26,7 +26,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
         /// <param name="userId">the id of the user</param>
         /// <returns>Boolean</returns>
         /// <exception cref="InstanceNotFoundException"/>
-        public List<Comment> FindByImageId(Int32 imageId)
+        public List<Comment> FindByImageId(long imageId)
         {
             List<Comment> commentsList = null;
 

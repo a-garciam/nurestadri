@@ -14,7 +14,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
 
 
 
-    public interface ICommentDao : IGenericDao<Comment, Int32>
+    public interface ICommentDao : IGenericDao<Comment, long>
     {
         /// <summary>
         /// Finds a Comment by a given imageId and userId
@@ -23,6 +23,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
         /// <param name="userId">the id of the user</param>
         /// <returns>Boolean</returns>
         /// <exception cref="InstanceNotFoundException"/>
-        List<Comment> FindByImageId(Int32 imageId);
+        List<Comment> FindByImageId(long imageId);
     }
 }
