@@ -28,20 +28,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
         [Inject]
         public ICommentDao CommentDao { private get; set; }
 
-        [Inject]
-        public ILikeDao LikeDao { private get; set; }
 
         [Transactional]
-        public void DeleteImage(int imageId)
+        public void DeleteImage(long imageId)
         {
             Image image = ImageDao.Find(imageId);
-            foreach(Comment comment in CommentDao.FindByImageId(image.imageId))
+            foreach(Comment comment in image.Comments)
             {
                 CommentDao.Remove(comment.commentId);
-            }
-            foreach (Like like in LikeDao.FindByImageId(image.imageId))
-            {
-                CommentDao.Remove(like.likeId);
             }
             ImageDao.Remove(imageId);
 
@@ -72,7 +66,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 
         }
 
-        public ImageOutput FindImageById(int imageId)
+        public ImageOutput FindImageById(long imageId)
         {
             Image image = ImageDao.Find(imageId);
             Category category = CategoryDao.Find(image.Category.categoryId);
@@ -88,7 +82,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             return imageOutput;
         }
 
-        public int UploadImage(int userId, int categoryId, string title, string description, string aperture, string exposure, string balance, byte[] imageData)
+        public long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, byte[] imageData)
         {
             User user = UserDao.Find(userId);
 

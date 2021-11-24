@@ -25,3 +25,5 @@ C:\Users\monos\source\repos\nurestadri\Model\bin\Debug\Ninject.Extensions.Interc
 C:\Users\monos\source\repos\nurestadri\Model\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
 C:\Users\monos\source\repos\nurestadri\Model\bin\Debug\Ninject.Extensions.Xml.xml
 C:\Users\monos\source\repos\nurestadri\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache

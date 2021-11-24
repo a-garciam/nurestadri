@@ -9,12 +9,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 {
     public interface IImageService
     {
-        int UploadImage(int userId, int categoryId, string title, string description, string aperture, string exposure, string balance, byte[] image);
+        long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, byte[] image);
 
-        void DeleteImage(int imageId);
+        void DeleteImage(long imageId);
 
         IList<ImageOutput> FindImagesByFilter(string keywords);
 
-        ImageOutput FindImageById(int imageId);
+        IList<ImageOutput> FindImagesByFilterAndCategory(string keywords, long categoryId);
+
+        ImageOutput FindImageById(long imageId);
+
+        IList<ImageOutput> FindImagesByUser(long userId);
     }
 }

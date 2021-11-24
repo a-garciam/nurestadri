@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PracticaMaDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="categoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="commentId" />
+    </Key>
+    <Property Name="commentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imageId" Type="bigint" Nullable="false" />
+    <Property Name="usrId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Follower">
+    <Key>
+      <PropertyRef Name="followedId" />
+      <PropertyRef Name="followerId" />
+    </Key>
+    <Property Name="followedId" Type="bigint" Nullable="false" />
+    <Property Name="followerId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="imageId" />
+    </Key>
+    <Property Name="imageId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="likes" Type="int" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="aperture" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="balance" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="exposure" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imageData" Type="varbinary(max)" Nullable="false" />
+    <Property Name="usrId" Type="bigint" Nullable="false" />
+    <Property Name="categoryId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Like">
+    <Key>
+      <PropertyRef Name="userLikesId" />
+      <PropertyRef Name="imageLikesId" />
+    </Key>
+    <Property Name="userLikesId" Type="bigint" Nullable="false" />
+    <Property Name="imageLikesId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="usrId" />
+    </Key>
+    <Property Name="usrId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="loginName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="enPassword" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="country" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="language" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CommentImage">
+    <End Role="Image" Type="Self.Image" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="imageId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="imageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommentUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="usrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowedUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Follower" Type="Self.Follower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Follower">
+        <PropertyRef Name="followedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowerUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Follower" Type="Self.Follower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Follower">
+        <PropertyRef Name="followerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImageCategory">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImageUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="usrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LikeImage">
+    <End Role="Image" Type="Self.Image" Multiplicity="1" />
+    <End Role="Like" Type="Self.Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="imageId" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="imageLikesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LikeUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Like" Type="Self.Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="userLikesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PracticaMaDModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Follower" EntityType="Self.Follower" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Like" EntityType="Self.Like" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CommentImage" Association="Self.FK_CommentImage">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommentUser" Association="Self.FK_CommentUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowedUser" Association="Self.FK_FollowedUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Follower" EntitySet="Follower" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowerUser" Association="Self.FK_FollowerUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Follower" EntitySet="Follower" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImageCategory" Association="Self.FK_ImageCategory">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImageUser" Association="Self.FK_ImageUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LikeImage" Association="Self.FK_LikeImage">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="Like" EntitySet="Like" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LikeUser" Association="Self.FK_LikeUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Like" EntitySet="Like" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PracticaMaDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="categoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_ImageCategory" FromRole="Category" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="commentId" />
+    </Key>
+    <Property Name="commentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="imageId" Type="Int64" Nullable="false" />
+    <Property Name="usrId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Image" Relationship="Self.FK_ImageComment" FromRole="Comment" ToRole="Image" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserComment" FromRole="Comment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="imageId" />
+    </Key>
+    <Property Name="imageId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="likes" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="aperture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="balance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="exposure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="imageData" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="usrId" Type="Int64" Nullable="false" />
+    <Property Name="categoryId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_ImageCategory" FromRole="Image" ToRole="Category" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_ImageComment" FromRole="Image" ToRole="Comment" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserPost" FromRole="Image" ToRole="User" />
+    <NavigationProperty Name="UserLikes" Relationship="Self.Like" FromRole="Image" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="usrId" />
+    </Key>
+    <Property Name="usrId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="loginName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="enPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="language" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_UserComment" FromRole="User" ToRole="Comment" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_UserPost" FromRole="User" ToRole="Image" />
+    <NavigationProperty Name="Followers" Relationship="Self.Follower" FromRole="User" ToRole="User1" />
+    <NavigationProperty Name="Followed" Relationship="Self.Follower" FromRole="User1" ToRole="User" />
+    <NavigationProperty Name="ImageLikes" Relationship="Self.Like" FromRole="User" ToRole="Image" />
+  </EntityType>
+  <Association Name="FK_ImageCategory">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImageComment">
+    <End Role="Image" Type="Self.Image" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="imageId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="imageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserComment">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="usrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPost">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="usrId" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="usrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Follower">
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <End Role="User1" Type="Self.User" Multiplicity="*" />
+  </Association>
+  <Association Name="Like">
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="PracticaMaDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Images" EntityType="Self.Image" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_ImageCategory" Association="Self.FK_ImageCategory">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImageComment" Association="Self.FK_ImageComment">
+      <End Role="Image" EntitySet="Images" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserComment" Association="Self.FK_UserComment">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPost" Association="Self.FK_UserPost">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="Follower" Association="Self.Follower">
+      <End Role="User" EntitySet="Users" />
+      <End Role="User1" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Like" Association="Self.Like">
+      <End Role="Image" EntitySet="Images" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
