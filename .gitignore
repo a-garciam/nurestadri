@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs/
+/Model/bin/Debug
+/Model/obj/Debug
+
+/Test/bin/Debug
+/Test/org/Debug

@@ -88,6 +88,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         }
 
+        public long LikeImage(Image image, User user)
+        {
+            throw new NotImplementedException();
+        }
+
 
         // Indicar “Me gusta”.
         // Un usuario puede indicar que le gusta una imagen.

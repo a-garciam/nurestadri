@@ -1,7 +1,6 @@
 ﻿using Es.Udc.DotNet.ModelUtil.Transactions;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
-using Es.Udc.DotNet.PracticaMaD.Model.Daos.LikeDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
 using Es.Udc.DotNet.PracticaMaD.Model.Utils;
@@ -109,5 +108,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             return image.imageId;
         }
 
+        public IList<ImageOutput> FindImagesByFilterAndCategory(string keywords, long categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ImageOutput> FindImagesByUser(long userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

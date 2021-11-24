@@ -1,7 +1,6 @@
 ﻿using Es.Udc.DotNet.PracticaMaD.Model;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
-using Es.Udc.DotNet.PracticaMaD.Model.Daos.LikeDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService;
@@ -31,7 +30,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         private static IImageDao imageDao;
         private static IUserDao userDao;
         private static ICommentDao commentDao;
-        private static ILikeDao likeDao;
         private static ICommentService commentService;
 
         private TransactionScope transactionScope;

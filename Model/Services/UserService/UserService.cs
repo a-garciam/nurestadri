@@ -148,12 +148,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         public void ViewUserProfile(string loginName)
         {
             User user = UserDao.FindByLoginName(loginName);
-            if (user.Post.Count > 0)
-                Console.WriteLine("Number of posts: {user.Post.Count}");
-            if(user.Like.Count > 0)
-                foreach(Like like in user.Like)
+            if (user.Images.Count > 0)
+                Console.WriteLine("Number of posts: {user.Images.Count}");
+            if(user.ImageLikes.Count > 0)
+                foreach(Image image in user.ImageLikes)
                 {
-                    User likeUser = UserDao.Find(like.User.usrId);
+                    User likeUser = UserDao.Find(image.User.usrId);
                     string name = likeUser.loginName;
                     Console.WriteLine("You gave a like to: {name}",name);
                 }
