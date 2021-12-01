@@ -15,13 +15,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         // y tras autenticarse correctamente, se le muestra el formulario para añadir comentario.
         // Un usuario también podrá modificar o eliminar los comentarios realizados por él mismo.
 
-        long CommentImage(User user, Image image, String text);
+        long CommentImage(long userId, long imageId, String text);
 
         long DeleteComment(int commentId);
 
-        long EditComment(Comment comment, String newText);
+        long EditComment(long commentId, String newText);
 
-        void DisplayComments(Image image);
+        void DisplayComments(long imageId);
 
         // Indicar “Me gusta”.
         // Un usuario puede indicar que le gusta una imagen.
@@ -32,7 +32,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         // No será posible indicar “Me gusta” más de una vez sobre la misma imagen,
         // pero sí podrá eliminarse un “Me gusta” especificado previamente.
 
-        long LikeImage(Image image, User user); // Si se llama a la función y el Like ya existe, se elimina.
+        long LikeImage(long image, long user); // Si se llama a la función y el Like ya existe, se elimina.
 
     }
 }

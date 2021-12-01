@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
+using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
 using Ninject;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
@@ -13,6 +15,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         [Inject]
         public ICommentDao CommentDao { private get; set; }
+
+        [Inject]
+        public IImageDao ImageDao { private get; set; }
+
+        [Inject]
+        public IUserDao UserDao { private get; set; }
 
 
         // Añadir comentario.
@@ -30,15 +38,25 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         /// <param name="imageId"> The image id. </param>
         /// <param name="text"> The text of the comment. </param>
 
-        public long CommentImage(User user, Image image, String text)
+        public long CommentImage(long userId, long imageId, String text)
         {
-            Comment comment = new Comment();
-            comment.User = user;
-            comment.Image = image;
-            comment.text = text;
-            CommentDao.Create(comment);
 
-            return comment.commentId;
+            if (UserDao.Exists(userId) && ImageDao.Exists(imageId))
+            {
+                Comment comment = new Comment();
+                Image image = ImageDao.Find(imageId);
+                User user = UserDao.Find(userId);
+                comment.User = user;
+                comment.Image = image;
+                comment.text = text;
+                CommentDao.Create(comment);
+                image.Comments.Add(comment);
+                user.Comments.Add(comment);
+
+                return image.Comments.Count;
+            }
+            else
+                return -1;
         }
 
         /// <summary>
@@ -48,28 +66,37 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         public long DeleteComment(int commentId)
         {
-            Comment comment = CommentDao.Find(commentId);
-            if (comment != null)
+            if (CommentDao.Exists(commentId))
             {
-                CommentDao.Remove(comment.commentId);
-            }
+                Comment comment = CommentDao.Find(commentId);
+                User user = UserDao.Find(comment.usrId);
+                Image image = ImageDao.Find(comment.usrId);
+                CommentDao.Remove(commentId);
+                user.Comments.Remove(comment);
+                image.Comments.Remove(comment);
 
-            return comment.commentId;
+                return comment.commentId;
+            }
+            else return -1;
+
         }
 
         /// <summary>
         /// Edits a comment from an image.
         /// </summary>
-        /// <param name="commentId"> The comment id. </param>
+        /// <param name="commId"> The comment id. </param>
         /// <param name="newText"> The new text of the comment. </param>
 
-        public long EditComment(Comment comm, String newText)
+        public long EditComment(long commId, String newText)
         {
-            Comment comment = CommentDao.Find(comm.commentId);
-            comment.text = newText;
-            CommentDao.Update(comment);
-            return comment.commentId;
-        
+            if (CommentDao.Exists(commId))
+            {
+                Comment comment = CommentDao.Find(commId);
+                comment.text = newText;
+                CommentDao.Update(comment);
+                return comment.commentId;
+            }
+            else return -1;
         }
 
         /// <summary>
@@ -77,22 +104,19 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         /// </summary>
         /// <param name="imageId"> The image id. </param>
 
-        public void DisplayComments(Image image)
+        public void DisplayComments(long imageId)
         {
-            List<Comment> comments = CommentDao.FindByImageId(image.imageId);
-            for(int i = 0; comments[i] != null; i++)
+            if (ImageDao.Exists(imageId))
             {
-                string str = comments[i].ToString();
-                Console.WriteLine(str);
+                List<Comment> comments = CommentDao.FindByImageId(imageId);
+                for (int i = 0; comments[i] != null; i++)
+                {
+                    string str = comments[i].ToString();
+                    Console.WriteLine(str);
+                }
             }
 
         }
-
-        public long LikeImage(Image image, User user)
-        {
-            throw new NotImplementedException();
-        }
-
 
         // Indicar “Me gusta”.
         // Un usuario puede indicar que le gusta una imagen.
@@ -110,21 +134,27 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         /// <param name="imageId"> The image id. </param>
         /// <param name="userId"> The user id. </param>
 
-        //public long LikeImage(Image image, User user)
-        //{
-        //    Like like = new Like();
-        //    like.Image = image;
-        //    like.User = user;
-        //    if (LikeDao.Exists(like.likeId))
-        //    {
-        //        LikeDao.Remove(like.likeId);
-        //    }
-        //    else {
-        //        LikeDao.Create(like);
-        //    }
-        //    return like.likeId;
-        //}
-
-
+        public long LikeImage(long imageId, long userId)
+        {
+            if (ImageDao.Exists(imageId) && UserDao.Exists(userId))
+            {
+                Image image = ImageDao.Find(imageId);
+                User user = UserDao.Find(userId);
+                if (image.UserLikes.Contains(user))
+                {
+                    image.UserLikes.Remove(user);
+                    image.likes--;
+                    return image.likes;
+                }
+                else
+                {
+                    image.UserLikes.Add(user);
+                    image.likes++;
+                    return image.likes;
+                }
+            }
+            else
+                return -1;
+        }
     }
 }
