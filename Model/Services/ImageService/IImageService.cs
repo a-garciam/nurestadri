@@ -9,7 +9,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 {
     public interface IImageService
     {
-        long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, byte[] image);
+        long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, string imageFile);
 
         void DeleteImage(long imageId);
 

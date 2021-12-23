@@ -2,11 +2,14 @@
 using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
 using Es.Udc.DotNet.PracticaMaD.Model.Utils;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,16 +31,20 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
         public ICommentDao CommentDao { private get; set; }
 
 
-        [Transactional]
-        public void DeleteImage(long imageId)
+        public ImageOutput FindImageById(long imageId)
         {
             Image image = ImageDao.Find(imageId);
-            foreach(Comment comment in image.Comments)
-            {
-                CommentDao.Remove(comment.commentId);
-            }
-            ImageDao.Remove(imageId);
+            Category category = CategoryDao.Find(image.Category.categoryId);
+            User user = UserDao.Find(image.User.usrId);
+            ImageOutput imageOutput = new ImageOutput(
+                image.imageData,
+                image.title,
+                user.usrId,
+                category.categoryId,
+                image.likes
+            );
 
+            return imageOutput;
         }
 
         public IList<ImageOutput> FindImagesByFilter(string keywords)
@@ -65,30 +72,88 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 
         }
 
-        public ImageOutput FindImageById(long imageId)
-        {
-            Image image = ImageDao.Find(imageId);
-            Category category = CategoryDao.Find(image.Category.categoryId);
-            User user = UserDao.Find(image.User.usrId);
-            ImageOutput imageOutput = new ImageOutput(
-                image.imageData,
-                image.title,
-                user.usrId,
-                category.categoryId,
-                image.likes
-            );
 
-            return imageOutput;
+        public IList<ImageOutput> FindImagesByFilterAndCategory(string keywords, long categoryId)
+        {
+            
+            keywords = keywords.Trim();
+
+            Category category = CategoryDao.Find(categoryId);
+
+            IList<Image> images = ImageDao.FindByFilterAndCategory(keywords, categoryId);
+
+            IList<ImageOutput> imageOutputs = new List<ImageOutput>();
+            foreach (Image image in images)
+            {
+                User user = UserDao.Find(image.User.usrId);
+                imageOutputs.Add(new ImageOutput(
+                    image.imageData,
+                    image.title,
+                    user.usrId,
+                    category.categoryId,
+                    image.likes
+                ));
+            }
+
+            return imageOutputs;
         }
 
-        public long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, byte[] imageData)
+        public IList<ImageOutput> FindImagesByUser(long userId)
+        {
+            User user = UserDao.Find(userId);
+            IList<Image> images = ImageDao.FindByUser(userId);
+
+            IList<ImageOutput> imageOutputs = new List<ImageOutput>();
+            foreach (Image image in images)
+            {
+                Category category = CategoryDao.Find(image.Category.categoryId);
+                imageOutputs.Add(new ImageOutput(
+                    image.imageData,
+                    image.title,
+                    user.usrId,
+                    category.categoryId,
+                    image.likes
+                ));
+            }
+
+            return imageOutputs;
+        }
+
+        byte[] ConvertImageToByte(string imageFile)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                System.Drawing.Image im = System.Drawing.Image.FromFile(imageFile);
+                im.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+ 
+                return ms.ToArray();
+            }
+        }
+
+        public long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, string imageFile)
         {
             User user = UserDao.Find(userId);
 
             Category category = CategoryDao.Find(categoryId);
 
-            if (!PropertyValidator.IsValidImageAperture(aperture)){
-                throw new FormatException();
+            if (!PropertyValidator.IsValidImageAperture(aperture))
+            {
+                throw new IncorrectApertureFormatException(aperture);
+            }
+            if (!PropertyValidator.IsValidImageExposure(exposure))
+            {
+                throw new IncorrectExposureFormatException(exposure);
+            }
+            if (!PropertyValidator.IsValidImageBalance(balance))
+            {
+                throw new IncorrectBalanceFormatException(balance);
+            }
+
+            byte[] imageData = ConvertImageToByte(imageFile);
+
+            if (imageData == null)
+            {
+                throw new CouldNotConvertImageException(imageFile);
             }
 
             Image image = new Image() 
@@ -108,14 +173,18 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             return image.imageId;
         }
 
-        public IList<ImageOutput> FindImagesByFilterAndCategory(string keywords, long categoryId)
+
+        [Transactional]
+        public void DeleteImage(long imageId)
         {
-            throw new NotImplementedException();
+            Image image = ImageDao.Find(imageId);
+            foreach (Comment comment in image.Comments)
+            {
+                CommentDao.Remove(comment.commentId);
+            }
+            ImageDao.Remove(imageId);
+
         }
 
-        public IList<ImageOutput> FindImagesByUser(long userId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
