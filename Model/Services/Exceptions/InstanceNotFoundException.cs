@@ -14,6 +14,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Exceptions
     [Serializable]
     public class InstanceNotFoundException : Exception
     {
+        public String instanceType { get; private set; }
+
         /// <summary>
         /// Initializes a new instance of the 
         /// <see cref="InstanceNotFoundException"/> class.
@@ -25,34 +27,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Exceptions
             this.instanceType = instanceType;
         }
 
-        /// <summary>
-        /// Stores the User login name of the exception
-        /// </summary>
-        /// <value>The name of the login.</value>
-        public String instanceType { get; private set; }
 
-        #region Test Code Region. Uncomment for testing.
-
-        //public static void Main(String[] args)
-        //{
-
-        //    try
-        //    {
-
-        //        throw new IncorrectPasswordException("jsmith");
-
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        LogManager.RecordMessage("Message: " + e.Message +
-        //            "  Stack Trace: " + e.StackTrace, MessageType.Info);
-
-        //        Console.ReadLine();
-
-        //    }
-        //}
-
-        #endregion
     }
 }
