@@ -1,10 +1,34 @@
 
--- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
--- --------------------------------------------------
--- Date Created: 11/23/2021 16:12:08
--- Generated from EDMX file: C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Model\PracticaMadModel.edmx
--- --------------------------------------------------
+ DECLARE @Default_DB_Path as VARCHAR(64)  
+ SET @Default_DB_Path = N'C:\SourceCode\DataBase\'
+ 
+USE [master]
+
+
+/***** Drop database if already exists  ******/
+IF  EXISTS (SELECT name FROM sys.databases WHERE name = 'PracticaMaDTest')
+DROP DATABASE [PracticaMaDTest]
+
+
+USE [master]
+
+
+/* DataBase Creation */
+
+	                              
+DECLARE @sql nvarchar(500)
+
+SET @sql = 
+  N'CREATE DATABASE [PracticaMaDTest] 
+    ON PRIMARY ( NAME = PracticaMaDTest, FILENAME = "' + @Default_DB_Path + N'PracticaMaDTest.mdf")
+    LOG ON ( NAME = PracticaMaDTest_log, FILENAME = "' + @Default_DB_Path + N'PracticaMaDTest_log.ldf")'
+
+EXEC(@sql)
+PRINT N'Database [PracticaMaDTest] created.'
+GO
+
+
+USE [PracticaMaDTest]
 
 SET QUOTED_IDENTIFIER OFF;
 GO

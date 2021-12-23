@@ -4,7 +4,10 @@
 
 /.vs/
 /Model/bin/Debug
-/Model/obj/Debug
+/Model/obj
 
 /Test/bin/Debug
-/Test/org/Debug
+/Test/obj
+
+/Web/bin
+/Web/obj

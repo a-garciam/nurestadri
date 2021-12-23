@@ -16,26 +16,33 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Run|Any CPU = Run|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{91C90BD8-B38E-4471-BDB7-B9744BC3B2D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91C90BD8-B38E-4471-BDB7-B9744BC3B2D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C90BD8-B38E-4471-BDB7-B9744BC3B2D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C90BD8-B38E-4471-BDB7-B9744BC3B2D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C90BD8-B38E-4471-BDB7-B9744BC3B2D1}.Run|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C90BD8-B38E-4471-BDB7-B9744BC3B2D1}.Run|Any CPU.Build.0 = Debug|Any CPU
 		{55F5D6F5-CA6D-412A-AD43-B14051AC77F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55F5D6F5-CA6D-412A-AD43-B14051AC77F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55F5D6F5-CA6D-412A-AD43-B14051AC77F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55F5D6F5-CA6D-412A-AD43-B14051AC77F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55F5D6F5-CA6D-412A-AD43-B14051AC77F9}.Run|Any CPU.ActiveCfg = Run|Any CPU
+		{55F5D6F5-CA6D-412A-AD43-B14051AC77F9}.Run|Any CPU.Build.0 = Run|Any CPU
 		{39C68891-EDDA-435F-A428-5A97DFB6A525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39C68891-EDDA-435F-A428-5A97DFB6A525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39C68891-EDDA-435F-A428-5A97DFB6A525}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39C68891-EDDA-435F-A428-5A97DFB6A525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39C68891-EDDA-435F-A428-5A97DFB6A525}.Run|Any CPU.ActiveCfg = Run|Any CPU
+		{39C68891-EDDA-435F-A428-5A97DFB6A525}.Run|Any CPU.Build.0 = Run|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
 		SolutionGuid = {7CAACF93-18E4-4F50-BCDB-9E0788A7E810}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
