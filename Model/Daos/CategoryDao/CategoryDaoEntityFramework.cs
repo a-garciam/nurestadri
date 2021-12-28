@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 {
-    class CategoryDaoEntityFramework :
+    public class CategoryDaoEntityFramework :
         GenericDaoEntityFramework<Category, long>, ICategoryDao
     {
     }

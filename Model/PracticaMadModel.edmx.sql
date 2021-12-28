@@ -1,11 +1,4 @@
 
--- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
--- --------------------------------------------------
--- Date Created: 11/23/2021 16:12:08
--- Generated from EDMX file: C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Model\PracticaMadModel.edmx
--- --------------------------------------------------
-
 SET QUOTED_IDENTIFIER OFF;
 GO
 USE [PracticaMaD];

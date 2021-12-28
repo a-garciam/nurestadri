@@ -34,6 +34,30 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
         private TransactionScope transactionScope;
 
+
+        #region Additional test attributes
+
+        //Use ClassInitialize to run code before running the first test in the class
+        [ClassInitialize]
+        public static void MyClassInitialize(TestContext testContext)
+        {
+            kernel = TestManager.ConfigureNInjectKernel();
+
+            userDao = kernel.Get<IUserDao>();
+            userService = kernel.Get<IUserService>();
+            imageDao = kernel.Get<IImageDao>();
+            imageService = kernel.Get<IImageService>();
+        }
+
+        //Use ClassCleanup to run code after all tests in a class have run
+        [ClassCleanup]
+        public static void MyClassCleanup()
+        {
+            TestManager.ClearNInjectKernel(kernel);
+        }
+
+        #endregion Additional test attributes
+
         //Use TestInitialize to run code before running each test
         [TestInitialize()]
         public void MyTestInitialize()
@@ -69,7 +93,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 imageDao.Create(image1);
                 userDao.Create(user1);
 
-                int commentId = (int) commentService.CommentImage(user1, image1, txt);
+                int commentId = (int) commentService.CommentImage(user1.usrId, image1.imageId, txt);
 
                 Comment saved = commentDao.Find(commentId);
 

@@ -27,7 +27,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         private const string country = "ES";
         private const long NON_EXISTENT_USER_ID = -1;
         private static IKernel kernel;
-        private static IUserService userService = new UserService();
+        private static IUserService userService;
         private static IUserDao UserDao;
 
         private TransactionScope transaction;

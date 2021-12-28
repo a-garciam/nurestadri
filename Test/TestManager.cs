@@ -1,4 +1,9 @@
-﻿using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
+﻿
+using Es.Udc.DotNet.PracticaMaD.Model.Daos;
+using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
+using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService;
 using Ninject;
 using System.Configuration;
@@ -18,11 +23,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
             IKernel kernel = new StandardKernel(settings);
 
-            kernel.Bind<IUserDao>().
-                To<UserDaoEntityFramework>();
+            kernel.Bind<IUserDao>().To<UserDaoEntityFramework>();
+            kernel.Bind<ICommentDao>().To<CommentDaoEntityFramework>();
+            kernel.Bind<IImageDao>().To<ImageDaoEntityFramework>();
+            kernel.Bind<ICategoryDao>().To<CategoryDaoEntityFramework>();
 
-            kernel.Bind<IUserService>().
-                To<UserService>();
+            kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<ICommentService>().To<CommentService>();
+            kernel.Bind<IImageService>().To<ImageService>();
 
             string connectionString =
                 ConfigurationManager.ConnectionStrings["PracticaMaDTest"].ConnectionString;

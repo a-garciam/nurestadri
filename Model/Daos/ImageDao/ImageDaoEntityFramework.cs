@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 {
-    class ImageDaoEntityFramework : GenericDaoEntityFramework<Image, long>, IImageDao
+    public class ImageDaoEntityFramework : GenericDaoEntityFramework<Image, long>, IImageDao
     {
         public IList<Image> FindByFilter(string keywords)
         {
