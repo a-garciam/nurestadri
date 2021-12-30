@@ -81,7 +81,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         /// A test for registering a user that already exists in the database
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(IncorrectPasswordException))] //DuplicateInstanceException
+        [ExpectedException(typeof(DuplicateInstanceException))] //DuplicateInstanceException
         public void RegisterDuplicatedUserTest()
         {
             using (var scope = new TransactionScope())
@@ -177,7 +177,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         /////A test for Login with a non-existing user
         /////</summary>
         [TestMethod]
-        [ExpectedException(typeof(IncorrectPasswordException))] //InstanceNotFoundException
+        [ExpectedException(typeof(InstanceNotFoundException))] //InstanceNotFoundException
         public void LoginNonExistingUserTest()
         {
             // Login for a user that has not been registered
@@ -213,7 +213,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         /// A test for FindUserDetails when the user does not exist
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(IncorrectPasswordException))] //InstanceNotFoundException
+        [ExpectedException(typeof(InstanceNotFoundException))] //InstanceNotFoundException
         public void FindUserDetailsForNonExistingUserTest()
         {
             userService.FindUserDetails(NON_EXISTENT_USER_ID);
@@ -251,7 +251,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         /// A test for UpdateUserDetails when the user does not exist
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(IncorrectPasswordException))] //InstanceNotFoundException
+        [ExpectedException(typeof(InstanceNotFoundException))] //InstanceNotFoundException
         public void UpdateUserDetailsForNonExistingUserTest()
         {
             using (var scope = new TransactionScope())

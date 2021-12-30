@@ -160,6 +160,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 IList<ImageOutput> images = imageService.FindImagesByFilter("imagen");
 
                 Assert.AreEqual(1, images.Count());
+                Assert.IsTrue(images.First().Title.ToLower().Contains("imagen"));
             }
         }
 
