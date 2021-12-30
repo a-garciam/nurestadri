@@ -8,16 +8,15 @@ using Es.Udc.DotNet.PracticaMaD.Model.Utils;
 using Ninject;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 {
     public class ImageService : IImageService
     {
+        private const string imagesDirectory = "images/";
+
         [Inject]
         public IUserDao UserDao { private get; set; }
 
@@ -123,12 +122,21 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
         {
             using (MemoryStream ms = new MemoryStream())
             {
-                System.Drawing.Image im = System.Drawing.Image.FromFile(imageFile);
-                im.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
- 
+                string imagePathAbs = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,imagesDirectory + imageFile);
+                System.Drawing.Image im = System.Drawing.Image.FromFile(imagePathAbs);
+                if (imageFile.EndsWith("png"))
+                {
+                    im.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                }
+                else if (imageFile.EndsWith("jpg") || imageFile.EndsWith("jpeg"))
+                {
+                    im.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+
                 return ms.ToArray();
             }
         }
+
 
         public long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, string imageFile)
         {

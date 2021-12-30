@@ -22,7 +22,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         {
             if (!UserDao.Exists(userId))
             {
-                throw new Exceptions.InstanceNotFoundException("user");
+                throw new InstanceNotFoundException(userId,"user");
             }
             User user = UserDao.Find(userId);
             String storedPassword = user.enPassword;
@@ -94,7 +94,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
                 throw new DuplicateInstanceException(loginName,
                     typeof(User).FullName);
             }
-            catch (Exceptions.InstanceNotFoundException)
+            catch (InstanceNotFoundException)
             {
                 String encryptedPassword = PasswordEncrypter.Crypt(clearPassword);
 
@@ -137,7 +137,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
             {
                 User user = UserDao.FindByLoginName(loginName);
             }
-            catch (Exceptions.InstanceNotFoundException e)
+            catch (InstanceNotFoundException)
             {
                 return false;
             }
