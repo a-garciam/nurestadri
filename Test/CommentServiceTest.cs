@@ -11,6 +11,7 @@ using Ninject;
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
+using System.Data.Entity.Validation;
 
 namespace Es.Udc.DotNet.PracticaMaD.Test
 {
@@ -20,9 +21,38 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
         private const string txt = "Gran fotografía crack!! :)";
 
-        public User user1 = new User();
+        private User user1 = new User()
+        {
+            loginName = "user1",
+            enPassword = "password",
+            firstName = "name",
+            lastName = "lastName",
+            email = "user@udc.es",
+            country = "españa",
+            language = "español"
+        };
 
-        private Image image1 = new Image();
+        private const string title = "Imagen 1";
+        private const string description = "Descripcion";
+        private const string aperture = "f/5.0";
+        private const string balance = "4000";
+        private const string exposure = "1/90";
+        //private const string imagePath = "image.png";
+        private const byte[] imageData = null;
+        private Image image1 = new Image()
+        {
+            title = title,
+            description = description,
+            aperture = aperture,
+            balance = balance,
+            exposure = exposure,
+            imageData = imageData
+        };
+
+        private Category category = new Category()
+        {
+            name = "Paisajes"
+        };
 
         private static IKernel kernel;
         private static IImageService imageService;
@@ -31,6 +61,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         private static IUserDao userDao;
         private static ICommentDao commentDao;
         private static ICommentService commentService;
+        private static ICategoryDao categoryDao;
 
         private TransactionScope transactionScope;
 
@@ -47,6 +78,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             userService = kernel.Get<IUserService>();
             imageDao = kernel.Get<IImageDao>();
             imageService = kernel.Get<IImageService>();
+            categoryDao = kernel.Get<ICategoryDao>();
         }
 
         //Use ClassCleanup to run code after all tests in a class have run
@@ -77,21 +109,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         {
             using (var scope = new TransactionScope())
             {
-
-                user1.loginName = "user1";
-                user1.enPassword = "password";
-                user1.firstName = "name";
-                user1.lastName = "lastName";
-                user1.email = "user@udc.es";
-
-                image1.title = "Imagen 1";
-                image1.description = "Descripcion";
-                image1.aperture = "f/5.0";
-                image1.balance = "4000";
-                image1.exposure = "1/200";
-                image1.imageData = null;
-                imageDao.Create(image1);
+                categoryDao.Create(category);
                 userDao.Create(user1);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
+
+                byte[] test = { 1, 2 };
+                image1.imageData = test;
+                imageDao.Create(image1);
 
                 int commentId = (int) commentService.CommentImage(user1.usrId, image1.imageId, txt);
 
