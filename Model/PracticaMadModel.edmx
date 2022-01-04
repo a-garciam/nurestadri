@@ -40,7 +40,7 @@
           <Property Name="aperture" Type="nvarchar(max)" Nullable="false" />
           <Property Name="balance" Type="nvarchar(max)" Nullable="false" />
           <Property Name="exposure" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="imageData" Type="varbinary(max)" Nullable="false" />
+          <Property Name="imagePath" Type="varchar(max)" Nullable="false" />
           <Property Name="usrId" Type="bigint" Nullable="false" />
           <Property Name="categoryId" Type="bigint" Nullable="false" />
         </EntityType>
@@ -235,13 +235,13 @@
           <Property Name="aperture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="balance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="exposure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="imageData" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="usrId" Type="Int64" Nullable="false" />
           <Property Name="categoryId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_ImageCategory" FromRole="Image" ToRole="Category" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_ImageComment" FromRole="Image" ToRole="Comment" />
           <NavigationProperty Name="User" Relationship="Self.FK_UserPost" FromRole="Image" ToRole="User" />
           <NavigationProperty Name="UserLikes" Relationship="Self.Like" FromRole="Image" ToRole="User" />
+          <Property Name="imagePath" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -374,6 +374,7 @@
           <EntitySetMapping Name="Images">
             <EntityTypeMapping TypeName="PracticaMaDModel.Image">
               <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="imagePath" ColumnName="imagePath" />
                 <ScalarProperty Name="imageId" ColumnName="imageId" />
                 <ScalarProperty Name="likes" ColumnName="likes" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -381,7 +382,6 @@
                 <ScalarProperty Name="aperture" ColumnName="aperture" />
                 <ScalarProperty Name="balance" ColumnName="balance" />
                 <ScalarProperty Name="exposure" ColumnName="exposure" />
-                <ScalarProperty Name="imageData" ColumnName="imageData" />
                 <ScalarProperty Name="usrId" ColumnName="usrId" />
                 <ScalarProperty Name="categoryId" ColumnName="categoryId" />
               </MappingFragment>

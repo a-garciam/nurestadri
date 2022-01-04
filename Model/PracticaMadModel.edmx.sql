@@ -87,7 +87,7 @@ CREATE TABLE [dbo].[Image] (
     [aperture] nvarchar(max)  NOT NULL,
     [balance] nvarchar(max)  NOT NULL,
     [exposure] nvarchar(max)  NOT NULL,
-    [imageData] varbinary(max)  NOT NULL,
+    [imagePath] varchar(max)  NOT NULL,
     [usrId] bigint  NOT NULL,
     [categoryId] bigint  NOT NULL
 );

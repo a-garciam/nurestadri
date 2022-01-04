@@ -36,7 +36,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             Category category = CategoryDao.Find(image.Category.categoryId);
             User user = UserDao.Find(image.User.usrId);
             ImageOutput imageOutput = new ImageOutput(
-                image.imageData,
+                image.imagePath,
                 image.title,
                 user.usrId,
                 category.categoryId,
@@ -59,7 +59,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 Category category = CategoryDao.Find(image.Category.categoryId);
                 User user = UserDao.Find(image.User.usrId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imageData,
+                    image.imagePath,
                     image.title,
                     user.usrId,
                     category.categoryId,
@@ -86,7 +86,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             {
                 User user = UserDao.Find(image.User.usrId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imageData,
+                    image.imagePath,
                     image.title,
                     user.usrId,
                     category.categoryId,
@@ -107,7 +107,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             {
                 Category category = CategoryDao.Find(image.Category.categoryId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imageData,
+                    image.imagePath,
                     image.title,
                     user.usrId,
                     category.categoryId,
@@ -118,26 +118,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             return imageOutputs;
         }
 
-        byte[] ConvertImageToByte(string imageFile)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                string imagePathAbs = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,imagesDirectory + imageFile);
-                System.Drawing.Image im = System.Drawing.Image.FromFile(imagePathAbs);
-                if (imageFile.EndsWith("png"))
-                {
-                    im.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                }
-                else if (imageFile.EndsWith("jpg") || imageFile.EndsWith("jpeg"))
-                {
-                    im.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                }
-
-                return ms.ToArray();
-            }
-        }
-
-
+       
         public long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, string imageFile)
         {
             User user = UserDao.Find(userId);
@@ -157,12 +138,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 throw new IncorrectBalanceFormatException(balance);
             }
 
-            byte[] imageData = ConvertImageToByte(imageFile);
-
-            if (imageData == null)
-            {
-                throw new CouldNotConvertImageException(imageFile);
-            }
 
             Image image = new Image() 
             { 
@@ -174,7 +149,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 aperture = aperture,
                 exposure = exposure,
                 balance = balance,
-                imageData = imageData
+                imagePath = imageFile
             };
             ImageDao.Create(image); 
 

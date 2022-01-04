@@ -28,9 +28,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         public string aperture { get; set; }
         public string balance { get; set; }
         public string exposure { get; set; }
-        public byte[] imageData { get; set; }
         public long usrId { get; set; }
         public long categoryId { get; set; }
+        public string imagePath { get; set; }
     
         
         /// <summary>
@@ -75,9 +75,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     			hash = hash * multiplier + (aperture == null ? 0 : aperture.GetHashCode());
     			hash = hash * multiplier + (balance == null ? 0 : balance.GetHashCode());
     			hash = hash * multiplier + (exposure == null ? 0 : exposure.GetHashCode());
-    			hash = hash * multiplier + imageData.GetHashCode();
     			hash = hash * multiplier + usrId.GetHashCode();
     			hash = hash * multiplier + categoryId.GetHashCode();
+    			hash = hash * multiplier + (imagePath == null ? 0 : imagePath.GetHashCode());
     
     			return hash;
     	    }
@@ -105,9 +105,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
                &&  (this.aperture == target.aperture )       
                &&  (this.balance == target.balance )       
                &&  (this.exposure == target.exposure )       
-               &&  (this.imageData == target.imageData )       
                &&  (this.usrId == target.usrId )       
                &&  (this.categoryId == target.categoryId )       
+               &&  (this.imagePath == target.imagePath )       
                ;
     
         }
@@ -149,9 +149,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
            strImage.Append(" aperture = " + aperture + " | " );       
            strImage.Append(" balance = " + balance + " | " );       
            strImage.Append(" exposure = " + exposure + " | " );       
-           strImage.Append(" imageData = " + imageData + " | " );       
            strImage.Append(" usrId = " + usrId + " | " );       
            strImage.Append(" categoryId = " + categoryId + " | " );       
+           strImage.Append(" imagePath = " + imagePath + " | " );       
             strImage.Append("] ");    
     
     		return strImage.ToString();

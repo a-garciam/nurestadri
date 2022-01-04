@@ -9,16 +9,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output
     [Serializable]
     public class ImageOutput
     {
-        public ImageOutput(byte[] imageData, string title, long userId, long categoryId, int likes)
+        public ImageOutput(string imagePath, string title, long userId, long categoryId, int likes)
         {
-            ImageData = imageData;
+            ImagePath = imagePath;
             Title = title;
             CategoryId = categoryId;
             UserId = userId;
             Likes = likes;
         }
 
-        public byte[] ImageData { get; private set; }
+        public string ImagePath { get; private set; }
         public string Title { get; private set; }
         public long CategoryId { get; private set; }
         public long UserId { get; private set; }

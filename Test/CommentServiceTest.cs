@@ -37,8 +37,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         private const string aperture = "f/5.0";
         private const string balance = "4000";
         private const string exposure = "1/90";
-        //private const string imagePath = "image.png";
-        private const byte[] imageData = null;
+        private const string imagePath = "image.png";
         private Image image1 = new Image()
         {
             title = title,
@@ -46,7 +45,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             aperture = aperture,
             balance = balance,
             exposure = exposure,
-            imageData = imageData
+            imagePath = imagePath
         };
 
         private Category category = new Category()
@@ -114,8 +113,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 image1.User = userDao.Find(user1.usrId);
                 image1.Category = categoryDao.Find(category.categoryId);
 
-                byte[] test = { 1, 2 };
-                image1.imageData = test;
                 imageDao.Create(image1);
 
                 int commentId = (int) commentService.CommentImage(user1.usrId, image1.imageId, txt);

@@ -24,7 +24,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         private const string balance = "4000";
         private const string exposure = "1/90";
         private const string imagePath =  "image.png";
-        private const byte[] imageData = null;
 
         private Category category = new Category()
         {
@@ -42,24 +41,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             language = "español"
         };
 
-        byte[] ConvertImageToByte(string imageFile)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                string imagePathAbs = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,imageDirectory + imagePath);
-                System.Drawing.Image im = System.Drawing.Image.FromFile(imagePathAbs);
-                if (imageFile.EndsWith("png")) 
-                { 
-                    im.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                } 
-                else if(imageFile.EndsWith("jpg") || imageFile.EndsWith("jpeg"))
-                {
-                    im.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                }
-
-                return ms.ToArray();
-            }
-        }
 
         private Image image1 = new Image()
         {
@@ -68,7 +49,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             aperture = aperture,
             balance = balance,
             exposure = exposure,
-            imageData = imageData
+            imagePath = imagePath
         };
 
         private static IKernel kernel;
@@ -139,7 +120,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 Assert.AreEqual(aperture, image.aperture);
                 Assert.AreEqual(balance, image.balance);
                 Assert.AreEqual(exposure, image.exposure);
-                //Assert.AreEqual(imagePath, image.imageData);
+                //Assert.AreEqual(imagePath, image.imagePath);
 
             }
         }
@@ -154,7 +135,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 image1.User = userDao.Find(user1.usrId);
                 image1.Category = categoryDao.Find(category.categoryId);
 
-                image1.imageData = ConvertImageToByte(imagePath);
                 imageDao.Create(image1);
 
                 IList<ImageOutput> images = imageService.FindImagesByFilter("imagen");
@@ -173,7 +153,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 userDao.Create(user1);
                 image1.User = userDao.Find(user1.usrId);
                 image1.Category = categoryDao.Find(category.categoryId);
-                image1.imageData = ConvertImageToByte(imagePath);
                 imageDao.Create(image1);
                 Image image = imageDao.Find(image1.imageId);
 
@@ -183,7 +162,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 Assert.AreEqual(aperture, image.aperture);
                 Assert.AreEqual(balance, image.balance);
                 Assert.AreEqual(exposure, image.exposure);
-                // Assert.AreEqual(imageData, image.imageData);
+                // Assert.AreEqual(imagePath, image.imagePath);
 
                 Assert.IsTrue(imageDao.GetAllElements().Contains(image1));
                 imageService.DeleteImage(image.imageId);
