@@ -20,5 +20,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
         ImageOutput FindImageById(long imageId);
 
         IList<ImageOutput> FindImagesByUser(long userId);
+
+        IList<CategoryOutput> FindCategories();
     }
 }

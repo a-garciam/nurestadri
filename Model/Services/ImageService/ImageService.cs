@@ -118,7 +118,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             return imageOutputs;
         }
 
-       
+        [Transactional]
         public long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, string imageFile)
         {
             User user = UserDao.Find(userId);
@@ -167,6 +167,20 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             }
             ImageDao.Remove(imageId);
 
+        }
+
+        public IList<CategoryOutput> FindCategories()
+        {
+            IList<CategoryOutput> categoriesOutput = new List<CategoryOutput>();
+            foreach (Category category in CategoryDao.GetAllElements())
+            {
+                categoriesOutput.Add(new CategoryOutput(
+                    category.categoryId,
+                    category.name
+                ));
+            }
+
+            return categoriesOutput;
         }
 
     }

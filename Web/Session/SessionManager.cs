@@ -39,21 +39,19 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         /// <exception cref="DuplicateInstanceException"/>
         public static void RegisterUser(HttpContext context,
             String loginName, String clearPassword,
-            UserProfileDetails userProfileDetails)
+            UserInput userInput)
         {
             /* Register user. */
             long usrId = userService.RegisterUser(loginName, clearPassword,
-                userProfileDetails);
+                userInput);
 
             /* Insert necessary objects in the session. */
             UserSession userSession = new UserSession();
             userSession.UserProfileId = usrId;
-            userSession.FirstName = userProfileDetails.FirstName;
+            userSession.FirstName = userInput.FirstName;
 
-            Locale locale = new Locale(userProfileDetails.Language,
-                userProfileDetails.Country);
 
-            UpdateSessionForAuthenticatedUser(context, userSession, locale);
+            context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
 
             FormsAuthentication.SetAuthCookie(loginName, false);
         }
@@ -76,11 +74,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
                 clearPassword, false, rememberMyPassword);
 
             /* Add cookies if requested. */
-            if (rememberMyPassword)
-            {
-                CookiesManager.LeaveCookies(context, loginName,
-                    loginResult.EncryptedPassword);
-            }
+            //if (rememberMyPassword)
+            //{
+            //    CookiesManager.LeaveCookies(context, loginName,
+            //        loginResult.EncryptedPassword);
+            //}
         }
 
         /// <summary>
@@ -111,10 +109,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
             userSession.UserProfileId = loginResult.UserId;
             userSession.FirstName = loginResult.FirstName;
 
-            Locale locale =
-                new Locale(loginResult.Language, loginResult.Country);
-
-            UpdateSessionForAuthenticatedUser(context, userSession, locale);
+            context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
 
             return loginResult;
         }
@@ -125,13 +120,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         /// <param name="context">Http Context includes request, response, etc.</param>
         /// <param name="userSession">The user data stored in session.</param>
         /// <param name="locale">The locale info.</param>
-        private static void UpdateSessionForAuthenticatedUser(
-            HttpContext context, UserSession userSession, Locale locale)
-        {
-            /* Insert objects in session. */
-            context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
-            context.Session.Add(LOCALE_SESSION_ATTRIBUTE, locale);
-        }
+        //private static void UpdateSessionForAuthenticatedUser(
+        //    HttpContext context, UserSession userSession, Locale locale)
+        //{
+        //    /* Insert objects in session. */
+        //    context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
+        //    context.Session.Add(LOCALE_SESSION_ATTRIBUTE, locale);
+        //}
 
         /// <summary>
         /// Determine if a user is authenticated
@@ -149,13 +144,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
             return (context.Session[USER_SESSION_ATTRIBUTE] != null);
         }
 
-        public static Locale GetLocale(HttpContext context)
-        {
-            Locale locale =
-                (Locale)context.Session[LOCALE_SESSION_ATTRIBUTE];
+        //public static Locale GetLocale(HttpContext context)
+        //{
+        //    Locale locale =
+        //        (Locale)context.Session[LOCALE_SESSION_ATTRIBUTE];
 
-            return locale;
-        }
+        //    return locale;
+        //}
 
         /// <summary>
         /// Updates the user profile details.
@@ -240,7 +235,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         public static void Logout(HttpContext context)
         {
             /* Remove cookies. */
-            CookiesManager.RemoveCookies(context);
+            //CookiesManager.RemoveCookies(context);
 
             /* Invalidate session. */
             context.Session.Abandon();

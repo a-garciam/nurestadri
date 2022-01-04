@@ -275,6 +275,19 @@ ON [dbo].[Follower]
     ([followerId]);
 GO
 
+
+--------------- DATA INSERT -----------------
+SET IDENTITY_INSERT [User] ON
+INSERT INTO [User] ([usrId], [loginName], [enPassword], [firstName], [lastName], [email], [country], [language])
+    VALUES (1, 'admin', 'XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=', 'Admin', 'lastName', 'admin@udc.es', 'es', 'ES');
+SET IDENTITY_INSERT [User] OFF
+
+SET IDENTITY_INSERT [Category] ON
+INSERT INTO [Category] ([categoryId],[name])
+    VALUES (1, 'categoria1');
+SET IDENTITY_INSERT [Category] OFF
+
+
 -- --------------------------------------------------
 -- Script has ended
 -- --------------------------------------------------
