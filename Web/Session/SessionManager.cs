@@ -37,24 +37,24 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         /// <param name="clearPassword">Password in clear text</param>
         /// <param name="userProfileDetails">The user profile details.</param>
         /// <exception cref="DuplicateInstanceException"/>
-        public static void RegisterUser(HttpContext context,
-            String loginName, String clearPassword,
-            UserInput userInput)
-        {
-            /* Register user. */
-            long usrId = userService.RegisterUser(loginName, clearPassword,
-                userInput);
+        //public static void RegisterUser(HttpContext context,
+        //    String loginName, String clearPassword,
+        //    UserInput userInput)
+        //{
+        //    /* Register user. */
+        //    long usrId = userService.RegisterUser(loginName, clearPassword,
+        //        userInput);
 
-            /* Insert necessary objects in the session. */
-            UserSession userSession = new UserSession();
-            userSession.UserProfileId = usrId;
-            userSession.FirstName = userInput.FirstName;
+        //    /* Insert necessary objects in the session. */
+        //    UserSession userSession = new UserSession();
+        //    userSession.UserProfileId = usrId;
+        //    userSession.FirstName = userInput.FirstName;
 
 
-            context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
+        //    context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
 
-            FormsAuthentication.SetAuthCookie(loginName, false);
-        }
+        //    FormsAuthentication.SetAuthCookie(loginName, false);
+        //}
 
         /// <summary>
         /// Login method. Authenticates an user in the current context.
@@ -157,42 +157,42 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="userProfileDetails">The user profile details.</param>
-        public static void UpdateUserProfileDetails(HttpContext context,
-            UserProfileDetails userProfileDetails)
-        {
-            /* Update user's profile details. */
+        //public static void UpdateUserProfileDetails(HttpContext context,
+        //    UserProfileDetails userProfileDetails)
+        //{
+        //    /* Update user's profile details. */
 
-            UserSession userSession =
-                (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
+        //    UserSession userSession =
+        //        (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
 
-            userService.UpdateUserProfileDetails(userSession.UserProfileId,
-                userProfileDetails);
+        //    userService.UpdateUserProfileDetails(userSession.UserProfileId,
+        //        userProfileDetails);
 
-            /* Update user's session objects. */
+        //    /* Update user's session objects. */
 
-            Locale locale = new Locale(userProfileDetails.Language,
-                userProfileDetails.Country);
+        //    Locale locale = new Locale(userProfileDetails.Language,
+        //        userProfileDetails.Country);
 
-            userSession.FirstName = userProfileDetails.FirstName;
+        //    userSession.FirstName = userProfileDetails.FirstName;
 
-            UpdateSessionForAuthenticatedUser(context, userSession, locale);
-        }
+        //    UpdateSessionForAuthenticatedUser(context, userSession, locale);
+        //}
 
-        /// <summary>
-        /// Finds the user profile with the id stored in the session.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <returns></returns>
-        public static UserProfileDetails FindUserProfileDetails(HttpContext context)
-        {
-            UserSession userSession =
-                (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
+        ///// <summary>
+        ///// Finds the user profile with the id stored in the session.
+        ///// </summary>
+        ///// <param name="context">The context.</param>
+        ///// <returns></returns>
+        //public static UserProfileDetails FindUserProfileDetails(HttpContext context)
+        //{
+        //    UserSession userSession =
+        //        (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
 
-            UserProfileDetails userProfileDetails =
-                userService.FindUserProfileDetails(userSession.UserProfileId);
+        //    UserProfileDetails userProfileDetails =
+        //        userService.FindUserProfileDetails(userSession.UserProfileId);
 
-            return userProfileDetails;
-        }
+        //    return userProfileDetails;
+        //}
 
         /// <summary>
         /// Gets the user info stored in the session.
@@ -224,7 +224,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
                 oldClearPassword, newClearPassword);
 
             /* Remove cookies. */
-            CookiesManager.RemoveCookies(context);
+            //CookiesManager.RemoveCookies(context);
         }
 
         /// <summary>
@@ -250,72 +250,72 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         /// in the past.
         /// </sumary>
         /// <param name="context">Http Context includes request, response, etc.</param>
-        public static void TouchSession(HttpContext context)
-        {
-            /* Check if "UserSession" object is in the session. */
-            UserSession userSession = null;
+        //public static void TouchSession(HttpContext context)
+        //{
+        //    /* Check if "UserSession" object is in the session. */
+        //    UserSession userSession = null;
 
-            if (context.Session != null)
-            {
-                userSession =
-                    (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
+        //    if (context.Session != null)
+        //    {
+        //        userSession =
+        //            (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
 
-                // If userSession object is in the session, nothing should be doing.
-                if (userSession != null)
-                {
-                    return;
-                }
-            }
+        //        // If userSession object is in the session, nothing should be doing.
+        //        if (userSession != null)
+        //        {
+        //            return;
+        //        }
+        //    }
 
-            /*
-             * The user had not been authenticated or his/her session has
-             * expired. We need to check if the user has selected "remember my
-             * password" in the last login (login name and password will come
-             * as cookies). If so, we reconstruct user's session objects.
-             */
-            UpdateSessionFromCookies(context);
-        }
+        //    /*
+        //     * The user had not been authenticated or his/her session has
+        //     * expired. We need to check if the user has selected "remember my
+        //     * password" in the last login (login name and password will come
+        //     * as cookies). If so, we reconstruct user's session objects.
+        //     */
+        //    UpdateSessionFromCookies(context);
+        //}
 
         /// <summary>
         /// Tries to login (inserting necessary objects in the session) by using
         /// cookies (if present).
         /// </summary>
         /// <param name="context">Http Context includes request, response, etc.</param>
-        private static void UpdateSessionFromCookies(HttpContext context)
-        {
-            HttpRequest request = context.Request;
-            if (request.Cookies == null)
-            {
-                return;
-            }
+        //private static void UpdateSessionFromCookies(HttpContext context)
+        //{
+        //    HttpRequest request = context.Request;
+        //    if (request.Cookies == null)
+        //    {
+        //        return;
+        //    }
 
-            /*
-             * Check if the login name and the encrypted password come as
-             * cookies.
-             */
-            String loginName = CookiesManager.GetLoginName(context);
-            String encryptedPassword = CookiesManager.GetEncryptedPassword(context);
+        //    /*
+        //     * Check if the login name and the encrypted password come as
+        //     * cookies.
+        //     */
+        //    String loginName = CookiesManager.GetLoginName(context);
+        //    String encryptedPassword = CookiesManager.GetEncryptedPassword(context);
 
-            if ((loginName == null) || (encryptedPassword == null))
-            {
-                return;
-            }
+        //    if ((loginName == null) || (encryptedPassword == null))
+        //    {
+        //        return;
+        //    }
 
-            /* If loginName and encryptedPassword have valid values (the user selected "remember
-             * my password" option) try to login, and if successful, update session with the
-             * necessary objects for an authenticated user.
-             */
-            try
-            {
-                DoLogin(context, loginName, encryptedPassword, true, true);
+        //    /* If loginName and encryptedPassword have valid values (the user selected "remember
+        //     * my password" option) try to login, and if successful, update session with the
+        //     * necessary objects for an authenticated user.
+        //     */
+        //    try
+        //    {
+        //        DoLogin(context, loginName, encryptedPassword, true, true);
 
-                /* Authentication Ticket. */
-                FormsAuthentication.SetAuthCookie(loginName, true);
-            }
-            catch (Exception)
-            { // Incorrect loginName or encryptedPassword
-                return;
-            }
-        }
+        //        /* Authentication Ticket. */
+        //        FormsAuthentication.SetAuthCookie(loginName, true);
+        //    }
+        //    catch (Exception)
+        //    { // Incorrect loginName or encryptedPassword
+        //        return;
+        //    }
+        //}
     }
 }

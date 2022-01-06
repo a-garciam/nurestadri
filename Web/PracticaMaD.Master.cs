@@ -35,7 +35,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
             //        lblDash1.Visible = false;
             //    if (lnkAuthenticate != null)
             //        lnkAuthenticate.Visible = false;
-            }
+            //}
         }
     }
 }

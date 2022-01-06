@@ -6,10 +6,7 @@ using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
 using Es.Udc.DotNet.PracticaMaD.Model.Utils;
 using Ninject;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Windows.Forms;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 {
