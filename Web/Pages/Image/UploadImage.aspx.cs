@@ -64,5 +64,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
             }
             }
         }
+
+        protected void tbDescription_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
