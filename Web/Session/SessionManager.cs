@@ -30,6 +30,34 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
             userService = iocManager.Resolve<IUserService>();
         }
 
+        public static void TouchSession(HttpContext context)
+        {
+            if (!IsUserAuthenticated(context))
+            {
+                if (context.Request.Cookies is null)
+                {
+                    return;
+                }
+
+                //string login = CookiesManager.GetLogin(context);
+                //string password = CookiesManager.GetPassword(context);
+
+                //if (login is null || password is null)
+                //{
+                //    return;
+                //}
+
+                //UserProfileOutput userProfileOutput = userService.Login(login, password);
+
+                //context.Session.Add(UserSession, new UserSession()
+                //{
+                //    UserProfileId = userProfileOutput.UserProfileId
+                //});
+
+                //FormsAuthentication.SetAuthCookie(login, true);
+            }
+        }
+
         /// <summary>
         /// Registers the user.
         /// </summary>

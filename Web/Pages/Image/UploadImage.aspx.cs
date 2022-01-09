@@ -24,15 +24,23 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
 
         private void InitDDLCategories()
         {
-            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-            IImageService imageService = iocManager.Resolve<IImageService>();
-            IList<CategoryOutput> list = imageService.FindCategories();
-            ListItem i;
-            foreach(CategoryOutput c in list)
-            {
-                i = new ListItem(c.Name.ToString(), c.CategoryId.ToString());
-                ddlCategory.Items.Add(i);
-            }
+            //try
+            //{
+            //    IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+            //    IImageService imageService = iocManager.Resolve<IImageService>();
+            //    IList<CategoryOutput> list = imageService.FindCategories();
+            //    ListItem i;
+            //    foreach (CategoryOutput c in list)
+            //    {
+            //        i = new ListItem(c.Name.ToString(), c.CategoryId.ToString());
+            //        ddlCategory.Items.Add(i);
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+
+            //    throw e;
+            //}
         }
 
         protected void btnUploadImage_Click(object sender, EventArgs e)
@@ -52,6 +60,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
 
                         IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
                         IImageService imageService = iocManager.Resolve<IImageService>();
+                        IList<CategoryOutput> list = imageService.FindCategories();
+                        ListItem i;
+                        foreach (CategoryOutput c in list)
+                        {
+                            i = new ListItem(c.Name.ToString(), c.CategoryId.ToString());
+                            ddlCategory.Items.Add(i);
+                        }
 
                         imageService.UploadImage(userSession.UserProfileId, Convert.ToInt64(ddlCategory.SelectedValue), tbTitle.Text, 
                             tbDescription.Text, tbAperture.Text, tbExposure.Text, tbBalance.Text, filename); ;

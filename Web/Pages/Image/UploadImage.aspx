@@ -1,17 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UploadImage.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.UploadImage" %>
+﻿<%@ Page Language="C#"  MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true" CodeBehind="UploadImage.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.UploadImage" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style type="text/css">
-        #form1 {
-            height: 287px;
-        }
-    </style>
-</head>
-<body style="height: 331px">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_BodyContent"
+    runat="server">
     <form id="form1" runat="server">
         <asp:Label ID="lblTitle" runat="server" Text="Title"></asp:Label>
         <asp:TextBox ID="tbTitle" runat="server" Height="17px" Width="129px"></asp:TextBox>
@@ -37,5 +27,4 @@
             <asp:Label ID="lblUploadCompleted" runat="server"></asp:Label>
         </p>
     </form>
-</body>
-</html>
+</asp:Content>

@@ -34,11 +34,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     
         
         /// <summary>
-        /// Relationship Name (Foreign Key in ER-Model): FK_ImageCategory
-        /// </summary>
-        public virtual Category Category { get; set; }
-        
-        /// <summary>
         /// Relationship Name (Foreign Key in ER-Model): FK_ImageComment
         /// </summary>
         public virtual ICollection<Comment> Comments { get; set; }
@@ -52,6 +47,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         /// Relationship Name (Foreign Key in ER-Model): Like
         /// </summary>
         public virtual ICollection<User> UserLikes { get; set; }
+        
+        /// <summary>
+        /// Relationship Name (Foreign Key in ER-Model): FK_ImageCategory
+        /// </summary>
+        public virtual Category Category { get; set; }
     
     	/// <summary>
     	/// A hash code for this instance, suitable for use in hashing algorithms and data structures 

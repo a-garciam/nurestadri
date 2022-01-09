@@ -3,6 +3,7 @@ using Es.Udc.DotNet.PracticaMaD.Web.Session;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
 using System;
 using System.Web.Security;
+using Es.Udc.DotNet.ModelUtil.Exceptions;
 
 namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.User
 {
@@ -33,7 +34,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.User
                         RedirectFromLoginPage(txtLogin.Text,
                             checkRememberPassword.Checked);
                 }
-                catch (InstanceNotFound)
+                catch (InstanceNotFoundException)
                 {
                     lblLoginError.Visible = true;
                 }

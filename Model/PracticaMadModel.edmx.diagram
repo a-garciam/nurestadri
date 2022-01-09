@@ -5,16 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="54adf805eb5c491993e1329b007d8a6a" Name="Diagram1">
-        <EntityTypeShape EntityType="PracticaMaDModel.Category" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PracticaMaDModel.Comment" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PracticaMaDModel.Image" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PracticaMaDModel.User" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <AssociationConnector Association="PracticaMaDModel.FK_ImageCategory" ManuallyRouted="false" />
         <AssociationConnector Association="PracticaMaDModel.FK_ImageComment" ManuallyRouted="false" />
         <AssociationConnector Association="PracticaMaDModel.FK_UserComment" ManuallyRouted="false" />
         <AssociationConnector Association="PracticaMaDModel.FK_UserPost" ManuallyRouted="false" />
         <AssociationConnector Association="PracticaMaDModel.Follower" ManuallyRouted="false" />
         <AssociationConnector Association="PracticaMaDModel.Like" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PracticaMaDModel.Category" Width="1.5" PointX="0.75" PointY="3.5" />
+        <AssociationConnector Association="PracticaMaDModel.FK_ImageCategory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
