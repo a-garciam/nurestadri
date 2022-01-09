@@ -1,6 +1,7 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService;
-using Es.Udc.DotNet.ModelUtil.Exceptions;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
+using Es.Udc.DotNet.PracticaMaD.Web.Session.View.ApplicationObjects;
 using System;
 using System.Web;
 using System.Web.Security;
@@ -35,26 +36,26 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         /// <param name="context">Http Context includes request, response, etc.</param>
         /// <param name="loginName">Username</param>
         /// <param name="clearPassword">Password in clear text</param>
-        /// <param name="userProfileDetails">The user profile details.</param>
+        /// <param name="UserDetails">The user profile details.</param>
         /// <exception cref="DuplicateInstanceException"/>
-        //public static void RegisterUser(HttpContext context,
-        //    String loginName, String clearPassword,
-        //    UserInput userInput)
-        //{
-        //    /* Register user. */
-        //    long usrId = userService.RegisterUser(loginName, clearPassword,
-        //        userInput);
+        public static void RegisterUser(HttpContext context,
+            String loginName, String clearPassword,
+            UserDetails userDetails)
+        {
+            /* Register user. */
+            long usrId = userService.RegisterUser(loginName, clearPassword,
+                userDetails);
 
-        //    /* Insert necessary objects in the session. */
-        //    UserSession userSession = new UserSession();
-        //    userSession.UserProfileId = usrId;
-        //    userSession.FirstName = userInput.FirstName;
+            /* Insert necessary objects in the session. */
+            UserSession userSession = new UserSession();
+            userSession.UserProfileId = usrId;
+            userSession.FirstName = userDetails.FirstName;
 
 
-        //    context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
+            context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
 
-        //    FormsAuthentication.SetAuthCookie(loginName, false);
-        //}
+            FormsAuthentication.SetAuthCookie(loginName, false);
+        }
 
         /// <summary>
         /// Login method. Authenticates an user in the current context.
@@ -120,13 +121,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         /// <param name="context">Http Context includes request, response, etc.</param>
         /// <param name="userSession">The user data stored in session.</param>
         /// <param name="locale">The locale info.</param>
-        //private static void UpdateSessionForAuthenticatedUser(
-        //    HttpContext context, UserSession userSession, Locale locale)
-        //{
-        //    /* Insert objects in session. */
-        //    context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
-        //    context.Session.Add(LOCALE_SESSION_ATTRIBUTE, locale);
-        //}
+        private static void UpdateSessionForAuthenticatedUser(
+            HttpContext context, UserSession userSession, Locale locale)
+        {
+            /* Insert objects in session. */
+            context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
+            context.Session.Add(LOCALE_SESSION_ATTRIBUTE, locale);
+        }
 
         /// <summary>
         /// Determine if a user is authenticated
@@ -144,55 +145,54 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
             return (context.Session[USER_SESSION_ATTRIBUTE] != null);
         }
 
-        //public static Locale GetLocale(HttpContext context)
-        //{
-        //    Locale locale =
-        //        (Locale)context.Session[LOCALE_SESSION_ATTRIBUTE];
+        public static Locale GetLocale(HttpContext context)
+        {
+            Locale locale = (Locale)context.Session[LOCALE_SESSION_ATTRIBUTE];
 
-        //    return locale;
-        //}
+            return locale;
+        }
 
         /// <summary>
         /// Updates the user profile details.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <param name="userProfileDetails">The user profile details.</param>
-        //public static void UpdateUserProfileDetails(HttpContext context,
-        //    UserProfileDetails userProfileDetails)
-        //{
-        //    /* Update user's profile details. */
+        /// <param name="UserDetails">The user profile details.</param>
+        public static void UpdateUserDetails(HttpContext context,
+            UserDetails UserDetails)
+        {
+            /* Update user's profile details. */
 
-        //    UserSession userSession =
-        //        (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
+            UserSession userSession =
+                (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
 
-        //    userService.UpdateUserProfileDetails(userSession.UserProfileId,
-        //        userProfileDetails);
+            userService.UpdateUserDetails(userSession.UserProfileId,
+                UserDetails);
 
-        //    /* Update user's session objects. */
+            /* Update user's session objects. */
 
-        //    Locale locale = new Locale(userProfileDetails.Language,
-        //        userProfileDetails.Country);
+            Locale locale = new Locale(UserDetails.Language,
+                UserDetails.Country);
 
-        //    userSession.FirstName = userProfileDetails.FirstName;
+            userSession.FirstName = UserDetails.FirstName;
 
-        //    UpdateSessionForAuthenticatedUser(context, userSession, locale);
-        //}
+            UpdateSessionForAuthenticatedUser(context, userSession, locale);
+        }
 
         ///// <summary>
         ///// Finds the user profile with the id stored in the session.
         ///// </summary>
         ///// <param name="context">The context.</param>
         ///// <returns></returns>
-        //public static UserProfileDetails FindUserProfileDetails(HttpContext context)
-        //{
-        //    UserSession userSession =
-        //        (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
+        public static UserDetails FindUserDetails(HttpContext context)
+        {
+            UserSession userSession =
+                (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
 
-        //    UserProfileDetails userProfileDetails =
-        //        userService.FindUserProfileDetails(userSession.UserProfileId);
+            UserDetails UserDetails =
+                userService.FindUserDetails(userSession.UserProfileId);
 
-        //    return userProfileDetails;
-        //}
+            return UserDetails;
+        }
 
         /// <summary>
         /// Gets the user info stored in the session.

@@ -17,7 +17,7 @@
         <asp:TextBox ID="tbTitle" runat="server" Height="17px" Width="129px"></asp:TextBox>
         <br />
         <asp:Label ID="lblDescription" runat="server" Text="Description"></asp:Label>
-        <asp:TextBox ID="tbDescription" runat="server" Height="79px" Width="264px"></asp:TextBox>
+        <asp:TextBox ID="tbDescription" runat="server" Height="79px" Width="264px" OnTextChanged="tbDescription_TextChanged"></asp:TextBox>
         <br />
         <asp:Label ID="lblAperture" runat="server" Text="Aperture:"></asp:Label>
         <asp:TextBox ID="tbAperture" runat="server" Height="17px" Width="129px"></asp:TextBox>
