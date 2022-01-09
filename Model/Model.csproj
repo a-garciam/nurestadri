@@ -120,9 +120,9 @@
     <Compile Include="Services\Exceptions\IncorrectBalanceFormatException.cs" />
     <Compile Include="Services\ImageService\IImageService.cs" />
     <Compile Include="Services\ImageService\ImageService.cs" />
+    <Compile Include="Services\ImageService\Resources\Output\CategoryOutput.cs" />
     <Compile Include="Services\ImageService\Resources\Output\ImageOutput.cs" />
     <Compile Include="Services\Exceptions\IncorrectPasswordException.cs" />
-    <Compile Include="Services\Exceptions\InstanceNotFoundException.cs" />
     <Compile Include="Services\UserService\IUserService.cs" />
     <Compile Include="Services\UserService\LoginResult.cs" />
     <Compile Include="Services\UserService\UserDetails.cs" />
