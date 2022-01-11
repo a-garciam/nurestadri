@@ -142,7 +142,7 @@
     <value>Change password</value>
   </data>
   <data name="Page.Title" xml:space="preserve">
-    <value>Miniportal - Update User Profile</value>
+    <value> </value>
   </data>
   <data name="revEmail.ErrorMessage" xml:space="preserve">
     <value>Incorrect email syntax</value>

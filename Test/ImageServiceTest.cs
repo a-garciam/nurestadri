@@ -171,5 +171,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
             }
         }
+
+        [TestMethod]
+        public void TestFindCategories() {
+            categoryDao.Create(category);
+            Assert.AreEqual(category.name,imageService.FindCategories()[0].Name);
+            Assert.AreEqual(category.categoryId, imageService.FindCategories()[0].CategoryId);
+        }
     }
 }

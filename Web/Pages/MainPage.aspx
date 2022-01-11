@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.Pages.MainPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.Pages.MainPage" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_BodyContent"
     runat="server">

@@ -168,13 +168,17 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 
         public IList<CategoryOutput> FindCategories()
         {
+
             IList<CategoryOutput> categoriesOutput = new List<CategoryOutput>();
-            foreach (Category category in CategoryDao.GetAllElements())
-            {
-                categoriesOutput.Add(new CategoryOutput(
-                    category.categoryId,
-                    category.name
-                ));
+            IList<Category> categoryList = CategoryDao.GetAllElements();
+            if (categoryList.Count != 0) { 
+                foreach (Category category in categoryList)
+                {
+                    categoriesOutput.Add(new CategoryOutput(
+                        category.categoryId,
+                        category.name
+                    ));
+                }
             }
 
             return categoriesOutput;

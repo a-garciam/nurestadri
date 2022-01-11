@@ -1,17 +1,61 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PracticaMaD.master.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.PracticaMaD" %>
 
-<!DOCTYPE html>
-
-<html>
-<head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Nurestadri</title>
+    <link href="~/Css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder_BodyContent" runat="server">
-            </asp:ContentPlaceHolder>
+    <!-- Window. -->
+    <div id="window">
+        <!-- Page title. -->
+        <div id="pageTitle">
+            <asp:Localize ID="lclPageTitle" runat="server" meta:resourcekey="lclPageTitle" />
         </div>
+        <!-- Menu. -->
+        <div id="menu">
+            <span id="menuWelcome">
+
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder_MenuWelcome" runat="server">
+                    <asp:Label ID="lblWelcome" runat="server" meta:resourcekey="lblWelcome" />
+                </asp:ContentPlaceHolder>
+            </span>
+
+            <span id="menuExplanation">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder_MenuExplanation" runat="server">
+                </asp:ContentPlaceHolder>
+            </span>
+
+            <span id="menuLinks">
+
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder_MenuLinks" runat="server">
+                    <asp:Label ID="lblDash1" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                    <asp:HyperLink ID="lnkAuthenticate" runat="server"
+                        NavigateUrl="~/Pages/User/Authentication.aspx"
+                        meta:resourcekey="lnkAuthenticate" >[lnkAuthenticate]</asp:HyperLink>
+                    <asp:Label ID="lblDash2" runat="server" Text="-" meta:resourcekey="lblDash2Resource1" />
+                    <asp:HyperLink ID="lnkUpdate" runat="server"
+                        NavigateUrl="~/Pages/User/UpdateUserProfile.aspx"
+                        meta:resourcekey="lnkUpdate" >[lnkUpdate]</asp:HyperLink>
+                    <asp:Label ID="lblDash3" runat="server" Text="-" meta:resourcekey="lblDash3Resource1" />
+                    <asp:HyperLink ID="lnkLogout" runat="server"
+                        NavigateUrl="~/Pages/User/Logout.aspx"
+                        meta:resourcekey="lnkLogout" >[lnkLogout]</asp:HyperLink>
+                </asp:ContentPlaceHolder>
+            </span>
+        </div>
+
+            <div id="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder_BodyContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <!-- Footer. -->
+        <div id="footer">
+            <asp:Localize ID="lclFooter" runat="server" meta:resourcekey="lclFooter" />
+        </div>
+    </div>
 </body>
 </html>

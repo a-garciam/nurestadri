@@ -24,31 +24,30 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
 
         private void InitDDLCategories()
         {
-            //try
-            //{
-            //    IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-            //    IImageService imageService = iocManager.Resolve<IImageService>();
-            //    IList<CategoryOutput> list = imageService.FindCategories();
-            //    ListItem i;
-            //    foreach (CategoryOutput c in list)
-            //    {
-            //        i = new ListItem(c.Name.ToString(), c.CategoryId.ToString());
-            //        ddlCategory.Items.Add(i);
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-
-            //    throw e;
-            //}
+            try
+            {
+                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+                IImageService imageService = iocManager.Resolve<IImageService>();
+                IList<CategoryOutput> list = imageService.FindCategories();
+                ListItem i;
+                foreach (CategoryOutput c in list)
+                {
+                    i = new ListItem(c.Name.ToString(), c.CategoryId.ToString());
+                    ddlCategory.Items.Add(i);
+                }
+            }
+            catch (Exception exc)
+            {
+                lblUploadCompleted.Text = exc.ToString();
+            }
         }
 
         protected void btnUploadImage_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
             {
-                if (fuImageUpload.HasFile)
-                {
+                //if (fuImageUpload.HasFile)
+                //{
 
                     try
                     {
@@ -57,26 +56,23 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
                         Directory.CreateDirectory(filename);
                         filename = filename + DateTime.Now.ToString("yyyyMMddHHmm") + fuImageUpload.FileName;
                         fuImageUpload.SaveAs(filename);
+                    //lblUploadCompleted.Text = filename;
 
-                        IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+                    IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
                         IImageService imageService = iocManager.Resolve<IImageService>();
+
                         IList<CategoryOutput> list = imageService.FindCategories();
-                        ListItem i;
-                        foreach (CategoryOutput c in list)
-                        {
-                            i = new ListItem(c.Name.ToString(), c.CategoryId.ToString());
-                            ddlCategory.Items.Add(i);
-                        }
 
                         imageService.UploadImage(userSession.UserProfileId, Convert.ToInt64(ddlCategory.SelectedValue), tbTitle.Text, 
                             tbDescription.Text, tbAperture.Text, tbExposure.Text, tbBalance.Text, filename); ;
                         lblUploadCompleted.Text = filename;
                     }
-                    catch (Exception)
+                    catch (Exception exc)
                     {
+                        lblUploadCompleted.Text = exc.ToString();
                     }
 
-            }
+            //}
             }
         }
 

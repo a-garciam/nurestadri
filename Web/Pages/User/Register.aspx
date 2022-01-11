@@ -25,7 +25,7 @@
                         <asp:TextBox ID="txtLogin" runat="server" Width="100px" Columns="16"
                             meta:resourcekey="txtLoginResource1"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ControlToValidate="txtLogin"
-                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>"
+                            Display="Dynamic" Text="a"
                             meta:resourcekey="rfvUserNameResource1"></asp:RequiredFieldValidator>
                         <asp:Label ID="lblLoginError" runat="server" ForeColor="Red" Style="position: relative"
                             Visible="False" meta:resourcekey="lblLoginError"></asp:Label></span>
@@ -37,7 +37,7 @@
                         <asp:TextBox TextMode="Password" ID="txtPassword" runat="server"
                             Width="100px" Columns="16" meta:resourcekey="txtPasswordResource1"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword"
-                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>"
+                            Display="Dynamic" Text="a"
                             meta:resourcekey="rfvPasswordResource1"></asp:RequiredFieldValidator></span>
             </div>
             <div class="field">
@@ -47,7 +47,7 @@
                         <asp:TextBox TextMode="Password" ID="txtRetypePassword" runat="server" Width="100px"
                             Columns="16" meta:resourcekey="txtRetypePasswordResource1"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvRetypePassword" runat="server" ControlToValidate="txtRetypePassword"
-                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>"
+                            Display="Dynamic" Text="a"
                             meta:resourcekey="rfvRetypePasswordResource1"></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="cvPasswordCheck" runat="server" ControlToCompare="txtPassword"
                             ControlToValidate="txtRetypePassword" meta:resourcekey="cvPasswordCheck"></asp:CompareValidator></span>
@@ -59,7 +59,7 @@
                         <asp:TextBox ID="txtFirstName" runat="server" Width="100px"
                             Columns="16" meta:resourcekey="txtFirstNameResource1"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvFirstName" runat="server" ControlToValidate="txtFirstName"
-                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>"
+                            Display="Dynamic" Text="a"
                             meta:resourcekey="rfvFirstNameResource1"></asp:RequiredFieldValidator></span>
             </div>
             <div class="field">
@@ -69,7 +69,7 @@
                         <asp:TextBox ID="txtSurname" runat="server" Width="100px" Columns="16"
                             meta:resourcekey="txtSurnameResource1"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvSurname" runat="server" ControlToValidate="txtSurname"
-                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>"
+                            Display="Dynamic" Text="a"
                             meta:resourcekey="rfvSurnameResource1"></asp:RequiredFieldValidator></span>
             </div>
             <div class="field">
@@ -79,7 +79,7 @@
                         <asp:TextBox ID="txtEmail" runat="server" Width="100px" Columns="16"
                             meta:resourcekey="txtEmailResource1"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail"
-                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>"
+                            Display="Dynamic" Text="a"
                             meta:resourcekey="rfvEmailResource1"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail"
                             Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
