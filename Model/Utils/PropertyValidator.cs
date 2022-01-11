@@ -29,6 +29,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Utils
             }
 
             return exposure.Contains("/");
+            
+            
         }
 
         public static bool IsValidImageBalance(string balance)

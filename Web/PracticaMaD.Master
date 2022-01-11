@@ -33,15 +33,23 @@
                     <asp:Label ID="lblDash1" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
                     <asp:HyperLink ID="lnkAuthenticate" runat="server"
                         NavigateUrl="~/Pages/User/Authentication.aspx"
-                        meta:resourcekey="lnkAuthenticate" >[lnkAuthenticate]</asp:HyperLink>
+                         >Login</asp:HyperLink>
+                    <asp:Label ID="lblDash4" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                    <asp:HyperLink ID="lnkRegister" runat="server"
+                        NavigateUrl="~/Pages/User/Register.aspx"
+                         >Register</asp:HyperLink>
                     <asp:Label ID="lblDash2" runat="server" Text="-" meta:resourcekey="lblDash2Resource1" />
                     <asp:HyperLink ID="lnkUpdate" runat="server"
                         NavigateUrl="~/Pages/User/UpdateUserProfile.aspx"
-                        meta:resourcekey="lnkUpdate" >[lnkUpdate]</asp:HyperLink>
+                         >Update Profile</asp:HyperLink>
                     <asp:Label ID="lblDash3" runat="server" Text="-" meta:resourcekey="lblDash3Resource1" />
                     <asp:HyperLink ID="lnkLogout" runat="server"
                         NavigateUrl="~/Pages/User/Logout.aspx"
-                        meta:resourcekey="lnkLogout" >[lnkLogout]</asp:HyperLink>
+                         >Logout</asp:HyperLink>
+                    <asp:Label ID="lblDash5" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                    <asp:HyperLink ID="lnkUploadImage" runat="server"
+                        NavigateUrl="~/Pages/Image/UploadImage.aspx"
+                         >Upload Image</asp:HyperLink>
                 </asp:ContentPlaceHolder>
             </span>
         </div>

@@ -52,19 +52,23 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
                     try
                     {
                         UserSession userSession = SessionManager.GetUserSession(Context);
-                        string filename = Server.MapPath("~/images/" + userSession.UserProfileId + "/");
+                        if (userSession == null)
+                        {
+                            Response.Redirect("~/Pages/User/Authentication.aspx");
+                        }
+                    string filename = Server.MapPath("~/images/" + userSession.UserProfileId + "/");
                         Directory.CreateDirectory(filename);
                         filename = filename + DateTime.Now.ToString("yyyyMMddHHmm") + fuImageUpload.FileName;
                         fuImageUpload.SaveAs(filename);
-                    //lblUploadCompleted.Text = filename;
 
-                    IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+                        IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
                         IImageService imageService = iocManager.Resolve<IImageService>();
 
                         IList<CategoryOutput> list = imageService.FindCategories();
+                    long categoryId = Convert.ToInt64(ddlCategory.SelectedValue);
 
-                        imageService.UploadImage(userSession.UserProfileId, Convert.ToInt64(ddlCategory.SelectedValue), tbTitle.Text, 
-                            tbDescription.Text, tbAperture.Text, tbExposure.Text, tbBalance.Text, filename); ;
+                        imageService.UploadImage(userSession.UserProfileId,categoryId, tbTitle.Text, 
+                            tbDescription.Text, tbAperture.Text, tbExposure.Text, tbBalance.Text, filename);
                         lblUploadCompleted.Text = filename;
                     }
                     catch (Exception exc)

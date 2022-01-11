@@ -10,6 +10,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions
     public class IncorrectExposureFormatException : Exception
     {
         public IncorrectExposureFormatException(String balance)
-            : base("Exposure value must be a positive number. ") { }
+            : base("Exposure value must follow the format: N/N. ") { }
     }
 }

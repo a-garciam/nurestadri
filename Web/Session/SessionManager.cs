@@ -38,23 +38,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
                 {
                     return;
                 }
-
-                //string login = CookiesManager.GetLogin(context);
-                //string password = CookiesManager.GetPassword(context);
-
-                //if (login is null || password is null)
-                //{
-                //    return;
-                //}
-
-                //UserProfileOutput userProfileOutput = userService.Login(login, password);
-
-                //context.Session.Add(UserSession, new UserSession()
-                //{
-                //    UserProfileId = userProfileOutput.UserProfileId
-                //});
-
-                //FormsAuthentication.SetAuthCookie(login, true);
             }
         }
 
@@ -102,12 +85,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
             LoginResult loginResult = DoLogin(context, loginName,
                 clearPassword, false, rememberMyPassword);
 
-            /* Add cookies if requested. */
-            //if (rememberMyPassword)
-            //{
-            //    CookiesManager.LeaveCookies(context, loginName,
-            //        loginResult.EncryptedPassword);
-            //}
         }
 
         /// <summary>
@@ -251,8 +228,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
             userService.ChangePassword(userSession.UserProfileId,
                 oldClearPassword, newClearPassword);
 
-            /* Remove cookies. */
-            //CookiesManager.RemoveCookies(context);
         }
 
         /// <summary>
@@ -262,8 +237,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         /// <param name="context">Http Context includes request, response, etc.</param>
         public static void Logout(HttpContext context)
         {
-            /* Remove cookies. */
-            //CookiesManager.RemoveCookies(context);
 
             /* Invalidate session. */
             context.Session.Abandon();
@@ -272,78 +245,5 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
             FormsAuthentication.SignOut();
         }
 
-        /// <sumary>
-        /// Guarantees that the session will have the necessary objects if the
-        /// user has been authenticated or had selected "remember my password"
-        /// in the past.
-        /// </sumary>
-        /// <param name="context">Http Context includes request, response, etc.</param>
-        //public static void TouchSession(HttpContext context)
-        //{
-        //    /* Check if "UserSession" object is in the session. */
-        //    UserSession userSession = null;
-
-        //    if (context.Session != null)
-        //    {
-        //        userSession =
-        //            (UserSession)context.Session[USER_SESSION_ATTRIBUTE];
-
-        //        // If userSession object is in the session, nothing should be doing.
-        //        if (userSession != null)
-        //        {
-        //            return;
-        //        }
-        //    }
-
-        //    /*
-        //     * The user had not been authenticated or his/her session has
-        //     * expired. We need to check if the user has selected "remember my
-        //     * password" in the last login (login name and password will come
-        //     * as cookies). If so, we reconstruct user's session objects.
-        //     */
-        //    UpdateSessionFromCookies(context);
-        //}
-
-        /// <summary>
-        /// Tries to login (inserting necessary objects in the session) by using
-        /// cookies (if present).
-        /// </summary>
-        /// <param name="context">Http Context includes request, response, etc.</param>
-        //private static void UpdateSessionFromCookies(HttpContext context)
-        //{
-        //    HttpRequest request = context.Request;
-        //    if (request.Cookies == null)
-        //    {
-        //        return;
-        //    }
-
-        //    /*
-        //     * Check if the login name and the encrypted password come as
-        //     * cookies.
-        //     */
-        //    String loginName = CookiesManager.GetLoginName(context);
-        //    String encryptedPassword = CookiesManager.GetEncryptedPassword(context);
-
-        //    if ((loginName == null) || (encryptedPassword == null))
-        //    {
-        //        return;
-        //    }
-
-        //    /* If loginName and encryptedPassword have valid values (the user selected "remember
-        //     * my password" option) try to login, and if successful, update session with the
-        //     * necessary objects for an authenticated user.
-        //     */
-        //    try
-        //    {
-        //        DoLogin(context, loginName, encryptedPassword, true, true);
-
-        //        /* Authentication Ticket. */
-        //        FormsAuthentication.SetAuthCookie(loginName, true);
-        //    }
-        //    catch (Exception)
-        //    { // Incorrect loginName or encryptedPassword
-        //        return;
-        //    }
-        //}
     }
 }
