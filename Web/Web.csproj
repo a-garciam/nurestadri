@@ -114,8 +114,8 @@
   <ItemGroup>
     <Content Include="Css\styles.css" />
     <Content Include="Global.asax" />
-    <Content Include="Pages\Image\ImagesFeed.aspx" />
     <Content Include="Pages\Image\UploadImage.aspx" />
+    <Content Include="Pages\Image\UserImagesFeed.aspx" />
     <Content Include="Pages\MainPage.aspx" />
     <Content Include="Pages\User\Authentication.aspx" />
     <Content Include="Pages\User\ChangePassword.aspx" />
@@ -128,19 +128,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Image\ImagesFeed.aspx.cs">
-      <DependentUpon>ImagesFeed.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Image\ImagesFeed.aspx.designer.cs">
-      <DependentUpon>ImagesFeed.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Image\UploadImage.aspx.cs">
       <DependentUpon>UploadImage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Image\UploadImage.aspx.designer.cs">
       <DependentUpon>UploadImage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Image\UserImagesFeed.aspx.cs">
+      <DependentUpon>UserImagesFeed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Image\UserImagesFeed.aspx.designer.cs">
+      <DependentUpon>UserImagesFeed.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.aspx.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
@@ -198,9 +198,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Session\SessionManager.cs" />
-    <Compile Include="Session\SpecificCulturePage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="Session\SpecificCulturePage.cs" />
     <Compile Include="Session\UserSession.cs" />
     <Compile Include="Session\View\ApplicationObjects\Countries.cs" />
     <Compile Include="Session\View\ApplicationObjects\Languages.cs" />

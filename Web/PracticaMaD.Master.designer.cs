@@ -159,6 +159,24 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         protected global::System.Web.UI.WebControls.HyperLink lnkUploadImage;
 
         /// <summary>
+        /// lblDash6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDash6;
+
+        /// <summary>
+        /// lnkUserPhotos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkUserPhotos;
+
+        /// <summary>
         /// ContentPlaceHolder_BodyContent control.
         /// </summary>
         /// <remarks>

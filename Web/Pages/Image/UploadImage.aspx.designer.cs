@@ -33,6 +33,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         protected global::System.Web.UI.WebControls.Label lblTitle;
 
         /// <summary>
+        /// rfvTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle;
+
+        /// <summary>
         /// tbTitle control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDescription;
+
+        /// <summary>
+        /// rfvTitle0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle0;
 
         /// <summary>
         /// tbDescription control.
@@ -69,6 +87,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         protected global::System.Web.UI.WebControls.Label lblAperture;
 
         /// <summary>
+        /// rfvTitle1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle1;
+
+        /// <summary>
         /// tbAperture control.
         /// </summary>
         /// <remarks>
@@ -85,6 +112,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblExposure;
+
+        /// <summary>
+        /// rfvTitle2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle2;
 
         /// <summary>
         /// tbExposure control.
@@ -105,6 +141,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         protected global::System.Web.UI.WebControls.Label lblBalance;
 
         /// <summary>
+        /// rfvTitle3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle3;
+
+        /// <summary>
         /// tbBalance control.
         /// </summary>
         /// <remarks>
@@ -123,6 +168,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         protected global::System.Web.UI.WebControls.Label lblCategory;
 
         /// <summary>
+        /// rfvTitle4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle4;
+
+        /// <summary>
         /// ddlCategory control.
         /// </summary>
         /// <remarks>
@@ -139,6 +193,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblImageUpload;
+
+        /// <summary>
+        /// rfvTitle5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle5;
 
         /// <summary>
         /// fuImageUpload control.

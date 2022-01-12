@@ -38,11 +38,11 @@
                     <asp:HyperLink ID="lnkRegister" runat="server"
                         NavigateUrl="~/Pages/User/Register.aspx"
                          >Register</asp:HyperLink>
-                    <asp:Label ID="lblDash2" runat="server" Text="-" meta:resourcekey="lblDash2Resource1" />
+                    <asp:Label ID="lblDash2" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
                     <asp:HyperLink ID="lnkUpdate" runat="server"
                         NavigateUrl="~/Pages/User/UpdateUserProfile.aspx"
                          >Update Profile</asp:HyperLink>
-                    <asp:Label ID="lblDash3" runat="server" Text="-" meta:resourcekey="lblDash3Resource1" />
+                    <asp:Label ID="lblDash3" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
                     <asp:HyperLink ID="lnkLogout" runat="server"
                         NavigateUrl="~/Pages/User/Logout.aspx"
                          >Logout</asp:HyperLink>
@@ -50,6 +50,10 @@
                     <asp:HyperLink ID="lnkUploadImage" runat="server"
                         NavigateUrl="~/Pages/Image/UploadImage.aspx"
                          >Upload Image</asp:HyperLink>
+                    <asp:Label ID="lblDash6" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                    <asp:HyperLink ID="lnkUserPhotos" runat="server"
+                        NavigateUrl="~/Pages/Image/UserImagesFeed.aspx"
+                         >Your photos</asp:HyperLink>
                 </asp:ContentPlaceHolder>
             </span>
         </div>
@@ -64,6 +68,5 @@
         <div id="footer">
             <asp:Localize ID="lclFooter" runat="server" meta:resourcekey="lclFooter" />
         </div>
-    </div>
 </body>
 </html>

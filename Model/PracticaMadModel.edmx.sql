@@ -68,13 +68,13 @@ GO
 -- Creating table 'User'
 CREATE TABLE [dbo].[User] (
     [usrId] bigint IDENTITY(1,1) NOT NULL,
-    [loginName] nvarchar(max)  NOT NULL,
-    [enPassword] nvarchar(max)  NOT NULL,
-    [firstName] nvarchar(max)  NOT NULL,
-    [lastName] nvarchar(max)  NOT NULL,
-    [email] nvarchar(max)  NOT NULL,
-    [country] nvarchar(max)  NOT NULL,
-    [language] nvarchar(max)  NOT NULL
+    [loginName] nvarchar(30)  NOT NULL,
+    [enPassword] nvarchar(100)  NOT NULL,
+    [firstName] nvarchar(30)  NOT NULL,
+    [lastName] nvarchar(30)  NOT NULL,
+    [email] nvarchar(30)  NOT NULL,
+    [country] nvarchar(30)  NOT NULL,
+    [language] nvarchar(30)  NOT NULL
 );
 GO
 
@@ -82,12 +82,12 @@ GO
 CREATE TABLE [dbo].[Image] (
     [imageId] bigint IDENTITY(1,1) NOT NULL,
     [likes] int  NOT NULL,
-    [title] nvarchar(max)  NOT NULL,
-    [description] nvarchar(max)  NOT NULL,
-    [aperture] nvarchar(max)  NOT NULL,
-    [balance] nvarchar(max)  NOT NULL,
-    [exposure] nvarchar(max)  NOT NULL,
-    [imagePath] varchar(max)  NOT NULL,
+    [title] nvarchar(50)  NOT NULL,
+    [description] nvarchar(500)  NOT NULL,
+    [aperture] nvarchar(10)  NOT NULL,
+    [balance] nvarchar(10)  NOT NULL,
+    [exposure] nvarchar(10)  NOT NULL,
+    [imagePath] varchar(100)  NOT NULL,
     [usrId] bigint  NOT NULL,
     [categoryId] bigint  NOT NULL
 );
@@ -96,14 +96,14 @@ GO
 -- Creating table 'Category'
 CREATE TABLE [dbo].[Category] (
     [categoryId] bigint IDENTITY(1,1) NOT NULL,
-    [name] nvarchar(max)  NOT NULL
+    [name] nvarchar(30)  NOT NULL
 );
 GO
 
 -- Creating table 'Comment'
 CREATE TABLE [dbo].[Comment] (
     [commentId] bigint IDENTITY(1,1) NOT NULL,
-    [text] nvarchar(max)  NOT NULL,
+    [text] nvarchar(200)  NOT NULL,
     [imageId] bigint  NOT NULL,
     [usrId] bigint  NOT NULL
 );

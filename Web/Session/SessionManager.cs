@@ -115,7 +115,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
             userSession.UserProfileId = loginResult.UserId;
             userSession.FirstName = loginResult.FirstName;
 
-            context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
+            Locale locale =
+                new Locale(loginResult.Language, loginResult.Country);
+
+            UpdateSessionForAuthenticatedUser(context, userSession, locale);
 
             return loginResult;
         }

@@ -29,12 +29,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
                 IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
                 IImageService imageService = iocManager.Resolve<IImageService>();
                 IList<CategoryOutput> list = imageService.FindCategories();
-                ListItem i;
-                foreach (CategoryOutput c in list)
-                {
-                    i = new ListItem(c.Name.ToString(), c.CategoryId.ToString());
-                    ddlCategory.Items.Add(i);
-                }
+                ddlCategory.DataSource = list;
+                ddlCategory.DataTextField = "Name";
+                ddlCategory.DataValueField = "CategoryId";
+                ddlCategory.DataBind();
             }
             catch (Exception exc)
             {
@@ -46,8 +44,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         {
             if (Page.IsValid)
             {
-                //if (fuImageUpload.HasFile)
-                //{
 
                     try
                     {
@@ -56,33 +52,27 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
                         {
                             Response.Redirect("~/Pages/User/Authentication.aspx");
                         }
-                    string filename = Server.MapPath("~/images/" + userSession.UserProfileId + "/");
+                        string filename = Server.MapPath("~/images/" + userSession.UserProfileId.ToString() + "/");
                         Directory.CreateDirectory(filename);
                         filename = filename + DateTime.Now.ToString("yyyyMMddHHmm") + fuImageUpload.FileName;
-                        fuImageUpload.SaveAs(filename);
+                        
 
                         IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
                         IImageService imageService = iocManager.Resolve<IImageService>();
 
-                        IList<CategoryOutput> list = imageService.FindCategories();
-                    long categoryId = Convert.ToInt64(ddlCategory.SelectedValue);
+                        long categoryId = Convert.ToInt64(ddlCategory.SelectedValue);
 
                         imageService.UploadImage(userSession.UserProfileId,categoryId, tbTitle.Text, 
                             tbDescription.Text, tbAperture.Text, tbExposure.Text, tbBalance.Text, filename);
-                        lblUploadCompleted.Text = filename;
+                        fuImageUpload.SaveAs(filename);
+                        lblUploadCompleted.Text = "Imagen subida";
                     }
                     catch (Exception exc)
                     {
-                        lblUploadCompleted.Text = exc.ToString();
                     }
 
-            //}
             }
         }
 
-        protected void tbDescription_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
