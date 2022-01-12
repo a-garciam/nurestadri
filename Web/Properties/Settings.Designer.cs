@@ -32,5 +32,23 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Properties {
                 return ((string)(this["PracticaMaDConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int PracticaMaD_defaultCount {
+            get {
+                return ((int)(this["PracticaMaD_defaultCount"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("nurestadri")]
+        public string PracticaMaD_websiteName {
+            get {
+                return ((string)(this["PracticaMaD_websiteName"]));
+            }
+        }
     }
 }

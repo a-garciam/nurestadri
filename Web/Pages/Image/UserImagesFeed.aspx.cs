@@ -1,6 +1,7 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
+using Es.Udc.DotNet.PracticaMaD.Web.Properties;
 using Es.Udc.DotNet.PracticaMaD.Web.Session;
 using System;
 using System.Collections.Generic;
@@ -29,12 +30,29 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             IList<ImageOutput> imageList = imageService.FindImagesByUser(userID);
 
             if (imageList.Count() <= 0) {
-                Label1.Text=imageList.Count().ToString();
                 return;
             }
+            Session["lstImg"] = imageList;
 
             gvUserImages.DataSource = imageList;
+            gvUserImages.AllowPaging = true;
             gvUserImages.DataBind();
+
+           
+        }
+
+        protected void gvUserImages_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                gvUserImages.PageIndex = e.NewPageIndex;
+                gvUserImages.DataSource = Session["lstImg"];
+                gvUserImages.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
         }
     }
 }

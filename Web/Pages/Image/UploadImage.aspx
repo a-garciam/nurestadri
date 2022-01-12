@@ -5,43 +5,43 @@
     <form id="form1" runat="server">
         <div class="field">
             <asp:Label ID="lblTitle" runat="server" Text="Title" meta:resourcekey="lblTitleResource1" CssClass="label"></asp:Label>
-            <asp:RequiredFieldValidator ID="rfvTitle" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbTitle" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvTitle" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbTitle"  CssClass="errorMessage"></asp:RequiredFieldValidator>
             <br />
             <asp:TextBox ID="tbTitle" runat="server" meta:resourcekey="tbTitleResource1" CssClass="entry" MaxLength="50"></asp:TextBox>
 
         </div>
         <div  class="field">
         <asp:Label ID="lblDescription" runat="server" Text="Description" meta:resourcekey="lblDescriptionResource1" CssClass="label"></asp:Label>
-            <asp:RequiredFieldValidator ID="rfvTitle0" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbDescription" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvTitle0" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbDescription"  CssClass="errorMessage"></asp:RequiredFieldValidator>
             <br />
         <asp:TextBox ID="tbDescription" runat="server" Height="79px" Width="264px" meta:resourcekey="tbDescriptionResource1" CssClass="entry" TextMode="MultiLine" MaxLength="500" style = "resize:none"></asp:TextBox>
         </div>
         <div class="field">
             <asp:Label ID="lblAperture" runat="server" Text="Aperture:" meta:resourcekey="lblApertureResource1" CssClass="label"></asp:Label>
-            <asp:RequiredFieldValidator ID="rfvTitle1" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbAperture" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvTitle1" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbAperture"  CssClass="errorMessage"></asp:RequiredFieldValidator>
             <br />
             <asp:TextBox ID="tbAperture" placeholder="Ex.: f/3.0" runat="server" Height="17px" Width="129px" meta:resourcekey="tbApertureResource1" CssClass="entry" MaxLength="10"></asp:TextBox>
             <br />
             <asp:Label ID="lblExposure" runat="server" Text="Exposure" meta:resourcekey="lblExposureResource1" CssClass="label"></asp:Label>
-            <asp:RequiredFieldValidator ID="rfvTitle2" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbExposure" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvTitle2" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbExposure"  CssClass="errorMessage"></asp:RequiredFieldValidator>
             <br />
             <asp:TextBox ID="tbExposure" placeholder="Ex.: 1/100" runat="server" Height="17px" Width="129px" meta:resourcekey="tbExposureResource1" CssClass="entry" MaxLength="10"></asp:TextBox>
             <br />
             <asp:Label ID="lblBalance" runat="server" Text="Balance" meta:resourcekey="lblBalanceResource1" CssClass="label"></asp:Label>
-            <asp:RequiredFieldValidator ID="rfvTitle3" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbBalance" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvTitle3" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbBalance"  CssClass="errorMessage"></asp:RequiredFieldValidator>
             <br />
             <asp:TextBox ID="tbBalance" runat="server" Height="17px" Width="129px" meta:resourcekey="tbBalanceResource1" CssClass="entry" MaxLength="10"></asp:TextBox>
         </div>
         <div class="field">
         <asp:Label ID="lblCategory" runat="server" Text="Category" meta:resourcekey="lblCategoryResource1" CssClass="label"></asp:Label>
-            <asp:RequiredFieldValidator ID="rfvTitle4" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="ddlCategory" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvTitle4" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="ddlCategory"  CssClass="errorMessage"></asp:RequiredFieldValidator>
             <br />
         <asp:DropDownList ID="ddlCategory" runat="server" meta:resourcekey="ddlCategoryResource1" CssClass="entry">
         </asp:DropDownList>
         </div>
         <div class="field">
             <asp:Label ID="lblImageUpload" runat="server" CssClass="label" Text="Label"></asp:Label>
-            <asp:RequiredFieldValidator ID="rfvTitle5" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="fuImageUpload" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvTitle5" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="fuImageUpload"  CssClass="errorMessage"></asp:RequiredFieldValidator>
             <br />
         <asp:FileUpload ID="fuImageUpload" runat="server" Height="36px" Width="351px" meta:resourcekey="fuImageUploadResource1" CssClass="entry" />
         </div>

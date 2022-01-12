@@ -284,8 +284,58 @@ SET IDENTITY_INSERT [User] OFF
 
 SET IDENTITY_INSERT [Category] ON
 INSERT INTO [Category] ([categoryId],[name])
-    VALUES (1, 'categoria1');
+    VALUES (1, 'Colores');
 SET IDENTITY_INSERT [Category] OFF
+
+SET IDENTITY_INSERT [Category] ON
+INSERT INTO [Category] ([categoryId],[name])
+    VALUES (2, 'Naturaleza');
+SET IDENTITY_INSERT [Category] OFF
+
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (1, 0, 'Arbore', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\arbore.jpg', 1, 2);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (2, 0, 'Azul', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\azul.jpg', 1, 1);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (3, 0, 'Buratos', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\buratos.jpg', 1, 2);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (4, 0, 'Can', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\can.jpg', 1, 2);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (5, 0, 'Flor', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\flor.jpg', 1, 2);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (6, 0, 'Folla', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\folla.jpg', 1, 2);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (7, 0, 'Pombas', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\pombas.jpg', 1, 2);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (8, 0, 'Praia', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\praia.jpg', 1, 2);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (9, 0, 'Tulipans', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\tulipans.jpg', 1, 2);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (10, 0, 'Verde', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\verde.jpg', 1, 1);
+SET IDENTITY_INSERT [Image] OFF
+SET IDENTITY_INSERT [Image] ON
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
+    VALUES (11, 0, 'Vermello', 'jpg', 'f/8.9', '2000', '1/80', 'C:\Users\Nuria\source\mad\nurestadri\PracticaMaD\Web\images\1\vermello.jpg', 1, 1);
+SET IDENTITY_INSERT [Image] OFF
 
 
 -- --------------------------------------------------
