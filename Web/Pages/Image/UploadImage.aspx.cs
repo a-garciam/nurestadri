@@ -52,7 +52,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
                         {
                             Response.Redirect("~/Pages/User/Authentication.aspx");
                         }
-                        string filename = Server.MapPath("~/images/" + userSession.UserProfileId.ToString() + "/");
+                    string filename = "~/images/" + userSession.UserProfileId.ToString() + "/";
                         Directory.CreateDirectory(filename);
                         filename = filename + DateTime.Now.ToString("yyyyMMddHHmm") + fuImageUpload.FileName;
                         

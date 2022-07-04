@@ -2,12 +2,12 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <form id="form1" runat="server">
-        <div>
-            <asp:GridView ID="gvUserImages" runat="server" AutoGenerateColumns="False">
+        <div align="center">
+            <asp:GridView ID="gvUserImages" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvUserImages_PageIndexChanging" Width="192px">
                 <Columns>
                    <asp:TemplateField HeaderText="Image">
                         <ItemTemplate>
-                            <asp:Image ID="Image1" runat="server" Height="50px" Width="50px" ImageUrl='<%# Eval("ImagePath") %>' />
+                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("ImagePath") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="Title" DataField="Title" />
