@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="PracticaMaDModelStoreContainer" CdmEntityContainer="PracticaMaDEntities">
-    <EntitySetMapping Name="Categories">
-      <EntityTypeMapping TypeName="PracticaMaDModel.Category">
-        <MappingFragment StoreEntitySet="Category">
-          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Comments">
       <EntityTypeMapping TypeName="PracticaMaDModel.Comment">
         <MappingFragment StoreEntitySet="Comment">
@@ -22,6 +14,7 @@
     <EntitySetMapping Name="Images">
       <EntityTypeMapping TypeName="PracticaMaDModel.Image">
         <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="imagePath" ColumnName="imagePath" />
           <ScalarProperty Name="imageId" ColumnName="imageId" />
           <ScalarProperty Name="likes" ColumnName="likes" />
           <ScalarProperty Name="title" ColumnName="title" />
@@ -29,7 +22,6 @@
           <ScalarProperty Name="aperture" ColumnName="aperture" />
           <ScalarProperty Name="balance" ColumnName="balance" />
           <ScalarProperty Name="exposure" ColumnName="exposure" />
-          <ScalarProperty Name="imageData" ColumnName="imageData" />
           <ScalarProperty Name="usrId" ColumnName="usrId" />
           <ScalarProperty Name="categoryId" ColumnName="categoryId" />
         </MappingFragment>
@@ -65,5 +57,13 @@
         <ScalarProperty Name="usrId" ColumnName="userLikesId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="PracticaMaDModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

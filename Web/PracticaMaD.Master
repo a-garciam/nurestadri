@@ -26,7 +26,7 @@
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder_MenuExplanation" runat="server">
                 </asp:ContentPlaceHolder>
             </span>
-
+            <br />
             <span id="menuLinks">
 
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder_MenuLinks" runat="server">

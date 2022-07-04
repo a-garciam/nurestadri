@@ -5,14 +5,14 @@
       <PropertyRef Name="categoryId" />
     </Key>
     <Property Name="categoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
       <PropertyRef Name="commentId" />
     </Key>
     <Property Name="commentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="text" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="imageId" Type="bigint" Nullable="false" />
     <Property Name="usrId" Type="bigint" Nullable="false" />
   </EntityType>
@@ -30,12 +30,12 @@
     </Key>
     <Property Name="imageId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="likes" Type="int" Nullable="false" />
-    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="aperture" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="balance" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="exposure" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="imageData" Type="varbinary(max)" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="aperture" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="balance" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="exposure" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="imagePath" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="usrId" Type="bigint" Nullable="false" />
     <Property Name="categoryId" Type="bigint" Nullable="false" />
   </EntityType>
@@ -52,13 +52,13 @@
       <PropertyRef Name="usrId" />
     </Key>
     <Property Name="usrId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="loginName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="enPassword" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="country" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="language" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="loginName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="enPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="country" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="language" Type="nvarchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <Association Name="FK_CommentImage">
     <End Role="Image" Type="Self.Image" Multiplicity="1" />

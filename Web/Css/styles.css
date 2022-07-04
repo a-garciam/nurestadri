@@ -70,6 +70,13 @@ p.info {
     font-size: 16px;
 }
 
+img {
+    max-height: 300px;
+    max-width: 300px;
+    height: auto;
+    width: auto;
+}
+
 /* Forms. */
 
 form {
@@ -79,22 +86,16 @@ form {
 div.field {
     clear: both;
     padding-top: 1em;
-    width: 95%;
 }
 
     div.field span.label {
-        float: left;
+        float: initial;
         text-align: right;
         font-weight: bold;
         vertical-align: middle;
         padding-top: 0.3em;
         }
 
-    div.field span.entry {
-        float: right;
-        text-align: left;
-        width: 49.5%;
-    }
 
 div.checkbox {
     clear: both;

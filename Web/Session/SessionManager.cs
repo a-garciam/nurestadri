@@ -157,7 +157,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         {
             Locale locale = (Locale)context.Session[LOCALE_SESSION_ATTRIBUTE];
 
-            return locale;
+            return (locale);
         }
 
         /// <summary>

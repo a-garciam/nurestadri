@@ -10,14 +10,14 @@
             <PropertyRef Name="categoryId" />
           </Key>
           <Property Name="categoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="commentId" />
           </Key>
           <Property Name="commentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="text" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="imageId" Type="bigint" Nullable="false" />
           <Property Name="usrId" Type="bigint" Nullable="false" />
         </EntityType>
@@ -35,12 +35,12 @@
           </Key>
           <Property Name="imageId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="likes" Type="int" Nullable="false" />
-          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="aperture" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="balance" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="exposure" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="imagePath" Type="varchar(max)" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="aperture" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="balance" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="exposure" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="imagePath" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="usrId" Type="bigint" Nullable="false" />
           <Property Name="categoryId" Type="bigint" Nullable="false" />
         </EntityType>
@@ -57,13 +57,13 @@
             <PropertyRef Name="usrId" />
           </Key>
           <Property Name="usrId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="loginName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="enPassword" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="country" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="language" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="loginName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="enPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="language" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <Association Name="FK_CommentImage">
           <End Role="Image" Type="Self.Image" Multiplicity="1" />
@@ -210,7 +210,7 @@
             <PropertyRef Name="commentId" />
           </Key>
           <Property Name="commentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="imageId" Type="Int64" Nullable="false" />
           <Property Name="usrId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Image" Relationship="Self.FK_ImageComment" FromRole="Comment" ToRole="Image" />
@@ -222,17 +222,17 @@
           </Key>
           <Property Name="imageId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="likes" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="aperture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="balance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="exposure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="aperture" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="balance" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="exposure" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="usrId" Type="Int64" Nullable="false" />
           <Property Name="categoryId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_ImageComment" FromRole="Image" ToRole="Comment" />
           <NavigationProperty Name="User" Relationship="Self.FK_UserPost" FromRole="Image" ToRole="User" />
           <NavigationProperty Name="UserLikes" Relationship="Self.Like" FromRole="Image" ToRole="User" />
-          <Property Name="imagePath" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imagePath" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Category" Relationship="PracticaMaDModel.FK_ImageCategory" FromRole="Image" ToRole="Category" />
         </EntityType>
         <EntityType Name="User">
@@ -240,13 +240,13 @@
             <PropertyRef Name="usrId" />
           </Key>
           <Property Name="usrId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="loginName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="enPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="language" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="loginName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="enPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="language" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_UserComment" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Images" Relationship="Self.FK_UserPost" FromRole="User" ToRole="Image" />
           <NavigationProperty Name="Followers" Relationship="Self.Follower" FromRole="User" ToRole="User1" />
@@ -332,7 +332,7 @@
             <PropertyRef Name="categoryId" />
           </Key>
           <Property Name="categoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Images" Relationship="PracticaMaDModel.FK_ImageCategory" FromRole="Category" ToRole="Image" />
         </EntityType>
         <Association Name="FK_ImageCategory">
