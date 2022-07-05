@@ -3,7 +3,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <form id="form1" runat="server">
         <div align="center">
-            <asp:GridView ID="gvUserImages" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvUserImages_PageIndexChanging" Width="192px">
+            <asp:GridView ID="gvUserImages" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvUserImages_PageIndexChanging">
                 <Columns>
                    <asp:TemplateField HeaderText="Image">
                         <ItemTemplate>
@@ -11,7 +11,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="Title" DataField="Title" />
-                    <asp:BoundField HeaderText="Id" DataField="CategoryId" />
+                    <asp:BoundField HeaderText="Category" DataField="CategoryName" />
                 </Columns>
             </asp:GridView>
         </div>

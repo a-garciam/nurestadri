@@ -16,6 +16,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 InitDDLCategories();
@@ -42,20 +43,24 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
 
         protected void btnUploadImage_Click(object sender, EventArgs e)
         {
+
             if (Page.IsValid)
             {
 
-                    try
+                try
                     {
                         UserSession userSession = SessionManager.GetUserSession(Context);
                         if (userSession == null)
                         {
                             Response.Redirect("~/Pages/User/Authentication.aspx");
                         }
-                    string filename = "~/images/" + userSession.UserProfileId.ToString() + "/";
-                        Directory.CreateDirectory(filename);
+                        string filename = "~/images/" + userSession.UserProfileId.ToString() + "/";
+                        Trace.Warn(filename.ToString());
+                        string pathname = Server.MapPath(filename);
+                        Directory.CreateDirectory(pathname);
+
                         filename = filename + DateTime.Now.ToString("yyyyMMddHHmm") + fuImageUpload.FileName;
-                        
+                        Trace.Warn(filename.ToString());
 
                         IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
                         IImageService imageService = iocManager.Resolve<IImageService>();
@@ -64,11 +69,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
 
                         imageService.UploadImage(userSession.UserProfileId,categoryId, tbTitle.Text, 
                             tbDescription.Text, tbAperture.Text, tbExposure.Text, tbBalance.Text, filename);
-                        fuImageUpload.SaveAs(filename);
+                        fuImageUpload.SaveAs(Server.MapPath(filename));
                         lblUploadCompleted.Text = "Imagen subida";
                     }
                     catch (Exception exc)
                     {
+                    Trace.Warn("exception: "+exc.Message);
                     }
 
             }

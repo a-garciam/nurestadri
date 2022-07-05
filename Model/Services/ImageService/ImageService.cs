@@ -37,6 +37,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 image.title,
                 user.usrId,
                 category.categoryId,
+                category.name,
                 image.likes
             );
 
@@ -60,6 +61,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                     image.title,
                     user.usrId,
                     category.categoryId,
+                    category.name, 
                     image.likes
                 ));
             }
@@ -87,6 +89,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                     image.title,
                     user.usrId,
                     category.categoryId,
+                    category.name, 
                     image.likes
                 ));
             }
@@ -108,6 +111,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                     image.title,
                     user.usrId,
                     category.categoryId,
+                    category.name, 
                     image.likes
                 ));
             }
