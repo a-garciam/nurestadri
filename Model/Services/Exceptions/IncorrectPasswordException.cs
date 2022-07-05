@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Es.Udc.DotNet.ModelUtil.Log;
 
-namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Exceptions
+namespace Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions
 {
     /// <summary>
     /// Public <c>ModelException</c> which captures the error 

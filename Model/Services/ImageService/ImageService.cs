@@ -138,6 +138,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             {
                 throw new IncorrectBalanceFormatException(balance);
             }
+            if (ImageDao.FindByTitle(title) != null) {
+                throw new ObjectAlreadyExistsException(title);
+            }
 
 
             Image image = new Image() 

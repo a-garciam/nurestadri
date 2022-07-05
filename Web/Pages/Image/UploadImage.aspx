@@ -4,6 +4,7 @@
     runat="server">
     <form id="form1" runat="server">
         <div class="field">
+            <asp:Label ID="lblError" runat="server" CssClass="errorMessage" Text="Error"></asp:Label>
             <br />
             <asp:Label ID="lblTitle" runat="server" Text="Title" meta:resourcekey="lblTitleResource1" CssClass="label"></asp:Label>
             <br />
@@ -24,21 +25,25 @@
         <div class="field">
             <asp:Label ID="lblAperture" runat="server" Text="Aperture:" meta:resourcekey="lblApertureResource1" CssClass="label"></asp:Label>
             <br />
-            <asp:TextBox ID="tbAperture" placeholder="Ex.: f/3.0" runat="server" Height="17px" Width="129px" meta:resourcekey="tbApertureResource1" CssClass="entry" MaxLength="10"></asp:TextBox>
+            <asp:Label ID="lblApertureFormat" runat="server" CssClass="label" Text="f/"></asp:Label>
+            <asp:TextBox ID="tbAperture" placeholder="Ex.: 3.0" runat="server" Height="17px" Width="129px" Min="0" Type="number" meta:resourcekey="tbApertureResource1" CssClass="entry" MaxLength="10"></asp:TextBox>
             <br />
             <asp:RequiredFieldValidator ID="rfvTitle1" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbAperture"  CssClass="errorMessage"></asp:RequiredFieldValidator>
+            <asp:Label ID="lblErrorAperture" runat="server" CssClass="errorMessage" Text="Error"></asp:Label>
             <br />
             <asp:Label ID="lblExposure" runat="server" Text="Exposure" meta:resourcekey="lblExposureResource1" CssClass="label"></asp:Label>
             <br />
             <asp:TextBox ID="tbExposure" placeholder="Ex.: 1/100" runat="server" Height="17px" Width="129px" meta:resourcekey="tbExposureResource1" CssClass="entry" MaxLength="10"></asp:TextBox>
             <br />
             <asp:RequiredFieldValidator ID="rfvTitle2" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbExposure"  CssClass="errorMessage"></asp:RequiredFieldValidator>
+            <asp:Label ID="lblErrorExposure" runat="server" CssClass="errorMessage" Text="Error"></asp:Label>
             <br />
             <asp:Label ID="lblBalance" runat="server" Text="Balance" meta:resourcekey="lblBalanceResource1" CssClass="label"></asp:Label>
             <br />
-            <asp:TextBox ID="tbBalance" runat="server" Height="17px" Width="129px" meta:resourcekey="tbBalanceResource1" CssClass="entry" MaxLength="10"></asp:TextBox>
+            <asp:TextBox ID="tbBalance" runat="server" Height="17px" Width="129px" Min="0" Type="number" meta:resourcekey="tbBalanceResource1" CssClass="entry" MaxLength="10"></asp:TextBox>
             <br />
             <asp:RequiredFieldValidator ID="rfvTitle3" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbBalance"  CssClass="errorMessage"></asp:RequiredFieldValidator>
+            <asp:Label ID="lblErrorBalance" runat="server" CssClass="errorMessage" Text="Error"></asp:Label>
         </div>
         <div class="field">
         <asp:Label ID="lblCategory" runat="server" Text="Category" meta:resourcekey="lblCategoryResource1" CssClass="label"></asp:Label>

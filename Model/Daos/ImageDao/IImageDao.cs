@@ -10,5 +10,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
         IList<Image> FindByFilterAndCategory(string keywords, long categoryÏd);
 
         IList<Image> FindByUser(long userId);
+        Image FindByTitle(string title);
     }
 }

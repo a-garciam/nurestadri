@@ -5,7 +5,7 @@ using Ninject;
 using System;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Util;
-using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Exceptions;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
 {

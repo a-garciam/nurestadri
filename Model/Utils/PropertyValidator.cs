@@ -23,14 +23,21 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Utils
 
         public static bool IsValidImageExposure(string exposure)
         {
-            if (string.IsNullOrWhiteSpace(exposure))
+            if (string.IsNullOrWhiteSpace(exposure) || !exposure.Contains("/"))
             {
                 return false;
             }
-
-            return exposure.Contains("/");
-            
-            
+            string[] cadena = exposure.Split('/');
+            try
+            {
+                int.Parse(cadena[0]);
+                int.Parse(cadena[1]);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public static bool IsValidImageBalance(string balance)

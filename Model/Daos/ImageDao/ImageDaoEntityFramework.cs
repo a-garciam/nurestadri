@@ -50,5 +50,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 
             return resultImages;
         }
+
+        public Image FindByTitle(string title)
+        {
+            DbSet<Image> imageContext = Context.Set<Image>();
+
+            var result = imageContext.Where(i => i.title == title);
+
+            return result.FirstOrDefault();
+        }
     }
 }
