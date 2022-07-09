@@ -114,6 +114,8 @@
   <ItemGroup>
     <Content Include="Css\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Image\FilterImages.aspx" />
+    <Content Include="Pages\Image\ImageFeed.aspx" />
     <Content Include="Pages\Image\UploadImage.aspx" />
     <Content Include="Pages\Image\UserImagesFeed.aspx" />
     <Content Include="Pages\MainPage.aspx" />
@@ -127,6 +129,20 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Image\FilterImages.aspx.cs">
+      <DependentUpon>FilterImages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Image\FilterImages.aspx.designer.cs">
+      <DependentUpon>FilterImages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Image\ImageFeed.aspx.cs">
+      <DependentUpon>ImageFeed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Image\ImageFeed.aspx.designer.cs">
+      <DependentUpon>ImageFeed.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Image\UploadImage.aspx.cs">
       <DependentUpon>UploadImage.aspx</DependentUpon>
@@ -198,7 +214,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Session\SessionManager.cs" />
-    <Compile Include="Session\SpecificCulturePage.cs" />
+    <Compile Include="Session\SpecificCulturePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Session\UserSession.cs" />
     <Compile Include="Session\View\ApplicationObjects\Countries.cs" />
     <Compile Include="Session\View\ApplicationObjects\Languages.cs" />
