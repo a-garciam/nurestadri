@@ -19,6 +19,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         public string text { get; set; }
         public long imageId { get; set; }
         public long usrId { get; set; }
+        public System.DateTime creationDate { get; set; }
     
         
         /// <summary>
@@ -50,6 +51,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     			hash = hash * multiplier + (text == null ? 0 : text.GetHashCode());
     			hash = hash * multiplier + imageId.GetHashCode();
     			hash = hash * multiplier + usrId.GetHashCode();
+    			hash = hash * multiplier + creationDate.GetHashCode();
     
     			return hash;
     	    }
@@ -74,6 +76,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
                &&  (this.text == target.text )       
                &&  (this.imageId == target.imageId )       
                &&  (this.usrId == target.usrId )       
+               &&  (this.creationDate == target.creationDate )       
                ;
     
         }
@@ -112,6 +115,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
            strComment.Append(" text = " + text + " | " );       
            strComment.Append(" imageId = " + imageId + " | " );       
            strComment.Append(" usrId = " + usrId + " | " );       
+           strComment.Append(" creationDate = " + creationDate + " | " );       
             strComment.Append("] ");    
     
     		return strComment.ToString();

@@ -57,22 +57,28 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
                     {
                         Response.Redirect("~/Pages/User/Authentication.aspx");
                     }
-                    string filename = "~/images/" + userSession.UserProfileId.ToString() + "/";
-                    Trace.Warn(filename.ToString());
-                    string pathname = Server.MapPath(filename);
-                    Directory.CreateDirectory(pathname);
+                    if (!fuImageUpload.FileName.Contains("/") && !fuImageUpload.FileName.Contains("\\"))
+                    {
+                        string filename = "~/images/" + userSession.UserProfileId.ToString() + "/";
+                        Trace.Warn(filename.ToString());
+                        string pathname = Server.MapPath(filename);
+                        Directory.CreateDirectory(pathname);
+                        filename = filename + DateTime.Now.ToString("yyyyMMddHHmm") + fuImageUpload.FileName;
 
-                    filename = filename + DateTime.Now.ToString("yyyyMMddHHmm") + fuImageUpload.FileName;
+                        IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+                        IImageService imageService = iocManager.Resolve<IImageService>();
 
-                    IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-                    IImageService imageService = iocManager.Resolve<IImageService>();
+                        long categoryId = Convert.ToInt64(ddlCategory.SelectedValue);
 
-                    long categoryId = Convert.ToInt64(ddlCategory.SelectedValue);
-
-                    imageService.UploadImage(userSession.UserProfileId, categoryId, tbTitle.Text,
-                        tbDescription.Text, "f/" + tbAperture.Text, tbExposure.Text, tbBalance.Text, filename);
-                    fuImageUpload.SaveAs(Server.MapPath(filename));
-                    lblUploadCompleted.Text = "Imagen subida";
+                        imageService.UploadImage(userSession.UserProfileId, categoryId, tbTitle.Text,
+                            tbDescription.Text, "f/" + tbAperture.Text, tbExposure.Text, tbBalance.Text, filename);
+                        fuImageUpload.SaveAs(Server.MapPath(filename));
+                        lblUploadCompleted.Text = "Imagen subida";
+                    }
+                    else
+                    {
+                        lblUploadCompleted.Text = "El nombre de la imagen no debe contener simbolos";
+                    }
                 }
                 catch (IncorrectApertureFormatException exc)
                 {
@@ -89,9 +95,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
                     lblErrorBalance.Text = exc.Message;
                     lblErrorBalance.Visible = true;
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
-                    lblError.Text = exc.Message;
+                    lblError.Text = "Se ha producido un error";
                     lblError.Visible = true;
                 }
             }

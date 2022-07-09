@@ -23,11 +23,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         private const string aperture = "f/5.0";
         private const string balance = "4000";
         private const string exposure = "1/90";
-        private const string imagePath =  "image.png";
+        private const string imagePath = "image.png";
 
         private Category category = new Category()
         {
             name = "Paisajes"
+        };
+
+        private Category category2 = new Category()
+        {
+            name = "Animales"
         };
 
         private User user1 = new User()
@@ -41,6 +46,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             language = "español"
         };
 
+        private User user2 = new User()
+        {
+            loginName = "user2",
+            enPassword = "password",
+            firstName = "name",
+            lastName = "lastName",
+            email = "user2@udc.es",
+            country = "españa",
+            language = "español"
+        };
 
         private Image image1 = new Image()
         {
@@ -50,6 +65,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             balance = balance,
             exposure = exposure,
             imagePath = imagePath
+        };
+
+        private Image image2 = new Image()
+        {
+            title = title,
+            description = description,
+            aperture = aperture,
+            balance = balance,
+            exposure = exposure,
+            imagePath = "image2.png"
         };
 
         private static IKernel kernel;
@@ -97,8 +122,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             transactionScope.Dispose();
         }
 
-
-
         [TestMethod]
         public void TestUploadImage()
         {
@@ -107,7 +130,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 categoryDao.Create(category);
                 userDao.Create(user1);
 
-                long imageId = imageService.UploadImage(user1.usrId,category.categoryId,title,description,aperture,exposure,balance,imagePath);
+                string iPath = imageDirectory + user1.usrId.ToString() + imagePath;
+                long imageId = imageService.UploadImage(user1.usrId, category.categoryId, title, description, aperture, exposure, balance, iPath);
 
                 Image image = imageDao.Find(imageId);
 
@@ -120,8 +144,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 Assert.AreEqual(aperture, image.aperture);
                 Assert.AreEqual(balance, image.balance);
                 Assert.AreEqual(exposure, image.exposure);
-                //Assert.AreEqual(imagePath, image.imagePath);
-
+                Assert.AreEqual(iPath, image.imagePath);
             }
         }
 
@@ -141,6 +164,74 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
                 Assert.AreEqual(1, images.Count());
                 Assert.IsTrue(images.First().Title.ToLower().Contains("imagen"));
+            }
+        }
+
+        [TestMethod]
+        public void TestFilterImageAndCategory()
+        {
+            using (var scope = new TransactionScope())
+            {
+                categoryDao.Create(category);
+                categoryDao.Create(category);
+                userDao.Create(user1);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
+
+                imageDao.Create(image1);
+
+                IList<ImageOutput> images = imageService.FindImagesByFilterAndCategory("imagen", category.categoryId);
+
+                Assert.AreEqual(1, images.Count());
+                Assert.IsTrue(images.First().Title.ToLower().Contains("imagen"));
+            }
+        }
+
+        [TestMethod]
+        public void TestFindImageById()
+        {
+            using (var scope = new TransactionScope())
+            {
+                categoryDao.Create(category);
+                categoryDao.Create(category);
+                userDao.Create(user1);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
+                image1.usrId = user1.usrId;
+                user1.Images.Add(image1);
+                imageDao.Create(image1);
+
+                ImageOutput image = imageService.FindImageById(image1.imageId);
+
+                Assert.AreEqual(image1.title, image.Title);
+                Assert.AreEqual(user1.usrId, image.UserId);
+                Assert.AreEqual(category.categoryId, image.CategoryId);
+                Assert.AreEqual(category.name, image.CategoryName);
+                Assert.AreEqual(image1.imagePath, image.ImagePath);
+            }
+        }
+
+        [TestMethod]
+        public void TestFindImageByUser()
+        {
+            using (var scope = new TransactionScope())
+            {
+                categoryDao.Create(category);
+                categoryDao.Create(category);
+                userDao.Create(user1);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
+
+                imageDao.Create(image1);
+
+                IList<ImageOutput> images = imageService.FindImagesByUser(user1.usrId);
+                ImageOutput image = images.First();
+
+                Assert.AreEqual(image1.title, image.Title);
+                Assert.AreEqual(user1.usrId, image.UserId);
+                Assert.AreEqual(category.categoryId, image.CategoryId);
+                Assert.AreEqual(category.name, image.CategoryName);
+                Assert.AreEqual(image1.imagePath, image.ImagePath);
             }
         }
 
@@ -168,14 +259,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 imageService.DeleteImage(image.imageId);
                 //Probar comentarios y likes
                 Assert.IsFalse(imageDao.GetAllElements().Contains(image1));
-
             }
         }
 
         [TestMethod]
-        public void TestFindCategories() {
+        public void TestFindCategories()
+        {
             categoryDao.Create(category);
-            Assert.AreEqual(category.name,imageService.FindCategories()[0].Name);
+            Assert.AreEqual(category.name, imageService.FindCategories()[0].Name);
             Assert.AreEqual(category.categoryId, imageService.FindCategories()[0].CategoryId);
         }
     }

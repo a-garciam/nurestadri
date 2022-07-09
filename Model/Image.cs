@@ -31,6 +31,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         public long usrId { get; set; }
         public long categoryId { get; set; }
         public string imagePath { get; set; }
+        public System.DateTime creationDate { get; set; }
     
         
         /// <summary>
@@ -78,6 +79,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
     			hash = hash * multiplier + usrId.GetHashCode();
     			hash = hash * multiplier + categoryId.GetHashCode();
     			hash = hash * multiplier + (imagePath == null ? 0 : imagePath.GetHashCode());
+    			hash = hash * multiplier + creationDate.GetHashCode();
     
     			return hash;
     	    }
@@ -108,6 +110,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
                &&  (this.usrId == target.usrId )       
                &&  (this.categoryId == target.categoryId )       
                &&  (this.imagePath == target.imagePath )       
+               &&  (this.creationDate == target.creationDate )       
                ;
     
         }
@@ -152,6 +155,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
            strImage.Append(" usrId = " + usrId + " | " );       
            strImage.Append(" categoryId = " + categoryId + " | " );       
            strImage.Append(" imagePath = " + imagePath + " | " );       
+           strImage.Append(" creationDate = " + creationDate + " | " );       
             strImage.Append("] ");    
     
     		return strImage.ToString();

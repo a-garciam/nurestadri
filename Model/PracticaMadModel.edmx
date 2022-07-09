@@ -17,6 +17,7 @@
             <PropertyRef Name="commentId" />
           </Key>
           <Property Name="commentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="text" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="imageId" Type="bigint" Nullable="false" />
           <Property Name="usrId" Type="bigint" Nullable="false" />
@@ -35,6 +36,7 @@
           </Key>
           <Property Name="imageId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="likes" Type="int" Nullable="false" />
+          <Property Name="creationDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="aperture" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -215,6 +217,7 @@
           <Property Name="usrId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Image" Relationship="Self.FK_ImageComment" FromRole="Comment" ToRole="Image" />
           <NavigationProperty Name="User" Relationship="Self.FK_UserComment" FromRole="Comment" ToRole="User" />
+          <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -234,6 +237,7 @@
           <NavigationProperty Name="UserLikes" Relationship="Self.Like" FromRole="Image" ToRole="User" />
           <Property Name="imagePath" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Category" Relationship="PracticaMaDModel.FK_ImageCategory" FromRole="Image" ToRole="Category" />
+          <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -356,6 +360,7 @@
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="PracticaMaDModel.Comment">
               <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
                 <ScalarProperty Name="commentId" ColumnName="commentId" />
                 <ScalarProperty Name="text" ColumnName="text" />
                 <ScalarProperty Name="imageId" ColumnName="imageId" />
@@ -366,6 +371,7 @@
           <EntitySetMapping Name="Images">
             <EntityTypeMapping TypeName="PracticaMaDModel.Image">
               <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
                 <ScalarProperty Name="imagePath" ColumnName="imagePath" />
                 <ScalarProperty Name="imageId" ColumnName="imageId" />
                 <ScalarProperty Name="likes" ColumnName="likes" />

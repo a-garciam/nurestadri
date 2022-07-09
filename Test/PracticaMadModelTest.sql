@@ -113,6 +113,7 @@ GO
 CREATE TABLE [dbo].[Image] (
     [imageId] bigint IDENTITY(1,1) NOT NULL,
     [likes] int  NOT NULL,
+    [creationDate] datetime2 NOT NULL,
     [title] nvarchar(50)  NOT NULL,
     [description] nvarchar(500)  NOT NULL,
     [aperture] nvarchar(10)  NOT NULL,
@@ -134,6 +135,7 @@ GO
 -- Creating table 'Comment'
 CREATE TABLE [dbo].[Comment] (
     [commentId] bigint IDENTITY(1,1) NOT NULL,
+    [creationDate] datetime2 NOT NULL,
     [text] nvarchar(200)  NOT NULL,
     [imageId] bigint  NOT NULL,
     [usrId] bigint  NOT NULL

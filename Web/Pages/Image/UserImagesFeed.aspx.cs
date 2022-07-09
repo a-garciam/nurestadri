@@ -16,7 +16,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             UserSession userSession = SessionManager.GetUserSession(Context);
             if (userSession == null)
             {
@@ -29,7 +28,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
 
             IList<ImageOutput> imageList = imageService.FindImagesByUser(userID);
 
-            if (imageList.Count() <= 0) {
+            if (imageList.Count() <= 0)
+            {
                 return;
             }
             Session["lstImg"] = imageList;
@@ -37,8 +37,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             gvUserImages.DataSource = imageList;
             gvUserImages.AllowPaging = true;
             gvUserImages.DataBind();
-
-           
         }
 
         protected void gvUserImages_PageIndexChanging(object sender, GridViewPageEventArgs e)

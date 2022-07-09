@@ -44,7 +44,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 
             DbSet<Image> imageContext = Context.Set<Image>();
 
-            var result = imageContext.Where(i => i.usrId == userId).ToList();
+            var result = imageContext.Where(i => i.usrId == userId).OrderByDescending(i => i.creationDate).ToList();
 
             resultImages = result.ToList();
 

@@ -19,13 +19,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 
         [Inject]
         public ICategoryDao CategoryDao { private get; set; }
-        
+
         [Inject]
         public IImageDao ImageDao { private get; set; }
 
         [Inject]
         public ICommentDao CommentDao { private get; set; }
-
 
         public ImageOutput FindImageById(long imageId)
         {
@@ -36,17 +35,18 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 image.imagePath,
                 image.title,
                 user.usrId,
-                category.categoryId,
-                category.name,
-                image.likes
-            );
+                user.loginName,
+                categoryId: category.categoryId,
+                categoryName: category.name,
+                likes: image.likes,
+                 creationDate: image.creationDate
+                );
 
             return imageOutput;
         }
 
         public IList<ImageOutput> FindImagesByFilter(string keywords)
         {
-
             keywords = keywords.Trim();
 
             IList<Image> images = ImageDao.FindByFilter(keywords);
@@ -60,20 +60,17 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                     image.imagePath,
                     image.title,
                     user.usrId,
+                    user.loginName,
                     category.categoryId,
-                    category.name, 
-                    image.likes
-                ));
+                    category.name,
+                     image.likes, image.creationDate));
             }
 
             return imageOutputs;
-
         }
-
 
         public IList<ImageOutput> FindImagesByFilterAndCategory(string keywords, long categoryId)
         {
-            
             keywords = keywords.Trim();
 
             Category category = CategoryDao.Find(categoryId);
@@ -88,10 +85,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                     image.imagePath,
                     image.title,
                     user.usrId,
+                    user.loginName,
                     category.categoryId,
-                    category.name, 
-                    image.likes
-                ));
+                    category.name,
+                     image.likes, image.creationDate));
             }
 
             return imageOutputs;
@@ -110,10 +107,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                     image.imagePath,
                     image.title,
                     user.usrId,
+                    user.loginName,
                     category.categoryId,
-                    category.name, 
-                    image.likes
-                ));
+                    category.name,
+                    image.likes, image.creationDate));
             }
 
             return imageOutputs;
@@ -138,13 +135,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             {
                 throw new IncorrectBalanceFormatException(balance);
             }
-            if (ImageDao.FindByTitle(title) != null) {
+            if (ImageDao.FindByTitle(title) != null)
+            {
                 throw new ObjectAlreadyExistsException(title);
             }
 
-
-            Image image = new Image() 
-            { 
+            Image image = new Image()
+            {
                 User = user,
                 Category = category,
                 likes = 0,
@@ -153,13 +150,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 aperture = aperture,
                 exposure = exposure,
                 balance = balance,
-                imagePath = imageFile
+                imagePath = imageFile,
+                creationDate = System.DateTime.Now
             };
-            ImageDao.Create(image); 
+            ImageDao.Create(image);
 
             return image.imageId;
         }
-
 
         [Transactional]
         public void DeleteImage(long imageId)
@@ -170,15 +167,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 CommentDao.Remove(comment.commentId);
             }
             ImageDao.Remove(imageId);
-
         }
 
         public IList<CategoryOutput> FindCategories()
         {
-
             IList<CategoryOutput> categoriesOutput = new List<CategoryOutput>();
             IList<Category> categoryList = CategoryDao.GetAllElements();
-            if (categoryList.Count != 0) { 
+            if (categoryList.Count != 0)
+            {
                 foreach (Category category in categoryList)
                 {
                     categoriesOutput.Add(new CategoryOutput(
@@ -191,5 +187,26 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             return categoriesOutput;
         }
 
+        IList<ImageOutput> IImageService.FindAllImages()
+        {
+            IList<Image> images = ImageDao.GetAllElements();
+
+            IList<ImageOutput> imageOutputs = new List<ImageOutput>();
+            foreach (Image image in images)
+            {
+                Category category = CategoryDao.Find(image.Category.categoryId);
+                User user = UserDao.Find(image.User.usrId);
+                imageOutputs.Add(new ImageOutput(
+                    image.imagePath,
+                    image.title,
+                    user.usrId,
+                    user.loginName,
+                    category.categoryId,
+                    category.name,
+                     image.likes, image.creationDate));
+            }
+
+            return imageOutputs;
+        }
     }
 }

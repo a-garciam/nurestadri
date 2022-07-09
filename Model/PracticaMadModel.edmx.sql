@@ -82,6 +82,7 @@ GO
 CREATE TABLE [dbo].[Image] (
     [imageId] bigint IDENTITY(1,1) NOT NULL,
     [likes] int  NOT NULL,
+    [creationDate] datetime2 NOT NULL,
     [title] nvarchar(50)  NOT NULL,
     [description] nvarchar(500)  NOT NULL,
     [aperture] nvarchar(10)  NOT NULL,
@@ -103,6 +104,7 @@ GO
 -- Creating table 'Comment'
 CREATE TABLE [dbo].[Comment] (
     [commentId] bigint IDENTITY(1,1) NOT NULL,
+    [creationDate] datetime2 NOT NULL,
     [text] nvarchar(200)  NOT NULL,
     [imageId] bigint  NOT NULL,
     [usrId] bigint  NOT NULL
@@ -293,48 +295,48 @@ INSERT INTO [Category] ([categoryId],[name])
 SET IDENTITY_INSERT [Category] OFF
 
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (1, 0, 'Arbore', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\arbore.jpg', 1, 2);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (1, 0, 'Arbore', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\arbore.jpg', 1, 2, "06-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (2, 0, 'Azul', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\azul.jpg', 1, 1);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (2, 0, 'Azul', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\azul.jpg', 1, 1, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (3, 0, 'Buratos', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\buratos.jpg', 1, 2);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (3, 0, 'Buratos', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\buratos.jpg', 1, 2, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (4, 0, 'Can', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\can.jpg', 1, 2);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (4, 0, 'Can', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\can.jpg', 1, 2, "07-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (5, 0, 'Flor', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\flor.jpg', 1, 2);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (5, 0, 'Flor', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\flor.jpg', 1, 2, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (6, 0, 'Folla', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\folla.jpg', 1, 2);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (6, 0, 'Folla', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\folla.jpg', 1, 2, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (7, 0, 'Pombas', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\pombas.jpg', 1, 2);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (7, 0, 'Pombas', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\pombas.jpg', 1, 2, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (8, 0, 'Praia', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\praia.jpg', 1, 2);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (8, 0, 'Praia', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\praia.jpg', 1, 2, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (9, 0, 'Tulipans', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\tulipans.jpg', 1, 2);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (9, 0, 'Tulipans', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\tulipans.jpg', 1, 2, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (10, 0, 'Verde', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\verde.jpg', 1, 1);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (10, 0, 'Verde', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\verde.jpg', 1, 1, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 SET IDENTITY_INSERT [Image] ON
-INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId])
-    VALUES (11, 0, 'Vermello', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\vermello.jpg', 1, 1);
+INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
+    VALUES (11, 0, 'Vermello', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\vermello.jpg', 1, 1, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 
 
