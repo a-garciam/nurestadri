@@ -15,6 +15,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblError.Visible = false;
             if (!IsPostBack)
             {
                 InitDDLCategories();
@@ -54,18 +55,17 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
                     string keyword = tbKeyword.Text.Trim();
                     string url =
                     String.Format("./ImageFeed.aspx?keyword={0}", keyword);
-                    Trace.Warn("-" + ddlCategory.SelectedValue + "-");
                     if (ddlCategory.SelectedValue != null && ddlCategory.SelectedValue != "")
                     {
                         long categoryId = Convert.ToInt64(ddlCategory.SelectedValue);
-                        Trace.Warn("como?");
                         url = String.Format("./ImageFeed.aspx?keyword={0}&categoryID={1}", keyword, categoryId.ToString());
                     }
                     Response.Redirect(Response.ApplyAppPathModifier(url));
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
-                    Trace.Warn(exc.Message);
+                    lblError.Text = "Se ha producido un error";
+                    lblError.Visible = true;
                 }
             }
         }

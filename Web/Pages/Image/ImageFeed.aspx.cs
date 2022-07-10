@@ -15,6 +15,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblNoImages.Visible = false;
             UserSession userSession = SessionManager.GetUserSession(Context);
             if (userSession == null)
             {
@@ -32,24 +33,20 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             {
                 long categoryId = Int64.Parse(Request.Params.Get("categoryID"));
                 imageList = imageService.FindImagesByFilterAndCategory(keyword, categoryId);
-                Trace.Warn(Request.Params.Get("categoryID"));
-                Trace.Warn("keyword");
             }
             else if (keyword != null)
             {
-                Trace.Warn(Request.Params.Get("categoryID"));
-                Trace.Warn("keyword");
                 imageList = imageService.FindImagesByFilter(keyword);
             }
             else
             {
-                Trace.Warn("all");
                 imageList = imageService.FindAllImages();
             }
 
             if (imageList.Count() <= 0)
             {
                 Trace.Warn("0 elements");
+                lblNoImages.Visible = true;
                 return;
             }
             Session["lstImg"] = imageList;

@@ -15,6 +15,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
     {
 
         /// <summary>
+        /// Control lclMenuExplanation.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize lclMenuExplanation;
+
+        /// <summary>
         /// Control form1.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
         /// Control lblFindByKeyword.
@@ -40,15 +58,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbKeyword;
-
-        /// <summary>
-        /// Control revKeyword.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revKeyword;
 
         /// <summary>
         /// Control rfvKeyword.

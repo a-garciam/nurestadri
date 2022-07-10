@@ -127,6 +127,21 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Common.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Common.gl.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.gl.resx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -247,9 +262,6 @@
     <Content Include="Pages\User\App_LocalResources\Register.aspx.es.resx" />
     <Content Include="Pages\User\App_LocalResources\Register.aspx.gl.resx" />
     <Content Include="Pages\User\App_LocalResources\Register.aspx.resx" />
-    <Content Include="Pages\User\App_LocalResources\UpdateUserProfile.aspx.es.resx" />
-    <Content Include="Pages\User\App_LocalResources\UpdateUserProfile.aspx.gl.resx" />
-    <Content Include="Pages\User\App_LocalResources\UpdateUserProfile.aspx.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
@@ -258,7 +270,67 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\UserImagesFeed.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\UserImagesFeed.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\UserImagesFeed.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Common.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="App_LocalResources\PracticaMaD.Master.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\PracticaMaD.Master.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\PracticaMaD.Master.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Common.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Common.es.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Common.gl.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Common.gl.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\UploadImage.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\UploadImage.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\UploadImage.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\ImageFeed.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\ImageFeed.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\ImageFeed.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\FilterImages.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\FilterImages.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\FilterImages.aspx.gl.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

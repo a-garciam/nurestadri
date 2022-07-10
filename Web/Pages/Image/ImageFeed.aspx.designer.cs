@@ -15,6 +15,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
     {
 
         /// <summary>
+        /// Control lclMenuExplanation.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lclMenuExplanation;
+
+        /// <summary>
         /// Control form1.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFilterImages;
+
+        /// <summary>
+        /// Control lblNoImages.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoImages;
 
         /// <summary>
         /// Control gvImageFeed.

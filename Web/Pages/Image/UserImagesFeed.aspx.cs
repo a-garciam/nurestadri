@@ -16,6 +16,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblNoImages.Visible = false;
             long userID;
             UserSession userSession = SessionManager.GetUserSession(Context);
             if (userSession == null)
@@ -38,6 +39,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
 
             if (imageList.Count() <= 0)
             {
+                lblNoImages.Visible = true;
                 return;
             }
             Session["lstImg"] = imageList;

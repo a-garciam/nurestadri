@@ -1,10 +1,10 @@
 <%@ Page Language="C#" MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true"
-    Codebehind="Authentication.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.Pages.User.Authentication"
+    CodeBehind="Authentication.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.Pages.User.Authentication"
     meta:resourcekey="Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_MenuExplanation"
     runat="server">
-    
+
     <asp:Localize ID="lclMenuExplanation" runat="server" meta:resourcekey="lclMenuExplanation" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyContent"
@@ -18,9 +18,9 @@
                         class="entry">
                         <asp:TextBox ID="txtLogin" runat="server" Width="100" Columns="16"></asp:TextBox>
                         <%--<asp:RequiredFieldValidator ID="rfvLogin" runat="server"
-                            ControlToValidate="txtLogin" Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>"/>--%>
+                            ControlToValidate="txtLogin" Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" />--%>
                         <asp:Label ID="lblLoginError" runat="server" ForeColor="Red" Style="position: relative"
-                            Visible="False" meta:resourcekey="lblLoginError">                        
+                            Visible="False" meta:resourcekey="lblLoginError">
                         </asp:Label>
                     </span>
             </div>
@@ -29,10 +29,10 @@
                     <asp:Localize ID="lclPassword" runat="server" meta:resourcekey="lclPassword" /></span><span
                         class="entry">
                         <asp:TextBox TextMode="Password" ID="txtPassword" runat="server" Width="100" Columns="16"></asp:TextBox>
-                       <%-- <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
-                            ControlToValidate="txtPassword" Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>"/>--%>
+                        <%-- <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
+                            ControlToValidate="txtPassword" Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" />--%>
                         <asp:Label ID="lblPasswordError" runat="server" ForeColor="Red" Style="position: relative"
-                            Visible="False" meta:resourcekey="lblPasswordError">       
+                            Visible="False" meta:resourcekey="lblPasswordError">
                         </asp:Label>
                     </span>
             </div>

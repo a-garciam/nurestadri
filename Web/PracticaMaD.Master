@@ -11,7 +11,7 @@
     <div id="window">
         <!-- Page title. -->
         <div id="pageTitle">
-            <asp:Localize ID="lclPageTitle" runat="server" meta:resourcekey="lclPageTitle" />
+            <asp:Localize ID="lclPageTitle" runat="server" Text="<%$ Resources: Common, lclPageTitle %>" />
         </div>
         <!-- Menu. -->
         <div id="menu">
@@ -20,25 +20,25 @@
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder_MenuLinks" runat="server">
                     <asp:Label ID="lblDash1" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
                     <asp:HyperLink ID="lnkAuthenticate" runat="server"
-                        NavigateUrl="~/Pages/User/Authentication.aspx">Login</asp:HyperLink>
-                    <asp:Label ID="lblDash4" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                        NavigateUrl="~/Pages/User/Authentication.aspx" meta:resourcekey="lnkAuthenticateResource1">Login</asp:HyperLink>
+                    <asp:Label ID="lblDash4" runat="server" Text="-" meta:resourcekey="lblDash4Resource1" />
                     <asp:HyperLink ID="lnkRegister" runat="server"
-                        NavigateUrl="~/Pages/User/Register.aspx">Register</asp:HyperLink>
-                    <asp:Label ID="lblDash2" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                        NavigateUrl="~/Pages/User/Register.aspx" meta:resourcekey="lnkRegisterResource1">Register</asp:HyperLink>
+                    <asp:Label ID="lblDash2" runat="server" Text="-" meta:resourcekey="lblDash2Resource1" />
                     <asp:HyperLink ID="lnkUpdate" runat="server"
-                        NavigateUrl="~/Pages/User/UpdateUserProfile.aspx">Update Profile</asp:HyperLink>
-                    <asp:Label ID="lblDash3" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                        NavigateUrl="~/Pages/User/UpdateUserProfile.aspx" meta:resourcekey="lnkUpdateResource1">Update Profile</asp:HyperLink>
+                    <asp:Label ID="lblDash3" runat="server" Text="-" meta:resourcekey="lblDash3Resource1" />
                     <asp:HyperLink ID="lnkLogout" runat="server"
-                        NavigateUrl="~/Pages/User/Logout.aspx">Logout</asp:HyperLink>
-                    <asp:Label ID="lblDash7" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                        NavigateUrl="~/Pages/User/Logout.aspx" meta:resourcekey="lnkLogoutResource1">Logout</asp:HyperLink>
+                    <asp:Label ID="lblDash7" runat="server" Text="-" meta:resourcekey="lblDash7Resource1" />
                     <asp:HyperLink ID="lnkImageFeed" runat="server"
-                        NavigateUrl="~/Pages/Image/ImageFeed.aspx">Images feed</asp:HyperLink>
-                    <asp:Label ID="lblDash5" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                        NavigateUrl="~/Pages/Image/ImageFeed.aspx" meta:resourcekey="lnkImageFeedResource1">Images feed</asp:HyperLink>
+                    <asp:Label ID="lblDash5" runat="server" Text="-" meta:resourcekey="lblDash5Resource1" />
                     <asp:HyperLink ID="lnkUploadImage" runat="server"
-                        NavigateUrl="~/Pages/Image/UploadImage.aspx">Upload Image</asp:HyperLink>
-                    <asp:Label ID="lblDash6" runat="server" Text="-" meta:resourcekey="lblDash1Resource1" />
+                        NavigateUrl="~/Pages/Image/UploadImage.aspx" meta:resourcekey="lnkUploadImageResource1">Upload Image</asp:HyperLink>
+                    <asp:Label ID="lblDash6" runat="server" Text="-" meta:resourcekey="lblDash6Resource1" />
                     <asp:HyperLink ID="lnkUserPhotos" runat="server"
-                        NavigateUrl="~/Pages/Image/UserImagesFeed.aspx">Your photos</asp:HyperLink>
+                        NavigateUrl="~/Pages/Image/UserImagesFeed.aspx" meta:resourcekey="lnkUserPhotosResource1">Your photos</asp:HyperLink>
                 </asp:ContentPlaceHolder>
             </span>
             <br />

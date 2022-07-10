@@ -15,6 +15,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
     {
 
         /// <summary>
+        /// Control lclMenuExplanation.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize lclMenuExplanation;
+
+        /// <summary>
         /// Control form1.
         /// </summary>
         /// <remarks>
@@ -229,15 +238,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle4;
-
-        /// <summary>
-        /// Control lblImageUpload.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblImageUpload;
 
         /// <summary>
         /// Control fuImageUpload.
