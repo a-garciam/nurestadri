@@ -18,7 +18,7 @@
             <br />
             <asp:TextBox ID="tbDescription" runat="server" Height="79px" Width="264px" meta:resourcekey="tbDescriptionResource1" CssClass="entry" TextMode="MultiLine" MaxLength="500" Style="resize: none"></asp:TextBox>
             <br />
-            <asp:RequiredFieldValidator ID="rfvTitle0" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbDescription" CssClass="errorMessage"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvDescription" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="tbDescription" CssClass="errorMessage"></asp:RequiredFieldValidator>
             <br />
         </div>
         <div class="field">

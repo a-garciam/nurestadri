@@ -69,7 +69,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
         private Image image2 = new Image()
         {
-            title = title,
+            title = "Imagen2",
             description = description,
             aperture = aperture,
             balance = balance,
@@ -173,17 +173,22 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             using (var scope = new TransactionScope())
             {
                 categoryDao.Create(category);
-                categoryDao.Create(category);
+                categoryDao.Create(category2);
                 userDao.Create(user1);
+                userDao.Create(user2);
                 image1.User = userDao.Find(user1.usrId);
                 image1.Category = categoryDao.Find(category.categoryId);
+                image2.User = userDao.Find(user2.usrId);
+                image2.Category = categoryDao.Find(category2.categoryId);
 
                 imageDao.Create(image1);
+                imageDao.Create(image2);
 
                 IList<ImageOutput> images = imageService.FindImagesByFilterAndCategory("imagen", category.categoryId);
 
                 Assert.AreEqual(1, images.Count());
                 Assert.IsTrue(images.First().Title.ToLower().Contains("imagen"));
+                Assert.AreEqual("Imagen 1", images[0].Title);
             }
         }
 

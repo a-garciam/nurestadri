@@ -25,7 +25,27 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
             IImageService imageService = iocManager.Resolve<IImageService>();
 
-            IList<ImageOutput> imageList = imageService.FindAllImages();
+            string keyword = Request.Params.Get("keyword");
+            IList<ImageOutput> imageList = new List<ImageOutput>();
+
+            if (Request.Params.Get("categoryID") != null)
+            {
+                long categoryId = Int64.Parse(Request.Params.Get("categoryID"));
+                imageList = imageService.FindImagesByFilterAndCategory(keyword, categoryId);
+                Trace.Warn(Request.Params.Get("categoryID"));
+                Trace.Warn("keyword");
+            }
+            else if (keyword != null)
+            {
+                Trace.Warn(Request.Params.Get("categoryID"));
+                Trace.Warn("keyword");
+                imageList = imageService.FindImagesByFilter(keyword);
+            }
+            else
+            {
+                Trace.Warn("all");
+                imageList = imageService.FindAllImages();
+            }
 
             if (imageList.Count() <= 0)
             {
@@ -50,6 +70,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             {
                 ex.Message.ToString();
             }
+        }
+
+        protected void btnFilterImages_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Image/FilterImages.aspx");
         }
     }
 }

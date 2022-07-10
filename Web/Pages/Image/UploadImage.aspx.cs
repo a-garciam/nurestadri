@@ -40,9 +40,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
                 ddlCategory.DataValueField = "CategoryId";
                 ddlCategory.DataBind();
             }
-            catch (Exception exc)
+            catch (Exception)
             {
-                lblUploadCompleted.Text = exc.ToString();
+                lblError.Text = "Error al cargar las categorias";
             }
         }
 

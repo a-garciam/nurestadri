@@ -30,8 +30,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
 
             DbSet<Image> imageContext = Context.Set<Image>();
 
-            var result = imageContext.Where(i => i.title.ToLower().Contains(keywords.ToLower())
-                || i.description.ToLower().Contains(keywords.ToLower()) || i.categoryId == categoryId).ToList();
+            var result = imageContext.Where(i => i.categoryId == categoryId && (i.title.ToLower().Contains(keywords.ToLower())
+                || i.description.ToLower().Contains(keywords.ToLower()))).ToList();
 
             filteredImages = result.ToList();
 
