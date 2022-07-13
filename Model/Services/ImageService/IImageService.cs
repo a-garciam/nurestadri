@@ -11,7 +11,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
     {
         long UploadImage(long userId, long categoryId, string title, string description, string aperture, string exposure, string balance, string imageFile);
 
-        void DeleteImage(long imageId);
+        void DeleteImage(long imageId, long userId);
 
         IList<ImageOutput> FindImagesByFilter(string keywords);
 

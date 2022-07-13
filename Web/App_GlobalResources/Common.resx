@@ -126,4 +126,7 @@
   <data name="lblNoImages" xml:space="preserve">
     <value>No images to be found here :(</value>
   </data>
+  <data name="btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>

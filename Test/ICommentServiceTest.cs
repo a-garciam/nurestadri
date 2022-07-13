@@ -16,7 +16,7 @@ using System.Data.Entity.Validation;
 namespace Es.Udc.DotNet.PracticaMaD.Test
 {
     [TestClass]
-    public class CommentServiceTest
+    public class ICommentServiceTest
     {
 
         private const string txt = "Gran fotografía crack!! :)";

@@ -132,6 +132,7 @@
     <Compile Include="Services\Exceptions\IncorrectApertureFormatException.cs" />
     <Compile Include="Services\Exceptions\IncorrectBalanceFormatException.cs" />
     <Compile Include="Services\Exceptions\IncorrectExposureFormatException.cs" />
+    <Compile Include="Services\Exceptions\OperationNotAllowedException.cs" />
     <Compile Include="Services\ImageService\IImageService.cs" />
     <Compile Include="Services\ImageService\ImageService.cs" />
     <Compile Include="Services\Exceptions\ObjectAlreadyExistsException.cs" />

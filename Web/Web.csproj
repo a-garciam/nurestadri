@@ -114,6 +114,8 @@
   <ItemGroup>
     <Content Include="Css\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Feedback\InternalError.aspx" />
+    <Content Include="Pages\Feedback\SuccessfulOperation.aspx" />
     <Content Include="Pages\Image\FilterImages.aspx" />
     <Content Include="Pages\Image\ImageDetails.aspx" />
     <Content Include="Pages\Image\ImageFeed.aspx" />
@@ -145,6 +147,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Feedback\InternalError.aspx.cs">
+      <DependentUpon>InternalError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Feedback\InternalError.aspx.designer.cs">
+      <DependentUpon>InternalError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Feedback\SuccessfulOperation.aspx.cs">
+      <DependentUpon>SuccessfulOperation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Feedback\SuccessfulOperation.aspx.designer.cs">
+      <DependentUpon>SuccessfulOperation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Image\FilterImages.aspx.cs">
       <DependentUpon>FilterImages.aspx</DependentUpon>
@@ -357,6 +373,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Image\App_LocalResources\ImageDetails.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Feedback\App_LocalResources\InternalError.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Feedback\App_LocalResources\InternalError.aspx.es.resx" />
+    <Content Include="Pages\Feedback\App_LocalResources\InternalError.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Feedback\App_LocalResources\SuccessfulOperation.aspx.es.resx" />
+    <Content Include="Pages\Feedback\App_LocalResources\SuccessfulOperation.aspx.gl.resx" />
+    <Content Include="Pages\Feedback\App_LocalResources\SuccessfulOperation.aspx.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

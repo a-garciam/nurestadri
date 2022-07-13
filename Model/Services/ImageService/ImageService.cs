@@ -163,9 +163,13 @@ image.likes, image.creationDate));
         }
 
         [Transactional]
-        public void DeleteImage(long imageId)
+        public void DeleteImage(long imageId, long userId)
         {
             Image image = ImageDao.Find(imageId);
+            if (image.User.usrId != userId)
+            {
+                throw new OperationNotAllowedException();
+            }
             foreach (Comment comment in image.Comments)
             {
                 CommentDao.Remove(comment.commentId);

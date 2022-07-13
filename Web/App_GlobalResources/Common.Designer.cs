@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Delete.
+        /// </summary>
+        internal static string btnDelete {
+            get {
+                return ResourceManager.GetString("btnDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No images to be found here :(.
         /// </summary>
         internal static string lblNoImages {

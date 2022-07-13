@@ -1,6 +1,7 @@
 ﻿using Es.Udc.DotNet.PracticaMaD.Model;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,7 +15,7 @@ using System.Transactions;
 namespace Es.Udc.DotNet.PracticaMaD.Test
 {
     [TestClass]
-    public class ImageServiceTest
+    public class IImageServiceTest
     {
         private const string imageDirectory = "images/";
 
@@ -64,7 +65,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             aperture = aperture,
             balance = balance,
             exposure = exposure,
-            imagePath = imagePath
+            imagePath = imagePath,
+            creationDate = DateTime.Now,
         };
 
         private Image image2 = new Image()
@@ -74,7 +76,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             aperture = aperture,
             balance = balance,
             exposure = exposure,
-            imagePath = "image2.png"
+            imagePath = "image2.png",
+            creationDate = DateTime.Now,
         };
 
         private static IKernel kernel;
@@ -198,7 +201,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             using (var scope = new TransactionScope())
             {
                 categoryDao.Create(category);
-                categoryDao.Create(category);
                 userDao.Create(user1);
                 image1.User = userDao.Find(user1.usrId);
                 image1.Category = categoryDao.Find(category.categoryId);
@@ -221,7 +223,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         {
             using (var scope = new TransactionScope())
             {
-                categoryDao.Create(category);
                 categoryDao.Create(category);
                 userDao.Create(user1);
                 image1.User = userDao.Find(user1.usrId);
@@ -258,12 +259,28 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 Assert.AreEqual(aperture, image.aperture);
                 Assert.AreEqual(balance, image.balance);
                 Assert.AreEqual(exposure, image.exposure);
-                // Assert.AreEqual(imagePath, image.imagePath);
 
                 Assert.IsTrue(imageDao.GetAllElements().Contains(image1));
-                imageService.DeleteImage(image.imageId);
-                //Probar comentarios y likes
+                imageService.DeleteImage(image.imageId, user1.usrId);
                 Assert.IsFalse(imageDao.GetAllElements().Contains(image1));
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(OperationNotAllowedException))]
+        public void TestDeleteImageUnauthorizedUser()
+        {
+            using (var scope = new TransactionScope())
+            {
+                categoryDao.Create(category);
+                userDao.Create(user1);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
+                imageDao.Create(image1);
+                Image image = imageDao.Find(image1.imageId);
+
+                Assert.IsTrue(imageDao.GetAllElements().Contains(image1));
+                imageService.DeleteImage(image.imageId, user2.usrId);
             }
         }
 

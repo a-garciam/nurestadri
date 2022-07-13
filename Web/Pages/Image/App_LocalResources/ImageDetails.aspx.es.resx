@@ -132,11 +132,17 @@
   <data name="lblDescriptionTitleResource1.Text" xml:space="preserve">
     <value>Descripcion</value>
   </data>
+  <data name="lblErrorDeleteImage" xml:space="preserve">
+    <value>No se pudo eliminar la imagen</value>
+  </data>
   <data name="lblExposureTitleResource1.Text" xml:space="preserve">
     <value>Exposición</value>
   </data>
   <data name="lblLikesTitleResource1.Text" xml:space="preserve">
     <value>Me gusta</value>
+  </data>
+  <data name="lblPermissionError.Text" xml:space="preserve">
+    <value>Sólo el autor de la imagen puede eliminarla</value>
   </data>
   <data name="lblTitleTitleResource1.Text" xml:space="preserve">
     <value>Título</value>

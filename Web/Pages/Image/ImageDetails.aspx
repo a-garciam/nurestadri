@@ -5,6 +5,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <form id="form1" runat="server">
         <div align="center">
+            <asp:Label ID="lblDeleteError" runat="server" meta:resourcekey="lblErrorDeleteImage" CssClass="errorMessage"></asp:Label>
+            <asp:Label ID="lblPermissionError" runat="server" meta:resourcekey="lblPermissionError" CssClass="errorMessage"></asp:Label>
+            <br />
+            <asp:Button ID="btnDeleteImage" runat="server" Text="<%$ Resources: Common, btnDelete %>" CssClass="errorMessage" OnClick="btnDeleteImage_Click" />
+            <br />
             <asp:Image ID="imgFile" runat="server" CssClass="img-details" meta:resourcekey="imgFileResource1" />
             <br />
             <div align="left" style="width: 600px">
