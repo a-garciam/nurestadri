@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
 {
-    public partial class FilterImages : System.Web.UI.Page
+    public partial class FilterImages : SpecificCulturePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

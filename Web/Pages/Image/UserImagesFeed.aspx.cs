@@ -1,6 +1,7 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService;
 using Es.Udc.DotNet.PracticaMaD.Web.Properties;
 using Es.Udc.DotNet.PracticaMaD.Web.Session;
 using System;
@@ -12,11 +13,14 @@ using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
 {
-    public partial class UserImagesFeed : System.Web.UI.Page
+    public partial class UserImagesFeed : SpecificCulturePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             lblNoImages.Visible = false;
+            lblFirstName.Visible = false;
+            lblSurname.Visible = false;
+            lblEmail.Visible = false;
             long userID;
             UserSession userSession = SessionManager.GetUserSession(Context);
             if (userSession == null)
@@ -30,10 +34,21 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             catch (ArgumentNullException)
             {
                 userID = userSession.UserProfileId;
+
+                lblFirstName.Visible = true;
+                lblSurname.Visible = true;
+                lblEmail.Visible = true;
             }
 
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+            IUserService userService = iocManager.Resolve<IUserService>();
             IImageService imageService = iocManager.Resolve<IImageService>();
+
+            UserDetails user = userService.FindUserDetails(userID);
+            lblUserName.Text = user.LoginName;
+            lblFirstName.Text = user.FirstName + " ";
+            lblSurname.Text = user.LastName;
+            lblEmail.Text = user.Email;
 
             IList<ImageOutput> imageList = imageService.FindImagesByUser(userID);
 

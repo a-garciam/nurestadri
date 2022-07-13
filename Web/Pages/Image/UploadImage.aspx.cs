@@ -13,7 +13,7 @@ using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMaD.Web
 {
-    public partial class UploadImage : System.Web.UI.Page
+    public partial class UploadImage : SpecificCulturePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +21,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
             lblErrorAperture.Visible = false;
             lblErrorExposure.Visible = false;
             lblErrorBalance.Visible = false;
+            lblUploadCompleted.Visible = false;
 
             if (!IsPostBack)
             {

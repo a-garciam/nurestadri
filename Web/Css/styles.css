@@ -7,6 +7,14 @@ body {
     background-color: #dddde0;
 }
 
+.label-profile {
+    float: initial;
+    font-size: 14px;
+    text-align: right;
+    vertical-align: middle;
+    padding-top: 0.4em;
+}
+
 /* Links. */
 
 a {
@@ -17,7 +25,6 @@ a {
     a:hover {
         text-decoration: underline;
     }
-
 
 /* Window. */
 
@@ -94,8 +101,7 @@ div.field {
         font-weight: bold;
         vertical-align: middle;
         padding-top: 0.3em;
-        }
-
+    }
 
 div.checkbox {
     clear: both;
@@ -106,6 +112,7 @@ div.checkbox {
 
 div.button {
     clear: both;
+    white-space: normal;
     padding-top: 1em;
     text-align: center;
     width: 100%;

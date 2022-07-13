@@ -132,4 +132,13 @@
   <data name="lclUserImagesFeed" xml:space="preserve">
     <value>Tus imágenes</value>
   </data>
+  <data name="lblEmailTitle.Text" xml:space="preserve">
+    <value>Email: </value>
+  </data>
+  <data name="lblNameTitle.Text" xml:space="preserve">
+    <value>Nombre: </value>
+  </data>
+  <data name="lblUserNameTitle.Text" xml:space="preserve">
+    <value>Nombre de usuario: </value>
+  </data>
 </root>

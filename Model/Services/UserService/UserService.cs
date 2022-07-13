@@ -22,7 +22,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         {
             if (!UserDao.Exists(userId))
             {
-                throw new InstanceNotFoundException(userId,"user");
+                throw new InstanceNotFoundException(userId, "user");
             }
             User user = UserDao.Find(userId);
             String storedPassword = user.enPassword;
@@ -46,9 +46,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
             User user = UserDao.Find(userId);
 
             UserDetails userDetails =
-                new UserDetails(user.firstName,
-                    user.lastName, user.email,
-                    user.language, user.country);
+                new UserDetails(user.loginName, user.firstName, user.lastName,
+                user.email, user.language, user.country);
 
             return userDetails;
         }
@@ -132,7 +131,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
 
         public bool UserExists(string loginName)
         {
-
             try
             {
                 User user = UserDao.FindByLoginName(loginName);
@@ -150,12 +148,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
             User user = UserDao.FindByLoginName(loginName);
             if (user.Images.Count > 0)
                 Console.WriteLine("Number of posts: {user.Images.Count}");
-            if(user.ImageLikes.Count > 0)
-                foreach(Image image in user.ImageLikes)
+            if (user.ImageLikes.Count > 0)
+                foreach (Image image in user.ImageLikes)
                 {
                     User likeUser = UserDao.Find(image.User.usrId);
                     string name = likeUser.loginName;
-                    Console.WriteLine("You gave a like to: {name}",name);
+                    Console.WriteLine("You gave a like to: {name}", name);
                 }
             Console.WriteLine("user: {user.loginName}");
             Console.WriteLine("Name: {user.firstName} {user.lastName}");

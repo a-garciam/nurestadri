@@ -117,28 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BoundFieldResource1.HeaderText" xml:space="preserve">
-    <value>Titulo</value>
+  <data name="btnUpdate.Text" xml:space="preserve">
+    <value>Gardar</value>
   </data>
-  <data name="BoundFieldResource2.HeaderText" xml:space="preserve">
-    <value>Categoria</value>
+  <data name="lblLoginError.Text" xml:space="preserve">
+    <value>Este nome de usuario xa está rexistrado</value>
   </data>
-  <data name="BoundFieldResource3.HeaderText" xml:space="preserve">
-    <value>Gústame</value>
+  <data name="lclCountry.Text" xml:space="preserve">
+    <value>País</value>
   </data>
-  <data name="TemplateFieldResource1.HeaderText" xml:space="preserve">
-    <value>Imaxe</value>
+  <data name="lclEmail.Text" xml:space="preserve">
+    <value>Email</value>
   </data>
-  <data name="lclUserImagesFeed" xml:space="preserve">
-    <value>Túas imaxes</value>
+  <data name="lclFirstName.Text" xml:space="preserve">
+    <value>Nome</value>
   </data>
-  <data name="lblEmailTitle.Text" xml:space="preserve">
-    <value>Email: </value>
+  <data name="lclLanguage.Text" xml:space="preserve">
+    <value>Idioma</value>
   </data>
-  <data name="lblNameTitle.Text" xml:space="preserve">
-    <value>Nome: </value>
+  <data name="lclSurname.Text" xml:space="preserve">
+    <value>Apelidos</value>
   </data>
-  <data name="lblUserNameTitle.Text" xml:space="preserve">
-    <value>Nome de usuario: </value>
+  <data name="lclUserName.Text" xml:space="preserve">
+    <value>Nome de usuario</value>
+  </data>
+  <data name="revEmail.Text" xml:space="preserve">
+    <value>Formato non válido</value>
+  </data>
+  <data name="updateProfileTitle.Text" xml:space="preserve">
+    <value>Actualizar perfil</value>
   </data>
 </root>

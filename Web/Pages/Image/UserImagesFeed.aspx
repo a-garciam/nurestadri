@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true" CodeBehind="UserImagesFeed.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.Pages.Image.UserImagesFeed" Culture="auto" meta:resourcekey="PageResource1" UICulture="auto" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true" CodeBehind="UserImagesFeed.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.Pages.Image.UserImagesFeed" meta:resourcekey="PageResource1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_MenuExplanation"
     runat="server">
@@ -8,6 +8,18 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <form id="form1" runat="server">
         <div align="left">
+            <br />
+            <div class="label">
+                <asp:Label ID="lblUserNameTitle" runat="server" CssClass="label-profile" meta:resourcekey="lblUserNameTitle"></asp:Label>
+                <asp:Label ID="lblUserName" runat="server" CssClass="label-profile"></asp:Label>
+                <br />
+                <asp:Label ID="lblNameTitle" runat="server" CssClass="label-profile" meta:resourcekey="lblNameTitle"></asp:Label>
+                <asp:Label ID="lblFirstName" runat="server" CssClass="label-profile"></asp:Label>
+                <asp:Label ID="lblSurname" runat="server" CssClass="label-profile"></asp:Label>
+                <br />
+                <asp:Label ID="lblEmailTitle" runat="server" CssClass="label-profile" meta:resourcekey="lblEmailTitle"></asp:Label>
+                <asp:Label ID="lblEmail" runat="server" CssClass="label-profile"></asp:Label>
+            </div>
             <br />
             <asp:Label ID="lblNoImages" runat="server" Text="<%$ Resources: Common, lblNoImages %>"></asp:Label>
             <br />

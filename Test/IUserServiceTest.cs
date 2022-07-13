@@ -60,7 +60,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             // Register user and find profile
             var userId =
                 userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
             var User = UserDao.Find(userId);
 
@@ -88,11 +88,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             {
                 // Register user
                 userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
                 // Register the same user
                 userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
                 // transaction.Complete() is not called, so Rollback is executed.
             }
@@ -108,7 +108,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             {
                 // Register user
                 var userId = userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
                 var expected = new LoginResult(userId, firstName,
                     PasswordEncrypter.Crypt(clearPassword), language, country);
@@ -135,7 +135,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             {
                 // Register user
                 var userId = userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
                 var expected = new LoginResult(userId, firstName,
                     PasswordEncrypter.Crypt(clearPassword), language, country);
@@ -163,7 +163,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             {
                 // Register user
                 var userId = userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
                 // Login with incorrect (clear) password
                 var actual =
@@ -194,7 +194,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             using (var scope = new TransactionScope())
             {
                 var expected =
-                    new UserDetails(firstName, lastName, email, language, country);
+                    new UserDetails(loginName, firstName, lastName, email, language, country);
 
                 var userId =
                     userService.RegisterUser(loginName, clearPassword, expected);
@@ -227,13 +227,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         {
             using (var scope = new TransactionScope())
             {
-                UserDetails usDet = new UserDetails(firstName, lastName, email, language, country);
+                UserDetails usDet = new UserDetails(loginName, firstName, lastName, email, language, country);
                 // Register user and update profile details
                 var userId = userService.RegisterUser(loginName, clearPassword, usDet);
 
                 var expected =
-                    new UserDetails(firstName + "X", lastName + "X",
-                        email + "X", "XX", "XX");
+                    new UserDetails(loginName, firstName + "X", lastName + "X", email + "X",
+"XX", "XX");
 
                 userService.UpdateUserDetails(userId, expected);
 
@@ -257,7 +257,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             using (var scope = new TransactionScope())
             {
                 userService.UpdateUserDetails(NON_EXISTENT_USER_ID,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
                 // transaction.Complete() is not called, so Rollback is executed.
             }
@@ -273,7 +273,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             {
                 // Register user
                 var userId = userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
                 // Change password
                 var newClearPassword = clearPassword + "X";
@@ -298,7 +298,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             {
                 // Register user
                 var userId = userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
                 // Change password
                 var newClearPassword = clearPassword + "X";
@@ -329,7 +329,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             {
                 // Register user
                 userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(firstName, lastName, email, language, country));
+                    new UserDetails(loginName, firstName, lastName, email, language, country));
 
                 bool userExists = userService.UserExists(loginName);
 

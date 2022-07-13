@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true" CodeBehind="UploadImage.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.UploadImage" Culture="auto" meta:resourcekey="PageResource1" UICulture="auto" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true" CodeBehind="UploadImage.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.UploadImage" meta:resourcekey="PageResource1" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_MenuExplanation"
     runat="server">
@@ -64,7 +64,7 @@
             <asp:RequiredFieldValidator ID="rfvTitle5" runat="server" Display="Dynamic" ErrorMessage="Campo Obligatorio" ControlToValidate="fuImageUpload" CssClass="errorMessage" Text="<%$ Resources: Common, mandatoryField %>"></asp:RequiredFieldValidator>
         </div>
         <br />
-        <asp:Button ID="btnUploadImage" runat="server" Height="31px" Text="Upload" Width="63px" OnClick="btnUploadImage_Click" meta:resourcekey="btnUploadImageResource1" />
+        <asp:Button ID="btnUploadImage" runat="server" Text="Upload" OnClick="btnUploadImage_Click" meta:resourcekey="btnUploadImageResource1" CssClass="button" />
         <br />
         <asp:Label ID="lblUploadCompleted" runat="server" meta:resourcekey="lblUploadCompletedResource1" CssClass="info"></asp:Label>
         <br />

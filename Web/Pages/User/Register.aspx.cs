@@ -103,13 +103,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.User
             {
                 try
                 {
-                    UserDetails userProfileDetailsVO =
-                        new UserDetails(txtFirstName.Text, txtSurname.Text,
-                            txtEmail.Text, comboLanguage.SelectedValue,
-                            comboCountry.SelectedValue);
+                    UserDetails userDetailsVO =
+                        new UserDetails(txtLogin.Text, txtFirstName.Text, txtSurname.Text, txtEmail.Text,
+comboLanguage.SelectedValue, comboCountry.SelectedValue);
 
                     SessionManager.RegisterUser(Context, txtLogin.Text,
-                        txtPassword.Text, userProfileDetailsVO);
+                        txtPassword.Text, userDetailsVO);
 
                     Response.Redirect(Response.
                         ApplyAppPathModifier("~/Pages/MainPage.aspx"));
