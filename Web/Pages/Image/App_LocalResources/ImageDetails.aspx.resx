@@ -117,31 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BoundFieldResource1.HeaderText" xml:space="preserve">
-    <value>Title</value>
+  <data name="lblApertureTitleResource1.Text" xml:space="preserve">
+    <value>Aperture</value>
   </data>
-  <data name="BoundFieldResource2.HeaderText" xml:space="preserve">
+  <data name="lblBalanceTitleResource1.Text" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="lblCategoryTitleResource1.Text" xml:space="preserve">
     <value>Category</value>
   </data>
-  <data name="BoundFieldResource3.HeaderText" xml:space="preserve">
+  <data name="lblCreationDateTitleResource1.Text" xml:space="preserve">
+    <value>Creation date</value>
+  </data>
+  <data name="lblDescriptionTitleResource1.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lblExposureTitleResource1.Text" xml:space="preserve">
+    <value>Exposure</value>
+  </data>
+  <data name="lblLikesTitleResource1.Text" xml:space="preserve">
     <value>Likes</value>
   </data>
-  <data name="TemplateFieldResource1.HeaderText" xml:space="preserve">
-    <value>Image</value>
+  <data name="lblTitleTitleResource1.Text" xml:space="preserve">
+    <value>Title</value>
   </data>
-  <data name="lclUserImagesFeed" xml:space="preserve">
-    <value>Your images</value>
-  </data>
-  <data name="lblEmailTitle.Text" xml:space="preserve">
-    <value>Email: </value>
-  </data>
-  <data name="lblNameTitle.Text" xml:space="preserve">
-    <value>Name: </value>
-  </data>
-  <data name="lblUserNameTitle.Text" xml:space="preserve">
-    <value>Username: </value>
-  </data>
-  <data name="HyperLinkImageDetails.Text" xml:space="preserve">
-    <value>More details...</value>
+  <data name="lblUserTitleResource1.Text" xml:space="preserve">
+    <value>User</value>
   </data>
 </root>

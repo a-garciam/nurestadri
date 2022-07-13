@@ -17,7 +17,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 
         IList<ImageOutput> FindImagesByFilterAndCategory(string keywords, long categoryId);
 
-        ImageOutput FindImageById(long imageId);
+        ImageDetailsOutput FindImageById(long imageId);
 
         IList<ImageOutput> FindImagesByUser(long userId);
 

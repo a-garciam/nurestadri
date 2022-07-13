@@ -138,4 +138,7 @@
   <data name="lclImageFeed" xml:space="preserve">
     <value>Galería de imaxes</value>
   </data>
+  <data name="HyperLinkImageDetails.Text" xml:space="preserve">
+    <value>Máis detalles...</value>
+  </data>
 </root>

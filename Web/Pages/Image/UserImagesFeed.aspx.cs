@@ -18,8 +18,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
         protected void Page_Load(object sender, EventArgs e)
         {
             lblNoImages.Visible = false;
+            lblNameTitle.Visible = false;
             lblFirstName.Visible = false;
             lblSurname.Visible = false;
+            lblEmailTitle.Visible = false;
             lblEmail.Visible = false;
             long userID;
             UserSession userSession = SessionManager.GetUserSession(Context);
@@ -37,7 +39,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
 
                 lblFirstName.Visible = true;
                 lblSurname.Visible = true;
+                lblNameTitle.Visible = true;
                 lblEmail.Visible = true;
+                lblEmailTitle.Visible = true;
             }
 
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];

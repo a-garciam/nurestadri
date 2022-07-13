@@ -26,21 +26,25 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
         [Inject]
         public ICommentDao CommentDao { private get; set; }
 
-        public ImageOutput FindImageById(long imageId)
+        public ImageDetailsOutput FindImageById(long imageId)
         {
             Image image = ImageDao.Find(imageId);
             Category category = CategoryDao.Find(image.Category.categoryId);
             User user = UserDao.Find(image.User.usrId);
-            ImageOutput imageOutput = new ImageOutput(
+            ImageDetailsOutput imageOutput = new ImageDetailsOutput(
+                image.imageId,
                 image.imagePath,
                 image.title,
+                image.description,
                 user.usrId,
                 user.loginName,
-                categoryId: category.categoryId,
-                categoryName: category.name,
-                likes: image.likes,
-                 creationDate: image.creationDate
-                );
+                category.categoryId,
+                 category.name,
+                 likes: image.likes,
+                 image.creationDate,
+                 image.aperture,
+                 image.balance,
+                 image.exposure);
 
             return imageOutput;
         }
@@ -57,13 +61,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 Category category = CategoryDao.Find(image.Category.categoryId);
                 User user = UserDao.Find(image.User.usrId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imagePath,
+                    image.imageId, image.imagePath,
                     image.title,
                     user.usrId,
                     user.loginName,
                     category.categoryId,
-                    category.name,
-                     image.likes, image.creationDate));
+                     category.name,
+image.likes, image.creationDate));
             }
 
             return imageOutputs;
@@ -82,13 +86,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             {
                 User user = UserDao.Find(image.User.usrId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imagePath,
+                    image.imageId, image.imagePath,
                     image.title,
                     user.usrId,
                     user.loginName,
                     category.categoryId,
-                    category.name,
-                     image.likes, image.creationDate));
+                     category.name,
+image.likes, image.creationDate));
             }
 
             return imageOutputs;
@@ -104,13 +108,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             {
                 Category category = CategoryDao.Find(image.Category.categoryId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imagePath,
+                    image.imageId, image.imagePath,
                     image.title,
                     user.usrId,
                     user.loginName,
                     category.categoryId,
                     category.name,
-                    image.likes, image.creationDate));
+image.likes, image.creationDate));
             }
 
             return imageOutputs;
@@ -187,7 +191,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             return categoriesOutput;
         }
 
-        IList<ImageOutput> IImageService.FindAllImages()
+        public IList<ImageOutput> FindAllImages()
         {
             IList<Image> images = ImageDao.GetAllElements();
 
@@ -197,13 +201,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 Category category = CategoryDao.Find(image.Category.categoryId);
                 User user = UserDao.Find(image.User.usrId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imagePath,
+                    image.imageId, image.imagePath,
                     image.title,
                     user.usrId,
                     user.loginName,
                     category.categoryId,
-                    category.name,
-                     image.likes, image.creationDate));
+                     category.name,
+image.likes, image.creationDate));
             }
 
             return imageOutputs;

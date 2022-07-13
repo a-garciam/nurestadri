@@ -141,4 +141,7 @@
   <data name="lblUserNameTitle.Text" xml:space="preserve">
     <value>Nombre de usuario: </value>
   </data>
+  <data name="HyperLinkImageDetails.Text" xml:space="preserve">
+    <value>Más detalles...</value>
+  </data>
 </root>

@@ -132,6 +132,9 @@
   <data name="HyperLinkFieldResource1.HeaderText" xml:space="preserve">
     <value>Username</value>
   </data>
+  <data name="HyperLinkImageDetails.Text" xml:space="preserve">
+    <value>More details...</value>
+  </data>
   <data name="ImageFieldResource1.HeaderText" xml:space="preserve">
     <value>Image</value>
   </data>

@@ -14,12 +14,13 @@
             <br />
             <asp:GridView ID="gvImageFeed" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvImageFeed_PageIndexChanging" ShowHeaderWhenEmpty="True" Style="margin-right: 0px" meta:resourcekey="gvImageFeedResource1">
                 <Columns>
-                    <asp:ImageField DataImageUrlField="imagePath" HeaderText="Image" meta:resourcekey="ImageFieldResource1">
+                    <asp:ImageField DataImageUrlField="imagePath" HeaderText="Image" meta:resourcekey="ImageFieldResource1" ControlStyle-CssClass="img-feed">
                     </asp:ImageField>
                     <asp:BoundField DataField="title" HeaderText="Title" meta:resourcekey="BoundFieldResource1" />
                     <asp:BoundField DataField="likes" HeaderText="Likes" meta:resourcekey="BoundFieldResource2" />
                     <asp:BoundField DataField="categoryName" HeaderText="Category" SortExpression="categoryName" meta:resourcekey="BoundFieldResource3" />
                     <asp:HyperLinkField DataNavigateUrlFields="userId" DataNavigateUrlFormatString="UserImagesFeed.aspx?userID={0}" HeaderText="userName" DataTextField="userName" meta:resourcekey="HyperLinkFieldResource1" />
+                    <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="ImageDetails.aspx?imageID={0}" meta:resourcekey="HyperLinkImageDetails" />
                 </Columns>
             </asp:GridView>
         </div>

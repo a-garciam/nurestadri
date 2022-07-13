@@ -115,6 +115,7 @@
     <Content Include="Css\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Image\FilterImages.aspx" />
+    <Content Include="Pages\Image\ImageDetails.aspx" />
     <Content Include="Pages\Image\ImageFeed.aspx" />
     <Content Include="Pages\Image\UploadImage.aspx" />
     <Content Include="Pages\Image\UserImagesFeed.aspx" />
@@ -151,6 +152,13 @@
     </Compile>
     <Compile Include="Pages\Image\FilterImages.aspx.designer.cs">
       <DependentUpon>FilterImages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Image\ImageDetails.aspx.cs">
+      <DependentUpon>ImageDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Image\ImageDetails.aspx.designer.cs">
+      <DependentUpon>ImageDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Image\ImageFeed.aspx.cs">
       <DependentUpon>ImageFeed.aspx</DependentUpon>
@@ -340,6 +348,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\User\App_LocalResources\UpdateUserProfile.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\ImageDetails.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\ImageDetails.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Image\App_LocalResources\ImageDetails.aspx.gl.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -136,6 +136,7 @@
     <Compile Include="Services\ImageService\ImageService.cs" />
     <Compile Include="Services\Exceptions\ObjectAlreadyExistsException.cs" />
     <Compile Include="Services\ImageService\Resources\Output\CategoryOutput.cs" />
+    <Compile Include="Services\ImageService\Resources\Output\ImageDetailsOutput.cs" />
     <Compile Include="Services\ImageService\Resources\Output\ImageOutput.cs" />
     <Compile Include="Services\Exceptions\IncorrectPasswordException.cs" />
     <Compile Include="Services\UserService\IUserService.cs" />

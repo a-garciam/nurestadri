@@ -27,7 +27,7 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Image" meta:resourcekey="TemplateFieldResource1">
                         <ItemTemplate>
-                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("ImagePath") %>' meta:resourcekey="Image1Resource1" />
+                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("ImagePath") %>' meta:resourcekey="Image1Resource1" CssClass="img-feed" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="Title" DataField="Title" meta:resourcekey="BoundFieldResource1" />
@@ -35,6 +35,7 @@
                     <asp:BoundField HeaderText="Likes" DataField="Likes" ItemStyle-HorizontalAlign="Center" meta:resourcekey="BoundFieldResource3">
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:BoundField>
+                    <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="ImageDetails.aspx?imageID={0}" meta:resourcekey="HyperLinkImageDetails" />
                 </Columns>
             </asp:GridView>
         </div>

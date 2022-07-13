@@ -75,10 +75,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
                             tbDescription.Text, "f/" + tbAperture.Text, tbExposure.Text, tbBalance.Text, filename);
                         fuImageUpload.SaveAs(Server.MapPath(filename));
                         lblUploadCompleted.Text = "Imagen subida";
+                        lblUploadCompleted.Visible = true;
                     }
                     else
                     {
                         lblUploadCompleted.Text = "El nombre de la imagen no debe contener simbolos";
+                        lblUploadCompleted.Visible = true;
                     }
                 }
                 catch (IncorrectApertureFormatException exc)

@@ -206,7 +206,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 user1.Images.Add(image1);
                 imageDao.Create(image1);
 
-                ImageOutput image = imageService.FindImageById(image1.imageId);
+                ImageDetailsOutput image = imageService.FindImageById(image1.imageId);
 
                 Assert.AreEqual(image1.title, image.Title);
                 Assert.AreEqual(user1.usrId, image.UserId);

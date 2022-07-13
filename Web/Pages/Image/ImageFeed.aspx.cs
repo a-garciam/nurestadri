@@ -21,7 +21,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             {
                 Response.Redirect("~/Pages/User/Authentication.aspx");
             }
-            long userID = userSession.UserProfileId;
 
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
             IImageService imageService = iocManager.Resolve<IImageService>();
