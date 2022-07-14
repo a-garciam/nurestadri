@@ -127,6 +127,7 @@
     <Content Include="Pages\User\Logout.aspx" />
     <Content Include="Pages\User\Register.aspx" />
     <Content Include="Pages\User\UpdateUserProfile.aspx" />
+    <Content Include="Pages\User\UserFollowed.aspx" />
     <Content Include="Pages\User\UserFollowers.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -239,6 +240,13 @@
     </Compile>
     <Compile Include="Pages\User\UpdateUserProfile.aspx.designer.cs">
       <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User\UserFollowed.aspx.cs">
+      <DependentUpon>UserFollowed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User\UserFollowed.aspx.designer.cs">
+      <DependentUpon>UserFollowed.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\User\UserFollowers.aspx.cs">
       <DependentUpon>UserFollowers.aspx</DependentUpon>
@@ -393,6 +401,24 @@
     <Content Include="Pages\Feedback\App_LocalResources\SuccessfulOperation.aspx.es.resx" />
     <Content Include="Pages\Feedback\App_LocalResources\SuccessfulOperation.aspx.gl.resx" />
     <Content Include="Pages\Feedback\App_LocalResources\SuccessfulOperation.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\User\App_LocalResources\UserFollowed.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\User\App_LocalResources\UserFollowed.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\User\App_LocalResources\UserFollowed.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\User\App_LocalResources\UserFollowers.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\User\App_LocalResources\UserFollowers.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\User\App_LocalResources\UserFollowers.aspx.gl.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

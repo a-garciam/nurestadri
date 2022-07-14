@@ -3,6 +3,7 @@ using Es.Udc.DotNet.ModelUtil.Exceptions;
 using Es.Udc.DotNet.ModelUtil.Transactions;
 using Ninject;
 using System;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Resources.Output;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
 {
@@ -67,5 +68,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
 
         [Transactional]
         bool IsFollowing(long followerId, long followId);
+
+        [Transactional]
+        UserFollows FindUserFollowers(long userId);
+
+        [Transactional]
+        UserFollows FindUserFollowed(long userId);
     }
 }

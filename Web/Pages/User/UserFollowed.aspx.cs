@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.User
 {
-    public partial class UserFollowers : SpecificCulturePage
+    public partial class UserFollowed : SpecificCulturePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,17 +33,19 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.User
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
             IUserService userService = iocManager.Resolve<IUserService>();
 
-            UserFollows userFollowers = userService.FindUserFollowers(userID);
-            lblNumberFollowers.Text = userFollowers.NumberFollows.ToString();
-            lblUserName.Text = userFollowers.UserName;
-            if (userFollowers.NumberFollows == 0)
+            UserFollows userFollowed = userService.FindUserFollowed(userID);
+
+            lblNumberFollowed.Text = userFollowed.NumberFollows.ToString();
+            lblUserName.Text = userFollowed.UserName;
+            if (userFollowed.NumberFollows == 0)
             {
                 lblNoFollows.Visible = true;
                 return;
             }
-            gvFollowers.DataSource = userFollowers.FollowList;
-            gvFollowers.AllowPaging = true;
-            gvFollowers.DataBind();
+
+            gvFollowed.DataSource = userFollowed.FollowList;
+            gvFollowed.AllowPaging = true;
+            gvFollowed.DataBind();
         }
     }
 }

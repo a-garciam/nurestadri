@@ -37,16 +37,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
                 try
                 {
                     userID = Int64.Parse(Request.Params.Get("userID"));
+                    if (userID == userSession.UserProfileId)
+                    {
+                        ownProfile = true;
+                    }
                 }
                 catch (ArgumentNullException)
                 {
                     userID = userSession.UserProfileId;
                     ownProfile = true;
-                    lblFirstName.Visible = true;
-                    lblSurname.Visible = true;
-                    lblNameTitle.Visible = true;
-                    lblEmail.Visible = true;
-                    lblEmailTitle.Visible = true;
                 }
 
                 IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
@@ -57,6 +56,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
                 lblUserName.Text = user.LoginName;
                 if (ownProfile)
                 {
+                    lblFirstName.Visible = true;
+                    lblSurname.Visible = true;
+                    lblNameTitle.Visible = true;
+                    lblEmail.Visible = true;
+                    lblEmailTitle.Visible = true;
                     lblFirstName.Text = user.FirstName + " ";
                     lblSurname.Text = user.LastName;
                     lblEmail.Text = user.Email;
@@ -81,9 +85,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
                     return;
                 }
                 Session["lstImg"] = imageList;
-
+                hlFollowers.NavigateUrl = "~/Pages/User/UserFollowers.aspx?userID=" + userID.ToString();
+                hlFollowed.NavigateUrl = "~/Pages/User/UserFollowed.aspx?userID=" + userID.ToString();
                 gvUserImages.DataSource = imageList;
                 gvUserImages.AllowPaging = true;
+                //gvUserImages.PageCount
                 gvUserImages.DataBind();
             }
         }

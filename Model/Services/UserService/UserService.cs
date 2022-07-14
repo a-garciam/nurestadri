@@ -6,6 +6,8 @@ using System;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Util;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService.Resources.Output;
+using System.Collections.Generic;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
 {
@@ -153,6 +155,42 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
                 UserDao.Update(follow);
                 UserDao.Update(follower);
             }
+        }
+
+        [Transactional]
+        public UserFollows FindUserFollowers(long userId)
+        {
+            User user = UserDao.Find(userId);
+            IList<KeyValuePair<string, long>> followers = new List<KeyValuePair<string, long>>();
+            int count = user.Followers.Count;
+            foreach (User follower in user.Followers)
+            {
+                followers.Add(new KeyValuePair<string, long>(follower.loginName, follower.usrId));
+            }
+            UserFollows userFollows = new UserFollows(
+                user.usrId,
+                user.loginName,
+                followers,
+                count);
+            return userFollows;
+        }
+
+        [Transactional]
+        public UserFollows FindUserFollowed(long userId)
+        {
+            User user = UserDao.Find(userId);
+            IList<KeyValuePair<string, long>> followedList = new List<KeyValuePair<string, long>>();
+            int count = user.Followed.Count;
+            foreach (User followed in user.Followed)
+            {
+                followedList.Add(new KeyValuePair<string, long>(followed.loginName, followed.usrId));
+            }
+            UserFollows userFollows = new UserFollows(
+                user.usrId,
+                user.loginName,
+                followedList,
+                count);
+            return userFollows;
         }
 
         [Transactional]

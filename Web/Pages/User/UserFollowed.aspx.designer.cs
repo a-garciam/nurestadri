@@ -11,7 +11,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.User
 {
 
 
-    public partial class UserFollowers
+    public partial class UserFollowed
     {
 
         /// <summary>
@@ -33,22 +33,22 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.User
         protected global::System.Web.UI.WebControls.Label lblUserName;
 
         /// <summary>
-        /// Control lblNumberFollowersTitle.
+        /// Control lblNumberFollowedTitle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumberFollowersTitle;
+        protected global::System.Web.UI.WebControls.Label lblNumberFollowedTitle;
 
         /// <summary>
-        /// Control lblNumberFollowers.
+        /// Control lblNumberFollowed.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumberFollowers;
+        protected global::System.Web.UI.WebControls.Label lblNumberFollowed;
 
         /// <summary>
         /// Control lblNoFollows.
@@ -60,12 +60,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.User
         protected global::System.Web.UI.WebControls.Label lblNoFollows;
 
         /// <summary>
-        /// Control gvFollowers.
+        /// Control gvFollowed.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvFollowers;
+        protected global::System.Web.UI.WebControls.GridView gvFollowed;
     }
 }

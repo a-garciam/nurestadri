@@ -129,4 +129,7 @@
   <data name="btnDelete" xml:space="preserve">
     <value>Eliminar</value>
   </data>
+  <data name="lblNoFollows" xml:space="preserve">
+    <value>No hay nadie aquí</value>
+  </data>
 </root>
