@@ -144,4 +144,16 @@
   <data name="HyperLinkImageDetails.Text" xml:space="preserve">
     <value>Más detalles...</value>
   </data>
+  <data name="btnFollow.Text" xml:space="preserve">
+    <value>Seguir</value>
+  </data>
+  <data name="btnUnfollow.Text" xml:space="preserve">
+    <value>Dejar de seguir</value>
+  </data>
+  <data name="hlFollowed.Text" xml:space="preserve">
+    <value>Ver Seguidos</value>
+  </data>
+  <data name="hlFollowers.Text" xml:space="preserve">
+    <value>Ver Seguidores</value>
+  </data>
 </root>

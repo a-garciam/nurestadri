@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using System;
 using System.Transactions;
+using Es.Udc.DotNet.PracticaMaD.Model;
 
 namespace Es.Udc.DotNet.PracticaMaD.Test
 {
@@ -30,6 +31,28 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
         private static IKernel kernel;
         private static IUserService userService;
         private static IUserDao UserDao;
+
+        private User user1 = new User()
+        {
+            loginName = "user1",
+            enPassword = "password",
+            firstName = "name",
+            lastName = "lastName",
+            email = "user@udc.es",
+            country = "españa",
+            language = "español"
+        };
+
+        private User user2 = new User()
+        {
+            loginName = "user2",
+            enPassword = "password",
+            firstName = "name",
+            lastName = "lastName",
+            email = "user2@udc.es",
+            country = "españa",
+            language = "español"
+        };
 
         private TransactionScope transaction;
 
@@ -319,42 +342,31 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 clearPassword, clearPassword + "X");
         }
 
-        /// <summary>
-        /// A test to check if a valid user loginName is found
-        /// </summary>
         [TestMethod]
-        public void UserExistsForValidUser()
+        public void FollowUserTest()
         {
-            using (var scope = new TransactionScope())
-            {
-                // Register user
-                userService.RegisterUser(loginName, clearPassword,
-                    new UserDetails(loginName, firstName, lastName, email, language, country));
+            UserDao.Create(user1);
+            UserDao.Create(user2);
 
-                bool userExists = userService.UserExists(loginName);
+            userService.FollowUser(user1.usrId, user2.usrId);
+            Assert.IsTrue(user2.Followers.Contains(user1));
+            Assert.IsTrue(user1.Followed.Contains(user2));
 
-                Assert.IsTrue(userExists);
-
-                // transaction.Complete() is not called, so Rollback is executed.
-            }
+            userService.FollowUser(user2.usrId, user1.usrId);
+            Assert.IsTrue(user2.Followed.Contains(user1));
+            Assert.IsTrue(user1.Followers.Contains(user2));
         }
 
-        /// <summary>
-        /// A test to check if a not valid user loginame is found
-        /// </summary>
         [TestMethod]
-        public void UserExistsForNotValidUser()
+        public void UnfollowUserTest()
         {
-            using (var scope = new TransactionScope())
-            {
-                String invalidLoginName = loginName + "_someFakeUserSuffix";
+            UserDao.Create(user1);
+            UserDao.Create(user2);
 
-                bool userExists = userService.UserExists(invalidLoginName);
-
-                Assert.IsFalse(userExists);
-
-                // transaction.Complete() is not called, so Rollback is executed.
-            }
+            userService.FollowUser(user1.usrId, user2.usrId);
+            userService.FollowUser(user1.usrId, user2.usrId);
+            Assert.IsFalse(user2.Followed.Contains(user1));
+            Assert.IsFalse(user1.Followers.Contains(user2));
         }
 
         #region Additional test attributes

@@ -129,34 +129,50 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
             UserDao.Update(user);
         }
 
-        public bool UserExists(string loginName)
+        [Transactional]
+        public void FollowUser(long followerId, long followId)
         {
-            try
+            if (followerId == followId)
             {
-                User user = UserDao.FindByLoginName(loginName);
+                throw new OperationNotAllowedException();
             }
-            catch (InstanceNotFoundException)
+            User follower = UserDao.Find(followerId);
+            User follow = UserDao.Find(followId);
+
+            if (follow.Followers.Contains(follower))
+            {
+                follow.Followers.Remove(follower);
+                follower.Followed.Remove(follow);
+                UserDao.Update(follow);
+                UserDao.Update(follower);
+            }
+            else
+            {
+                follow.Followers.Add(follower);
+                follower.Followed.Add(follow);
+                UserDao.Update(follow);
+                UserDao.Update(follower);
+            }
+        }
+
+        [Transactional]
+        public bool IsFollowing(long followerId, long followId)
+        {
+            if (followerId == followId)
+            {
+                throw new OperationNotAllowedException();
+            }
+            User follower = UserDao.Find(followerId);
+            User follow = UserDao.Find(followId);
+
+            if (follow.Followers.Contains(follower))
+            {
+                return true;
+            }
+            else
             {
                 return false;
             }
-
-            return true;
-        }
-
-        public void ViewUserProfile(string loginName)
-        {
-            User user = UserDao.FindByLoginName(loginName);
-            if (user.Images.Count > 0)
-                Console.WriteLine("Number of posts: {user.Images.Count}");
-            if (user.ImageLikes.Count > 0)
-                foreach (Image image in user.ImageLikes)
-                {
-                    User likeUser = UserDao.Find(image.User.usrId);
-                    string name = likeUser.loginName;
-                    Console.WriteLine("You gave a like to: {name}", name);
-                }
-            Console.WriteLine("user: {user.loginName}");
-            Console.WriteLine("Name: {user.firstName} {user.lastName}");
         }
     }
 }

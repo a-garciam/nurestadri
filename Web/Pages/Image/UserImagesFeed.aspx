@@ -19,7 +19,14 @@
                 <br />
                 <asp:Label ID="lblEmailTitle" runat="server" CssClass="label-profile" meta:resourcekey="lblEmailTitle"></asp:Label>
                 <asp:Label ID="lblEmail" runat="server" CssClass="label-profile"></asp:Label>
+                <br />
+                <asp:Button ID="btnFollow" runat="server" meta:resourcekey="btnFollow" OnClick="btnFollow_Click" />
+                <asp:Button ID="btnUnfollow" runat="server" meta:resourcekey="btnUnfollow" OnClick="btnFollow_Click" />
             </div>
+            <br />
+            <asp:HyperLink ID="hlFollowers" runat="server" meta:resourcekey="hlFollowers"></asp:HyperLink>
+            &nbsp;&nbsp;&nbsp;
+            <asp:HyperLink ID="hlFollowed" runat="server" meta:resourcekey="hlFollowed"></asp:HyperLink>
             <br />
             <asp:Label ID="lblNoImages" runat="server" Text="<%$ Resources: Common, lblNoImages %>"></asp:Label>
             <br />

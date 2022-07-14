@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
+namespace Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions
 {
     [Serializable]
     public class ObjectAlreadyExistsException : Exception
@@ -13,6 +13,5 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
         public ObjectAlreadyExistsException(string message) : base("Object already exists exception => " + message)
         {
         }
-
     }
 }

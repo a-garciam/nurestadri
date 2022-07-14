@@ -8,7 +8,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
 {
     public interface IUserService
     {
-
         /// <summary>
         /// Changes the password.
         /// </summary>
@@ -63,13 +62,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         void UpdateUserDetails(long userId,
             UserDetails userDetails);
 
-        /// <summary>
-        /// Checks if the specified loginName corresponds to a valid user.
-        /// </summary>
-        /// <param name="loginName"> User loginName. </param>
-        /// <returns> Boolean to indicate if the loginName exists </returns>
-        bool UserExists(string loginName);
+        [Transactional]
+        void FollowUser(long followerId, long followId);
 
-        void ViewUserProfile(string loginName);
+        [Transactional]
+        bool IsFollowing(long followerId, long followId);
     }
 }
