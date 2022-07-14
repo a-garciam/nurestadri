@@ -3,6 +3,7 @@ using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
 using Es.Udc.DotNet.PracticaMaD.Model.Utils;
 using Ninject;
@@ -49,11 +50,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             return imageOutput;
         }
 
-        public IList<ImageOutput> FindImagesByFilter(string keywords)
+        public ImageBlock FindImagesByFilter(string keywords, int startIndex, int count)
         {
             keywords = keywords.Trim();
 
-            IList<Image> images = ImageDao.FindByFilter(keywords);
+            IList<Image> images = ImageDao.FindByFilter(keywords, startIndex, count + 1);
+
+            bool existMore = (images.Count == count + 1);
+
+            if (existMore)
+                images.RemoveAt(count);
 
             IList<ImageOutput> imageOutputs = new List<ImageOutput>();
             foreach (Image image in images)
@@ -61,63 +67,79 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
                 Category category = CategoryDao.Find(image.Category.categoryId);
                 User user = UserDao.Find(image.User.usrId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imageId, image.imagePath,
+                    image.imageId,
+                    image.imagePath,
                     image.title,
                     user.usrId,
                     user.loginName,
                     category.categoryId,
                      category.name,
-image.likes, image.creationDate));
+                     image.likes,
+                     image.creationDate));
             }
 
-            return imageOutputs;
+            return new ImageBlock(imageOutputs, existMore);
         }
 
-        public IList<ImageOutput> FindImagesByFilterAndCategory(string keywords, long categoryId)
+        public ImageBlock FindImagesByFilterAndCategory(string keywords, long categoryId, int startIndex, int count)
         {
             keywords = keywords.Trim();
 
             Category category = CategoryDao.Find(categoryId);
 
-            IList<Image> images = ImageDao.FindByFilterAndCategory(keywords, categoryId);
+            IList<Image> images = ImageDao.FindByFilterAndCategory(keywords, categoryId, startIndex, count + 1);
+
+            bool existMore = (images.Count == count + 1);
+
+            if (existMore)
+                images.RemoveAt(count);
 
             IList<ImageOutput> imageOutputs = new List<ImageOutput>();
             foreach (Image image in images)
             {
                 User user = UserDao.Find(image.User.usrId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imageId, image.imagePath,
+                    image.imageId,
+                    image.imagePath,
                     image.title,
                     user.usrId,
                     user.loginName,
                     category.categoryId,
                      category.name,
-image.likes, image.creationDate));
+                     image.likes,
+                     image.creationDate));
             }
 
-            return imageOutputs;
+            return new ImageBlock(imageOutputs, existMore);
         }
 
-        public IList<ImageOutput> FindImagesByUser(long userId)
+        public ImageBlock FindImagesByUser(long userId, int startIndex, int count)
         {
             User user = UserDao.Find(userId);
-            IList<Image> images = ImageDao.FindByUser(userId);
+            IList<Image> images = ImageDao.FindByUser(userId, startIndex, count + 1);
 
-            IList<ImageOutput> imageOutputs = new List<ImageOutput>();
+            bool existMore = (images.Count == count + 1);
+
+            if (existMore)
+                images.RemoveAt(count);
+
+            IList<ImageOutput> imageList = new List<ImageOutput>();
             foreach (Image image in images)
             {
                 Category category = CategoryDao.Find(image.Category.categoryId);
-                imageOutputs.Add(new ImageOutput(
-                    image.imageId, image.imagePath,
+                imageList.Add(new ImageOutput(
+                    image.imageId,
+                    image.imagePath,
                     image.title,
                     user.usrId,
                     user.loginName,
                     category.categoryId,
                     category.name,
-image.likes, image.creationDate));
+                    image.likes,
+                    image.creationDate));
             }
 
-            return imageOutputs;
+            return new ImageBlock(imageList, existMore);
         }
 
         [Transactional]
@@ -195,9 +217,14 @@ image.likes, image.creationDate));
             return categoriesOutput;
         }
 
-        public IList<ImageOutput> FindAllImages()
+        public ImageBlock FindAllImages(int startIndex, int count)
         {
-            IList<Image> images = ImageDao.GetAllElements();
+            IList<Image> images = ImageDao.FindAll(startIndex, count + 1);
+
+            bool existMore = (images.Count == count + 1);
+
+            if (existMore)
+                images.RemoveAt(count);
 
             IList<ImageOutput> imageOutputs = new List<ImageOutput>();
             foreach (Image image in images)
@@ -205,16 +232,18 @@ image.likes, image.creationDate));
                 Category category = CategoryDao.Find(image.Category.categoryId);
                 User user = UserDao.Find(image.User.usrId);
                 imageOutputs.Add(new ImageOutput(
-                    image.imageId, image.imagePath,
+                    image.imageId,
+                    image.imagePath,
                     image.title,
                     user.usrId,
                     user.loginName,
                     category.categoryId,
                      category.name,
-image.likes, image.creationDate));
+                     image.likes,
+                     image.creationDate));
             }
 
-            return imageOutputs;
+            return new ImageBlock(imageOutputs, existMore);
         }
     }
 }

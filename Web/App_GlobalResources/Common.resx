@@ -132,4 +132,10 @@
   <data name="lblNoFollows" xml:space="preserve">
     <value>There's no one here</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
 </root>

@@ -14,9 +14,9 @@
         </div>
         <br />
         <asp:GridView ID="gvFollowers" runat="server" AutoGenerateColumns="False">
-            <columns>
+            <Columns>
                 <asp:HyperLinkField DataNavigateUrlFields="value" DataNavigateUrlFormatString="~/Pages/Image/UserImagesFeed.aspx?userID={0}" DataTextField="key" HeaderText="Followers" meta:resourcekey="HyperLinkFieldResource1" />
-            </columns>
+            </Columns>
         </asp:GridView>
     </form>
 </asp:Content>

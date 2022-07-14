@@ -3,6 +3,7 @@ using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
@@ -163,10 +164,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
                 imageDao.Create(image1);
 
-                IList<ImageOutput> images = imageService.FindImagesByFilter("imagen");
+                ImageBlock images = imageService.FindImagesByFilter("imagen", 0, 2);
 
-                Assert.AreEqual(1, images.Count());
-                Assert.IsTrue(images.First().Title.ToLower().Contains("imagen"));
+                Assert.IsTrue(images.Images.First().Title.ToLower().Contains("imagen"));
             }
         }
 
@@ -187,11 +187,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 imageDao.Create(image1);
                 imageDao.Create(image2);
 
-                IList<ImageOutput> images = imageService.FindImagesByFilterAndCategory("imagen", category.categoryId);
+                ImageBlock images = imageService.FindImagesByFilterAndCategory("imagen", category.categoryId, 0, 2);
 
-                Assert.AreEqual(1, images.Count());
-                Assert.IsTrue(images.First().Title.ToLower().Contains("imagen"));
-                Assert.AreEqual("Imagen 1", images[0].Title);
+                Assert.AreEqual(2, images.Images.Count());
+                Assert.IsTrue(images.Images.First().Title.ToLower().Contains("imagen"));
+                Assert.AreEqual("Imagen 1", images.Images[0].Title);
             }
         }
 
@@ -230,8 +230,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
                 imageDao.Create(image1);
 
-                IList<ImageOutput> images = imageService.FindImagesByUser(user1.usrId);
-                ImageOutput image = images.First();
+                ImageBlock images = imageService.FindImagesByUser(user1.usrId, 0, 2);
+                ImageOutput image = images.Images.First();
 
                 Assert.AreEqual(image1.title, image.Title);
                 Assert.AreEqual(user1.usrId, image.UserId);

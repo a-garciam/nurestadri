@@ -1,4 +1,5 @@
-﻿using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
+﻿using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +14,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
 
         void DeleteImage(long imageId, long userId);
 
-        IList<ImageOutput> FindImagesByFilter(string keywords);
+        ImageBlock FindImagesByFilter(string keywords, int startIndex, int count);
 
-        IList<ImageOutput> FindImagesByFilterAndCategory(string keywords, long categoryId);
+        ImageBlock FindImagesByFilterAndCategory(string keywords, long categoryId, int startIndex, int count);
 
         ImageDetailsOutput FindImageById(long imageId);
 
-        IList<ImageOutput> FindImagesByUser(long userId);
+        ImageBlock FindImagesByUser(long userId, int startIndex, int count);
 
         IList<CategoryOutput> FindCategories();
 
-        IList<ImageOutput> FindAllImages();
+        ImageBlock FindAllImages(int startIndex, int count);
     }
 }

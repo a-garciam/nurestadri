@@ -30,7 +30,7 @@
             <br />
             <asp:Label ID="lblNoImages" runat="server" Text="<%$ Resources: Common, lblNoImages %>"></asp:Label>
             <br />
-            <asp:GridView ID="gvUserImages" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvUserImages_PageIndexChanging" GridLines="Horizontal" Width="346px" meta:resourcekey="gvUserImagesResource1">
+            <asp:GridView ID="gvUserImages" runat="server" AutoGenerateColumns="False" GridLines="Horizontal" meta:resourcekey="gvUserImagesResource1">
                 <Columns>
                     <asp:TemplateField HeaderText="Image" meta:resourcekey="TemplateFieldResource1">
                         <ItemTemplate>
@@ -45,6 +45,14 @@
                     <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="ImageDetails.aspx?imageID={0}" meta:resourcekey="HyperLinkImageDetails" />
                 </Columns>
             </asp:GridView>
+            <div class="previousNextLinks">
+                <span class="previousLink">
+                    <asp:HyperLink ID="lnkPrevious" Text="<%$ Resources:Common, Previous %>" runat="server"
+                        Visible="False"></asp:HyperLink>
+                </span><span class="nextLink">
+                    <asp:HyperLink ID="lnkNext" Text="<%$ Resources:Common, Next %>" runat="server" Visible="False"></asp:HyperLink>
+                </span>
+            </div>
         </div>
     </form>
     <br />

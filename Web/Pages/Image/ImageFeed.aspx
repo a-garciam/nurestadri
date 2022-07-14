@@ -12,7 +12,7 @@
             <br />
             <asp:Label ID="lblNoImages" runat="server" Text="<%$ Resources: Common, lblNoImages %>"></asp:Label>
             <br />
-            <asp:GridView ID="gvImageFeed" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvImageFeed_PageIndexChanging" ShowHeaderWhenEmpty="True" Style="margin-right: 0px" meta:resourcekey="gvImageFeedResource1">
+            <asp:GridView ID="gvImageFeed" runat="server" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" Style="margin-right: 0px" meta:resourcekey="gvImageFeedResource1">
                 <Columns>
                     <asp:ImageField DataImageUrlField="imagePath" HeaderText="Image" meta:resourcekey="ImageFieldResource1" ControlStyle-CssClass="img-feed">
                     </asp:ImageField>
@@ -23,6 +23,14 @@
                     <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="ImageDetails.aspx?imageID={0}" meta:resourcekey="HyperLinkImageDetails" />
                 </Columns>
             </asp:GridView>
+            <div class="previousNextLinks">
+                <span class="previousLink">
+                    <asp:HyperLink ID="lnkPrevious" Text="<%$ Resources:Common, Previous %>" runat="server"
+                        Visible="False"></asp:HyperLink>
+                </span><span class="nextLink">
+                    <asp:HyperLink ID="lnkNext" Text="<%$ Resources:Common, Next %>" runat="server" Visible="False"></asp:HyperLink>
+                </span>
+            </div>
         </div>
     </form>
 </asp:Content>
