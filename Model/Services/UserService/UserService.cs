@@ -158,12 +158,18 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         }
 
         [Transactional]
-        public UserFollows FindUserFollowers(long userId)
+        public UserFollows FindUserFollowers(long userId, int startIndex, int count)
         {
             User user = UserDao.Find(userId);
             IList<KeyValuePair<string, long>> followers = new List<KeyValuePair<string, long>>();
-            int count = user.Followers.Count;
-            foreach (User follower in user.Followers)
+            IList<User> userFollowers = UserDao.FindUserFollowers(userId, startIndex, count + 1);
+
+            bool existMore = (userFollowers.Count == count + 1);
+
+            if (existMore)
+                userFollowers.RemoveAt(count);
+
+            foreach (User follower in userFollowers)
             {
                 followers.Add(new KeyValuePair<string, long>(follower.loginName, follower.usrId));
             }
@@ -171,17 +177,22 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
                 user.usrId,
                 user.loginName,
                 followers,
-                count);
+                existMore);
             return userFollows;
         }
 
         [Transactional]
-        public UserFollows FindUserFollowed(long userId)
+        public UserFollows FindUserFollowed(long userId, int startIndex, int count)
         {
             User user = UserDao.Find(userId);
             IList<KeyValuePair<string, long>> followedList = new List<KeyValuePair<string, long>>();
-            int count = user.Followed.Count;
-            foreach (User followed in user.Followed)
+            IList<User> userFollowed = UserDao.FindUserFollowed(userId, startIndex, count + 1);
+
+            bool existMore = (userFollowed.Count == count + 1);
+
+            if (existMore)
+                userFollowed.RemoveAt(count);
+            foreach (User followed in userFollowed)
             {
                 followedList.Add(new KeyValuePair<string, long>(followed.loginName, followed.usrId));
             }
@@ -189,7 +200,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
                 user.usrId,
                 user.loginName,
                 followedList,
-                count);
+                existMore);
             return userFollows;
         }
 

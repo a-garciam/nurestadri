@@ -104,13 +104,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
 
             ImageBlock imageList = imageService.FindImagesByUser(userID, startIndex, count);
 
+            hlFollowers.NavigateUrl = Response.ApplyAppPathModifier("~/Pages/User/UserFollowers.aspx?userID=" + userID);
+            hlFollowed.NavigateUrl = Response.ApplyAppPathModifier("~/Pages/User/UserFollowed.aspx?userID=" + userID);
             if (imageList.Images.Count() <= 0)
             {
                 lblNoImages.Visible = true;
                 return;
             }
-            hlFollowers.NavigateUrl = Response.ApplyAppPathModifier("~/Pages/User/UserFollowers.aspx?userID=" + userID);
-            hlFollowed.NavigateUrl = Response.ApplyAppPathModifier("~/Pages/User/UserFollowed.aspx?userID=" + userID);
             gvUserImages.DataSource = imageList.Images;
             gvUserImages.AllowPaging = true;
             gvUserImages.DataBind();

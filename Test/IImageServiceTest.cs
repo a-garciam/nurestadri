@@ -72,7 +72,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
         private Image image2 = new Image()
         {
-            title = "Imagen2",
+            title = "Imagen 2",
             description = description,
             aperture = aperture,
             balance = balance,
@@ -189,7 +189,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
 
                 ImageBlock images = imageService.FindImagesByFilterAndCategory("imagen", category.categoryId, 0, 2);
 
-                Assert.AreEqual(2, images.Images.Count());
+                Assert.AreEqual(1, images.Images.Count());
                 Assert.IsTrue(images.Images.First().Title.ToLower().Contains("imagen"));
                 Assert.AreEqual("Imagen 1", images.Images[0].Title);
             }
@@ -238,6 +238,30 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 Assert.AreEqual(category.categoryId, image.CategoryId);
                 Assert.AreEqual(category.name, image.CategoryName);
                 Assert.AreEqual(image1.imagePath, image.ImagePath);
+            }
+        }
+
+        [TestMethod]
+        public void TestFindAllImages()
+        {
+            using (var scope = new TransactionScope())
+            {
+                categoryDao.Create(category);
+                categoryDao.Create(category2);
+                userDao.Create(user1);
+                userDao.Create(user2);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
+                image2.User = userDao.Find(user2.usrId);
+                image2.Category = categoryDao.Find(category2.categoryId);
+
+                imageDao.Create(image1);
+                imageDao.Create(image2);
+
+                ImageBlock images = imageService.FindAllImages(0, 10);
+                Assert.AreEqual(2, images.Images.Count());
+                Assert.AreEqual("Imagen 2", images.Images[0].Title); //Orden de más reciente a más antiguo, la primera imagen deberia se la numero 2
+                Assert.AreEqual("Imagen 1", images.Images[1].Title);
             }
         }
 

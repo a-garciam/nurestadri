@@ -70,9 +70,9 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.UserService
         bool IsFollowing(long followerId, long followId);
 
         [Transactional]
-        UserFollows FindUserFollowers(long userId);
+        UserFollows FindUserFollowers(long userId, int startIndex, int count);
 
         [Transactional]
-        UserFollows FindUserFollowed(long userId);
+        UserFollows FindUserFollowed(long userId, int startIndex, int count);
     }
 }

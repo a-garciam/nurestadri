@@ -53,5 +53,33 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao
 
             return user;
         }
+
+        public IList<User> FindUserFollowers(long userId, int startIndex, int count)
+        {
+            DbSet<User> users = Context.Set<User>();
+
+            var result =
+                (from u in users
+                 where u.usrId == userId
+                 select new { Followers = u.Followers.OrderBy(f => f.loginName).Skip(startIndex).Take(count).ToList() });
+
+            IList<User> user = result.FirstOrDefault().Followers;
+
+            return user;
+        }
+
+        public IList<User> FindUserFollowed(long userId, int startIndex, int count)
+        {
+            DbSet<User> users = Context.Set<User>();
+
+            var result =
+                (from u in users
+                 where u.usrId == userId
+                 select new { Followed = u.Followed.OrderBy(f => f.loginName).Skip(startIndex).Take(count).ToList() });
+
+            IList<User> user = result.FirstOrDefault().Followed;
+
+            return user;
+        }
     }
 }

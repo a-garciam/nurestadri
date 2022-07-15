@@ -282,7 +282,27 @@ GO
 SET IDENTITY_INSERT [User] ON
 INSERT INTO [User] ([usrId], [loginName], [enPassword], [firstName], [lastName], [email], [country], [language])
     VALUES (1, 'admin', 'jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=', 'Admin', 'lastName', 'admin@udc.es', 'es', 'ES');
+INSERT INTO [User] ([usrId], [loginName], [enPassword], [firstName], [lastName], [email], [country], [language])
+    VALUES (2, 'user1', 'jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=', 'User1', 'lastName', 'user@udc.es', 'es', 'ES');
+INSERT INTO [User] ([usrId], [loginName], [enPassword], [firstName], [lastName], [email], [country], [language])
+    VALUES (3, 'user2', 'jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=', 'User2', 'lastName', 'user@udc.es', 'es', 'ES');
+INSERT INTO [User] ([usrId], [loginName], [enPassword], [firstName], [lastName], [email], [country], [language])
+    VALUES (4, 'user3', 'jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=', 'User3', 'lastName', 'user@udc.es', 'es', 'ES');
 SET IDENTITY_INSERT [User] OFF
+
+
+INSERT INTO [Follower] ([followedId], [followerId])
+    VALUES (1, 2);
+INSERT INTO [Follower] ([followedId], [followerId])
+    VALUES (1, 3);
+INSERT INTO [Follower] ([followedId], [followerId])
+    VALUES (1, 4);
+INSERT INTO [Follower] ([followedId], [followerId])
+    VALUES (2, 1);
+INSERT INTO [Follower] ([followedId], [followerId])
+    VALUES (3, 1);
+INSERT INTO [Follower] ([followedId], [followerId])
+    VALUES (4, 1);
 
 SET IDENTITY_INSERT [Category] ON
 INSERT INTO [Category] ([categoryId],[name])
@@ -297,44 +317,34 @@ SET IDENTITY_INSERT [Category] OFF
 SET IDENTITY_INSERT [Image] ON
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (1, 0, 'Arbore', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\arbore.jpg', 1, 2, "06-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (2, 0, 'Azul', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\azul.jpg', 1, 1, "04-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (3, 0, 'Buratos', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\buratos.jpg', 1, 2, "04-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (4, 0, 'Can', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\can.jpg', 1, 2, "07-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (5, 0, 'Flor', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\flor.jpg', 1, 2, "04-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (6, 0, 'Folla', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\folla.jpg', 1, 2, "04-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (7, 0, 'Pombas', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\pombas.jpg', 1, 2, "04-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (8, 0, 'Praia', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\praia.jpg', 1, 2, "04-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (9, 0, 'Tulipans', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\tulipans.jpg', 1, 2, "04-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (10, 0, 'Verde', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\verde.jpg', 1, 1, "04-10-2021");
-SET IDENTITY_INSERT [Image] OFF
-SET IDENTITY_INSERT [Image] ON
+
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (11, 0, 'Vermello', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\vermello.jpg', 1, 1, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF

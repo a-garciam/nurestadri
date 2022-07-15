@@ -120,7 +120,4 @@
   <data name="HyperLinkFieldResource1.HeaderText" xml:space="preserve">
     <value>Seguidores</value>
   </data>
-  <data name="lblNumberFollowersTitle.Text" xml:space="preserve">
-    <value>Seguidores: </value>
-  </data>
 </root>
