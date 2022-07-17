@@ -115,8 +115,10 @@
     <Content Include="Css\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Comment\CreateComment.aspx" />
+    <Content Include="Pages\Comment\DeleteComment.aspx" />
     <Content Include="Pages\Comment\ImageComments.aspx" />
     <Content Include="Pages\Comment\LikeImage.aspx" />
+    <Content Include="Pages\Comment\UpdateComment.aspx" />
     <Content Include="Pages\Feedback\InternalError.aspx" />
     <Content Include="Pages\Feedback\SuccessfulOperation.aspx" />
     <Content Include="Pages\Image\FilterImages.aspx" />
@@ -160,6 +162,13 @@
     <Compile Include="Pages\Comment\CreateComment.aspx.designer.cs">
       <DependentUpon>CreateComment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Comment\DeleteComment.aspx.cs">
+      <DependentUpon>DeleteComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Comment\DeleteComment.aspx.designer.cs">
+      <DependentUpon>DeleteComment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Comment\ImageComments.aspx.cs">
       <DependentUpon>ImageComments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -173,6 +182,13 @@
     </Compile>
     <Compile Include="Pages\Comment\LikeImage.aspx.designer.cs">
       <DependentUpon>LikeImage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Comment\UpdateComment.aspx.cs">
+      <DependentUpon>UpdateComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Comment\UpdateComment.aspx.designer.cs">
+      <DependentUpon>UpdateComment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Feedback\InternalError.aspx.cs">
       <DependentUpon>InternalError.aspx</DependentUpon>
@@ -470,6 +486,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Comment\App_LocalResources\CreateComment.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Comment\App_LocalResources\UpdateComment.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Comment\App_LocalResources\UpdateComment.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Comment\App_LocalResources\UpdateComment.aspx.gl.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

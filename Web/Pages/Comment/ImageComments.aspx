@@ -8,11 +8,13 @@
         <div align="left">
             <asp:HyperLink ID="hlCreateComment" runat="server" meta:resourcekey="hlCreateComment"></asp:HyperLink>
         </div>
-        <asp:GridView ID="gv_ImageComments" runat="server" AutoGenerateColumns="False">
+        <asp:GridView ID="gv_ImageComments" runat="server" AutoGenerateColumns="False" OnRowDataBound="gv_ImageComments_RowDataBound">
             <Columns>
                 <asp:BoundField DataField="CommentText" HeaderText="Comment" meta:resourcekey="commentTitle" ItemStyle-HorizontalAlign="Justify" ItemStyle-Wrap="True" ControlStyle-Width="300px" ItemStyle-CssClass="maxWidthGrid" />
                 <asp:HyperLinkField DataNavigateUrlFields="userId" DataNavigateUrlFormatString="~/Pages/Image/UserImagesFeed.aspx?userID={0}" DataTextField="UserName" meta:resourcekey="userNameTitle" />
                 <asp:BoundField DataField="CreationDate" HeaderText="Date" meta:resourcekey="creationDateTitle" />
+                <asp:HyperLinkField DataNavigateUrlFields="commentId" DataNavigateUrlFormatString="~/Pages/Comment/UpdateComment.aspx?commentID={0}" meta:resourcekey="hlUpdate" />
+                <asp:HyperLinkField DataNavigateUrlFields="commentId" DataNavigateUrlFormatString="~/Pages/Comment/DeleteComment.aspx?commentID={0}" meta:resourcekey="hlDelete" />
             </Columns>
         </asp:GridView>
         <div class="previousNextLinks" align="left">

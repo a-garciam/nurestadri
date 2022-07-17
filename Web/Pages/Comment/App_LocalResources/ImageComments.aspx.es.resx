@@ -126,6 +126,9 @@
   <data name="hlCreateComment.Text" xml:space="preserve">
     <value>Añade un comentario</value>
   </data>
+  <data name="hlUpdate.Text" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
   <data name="userNameTitle.HeaderText" xml:space="preserve">
     <value>Usuario</value>
   </data>

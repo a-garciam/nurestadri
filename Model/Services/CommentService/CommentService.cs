@@ -83,6 +83,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
             {
                 user = UserDao.Find(comment.usrId);
                 commentList.Add(new CommentOutput(
+                    comment.commentId,
                     user.loginName,
                     comment.usrId,
                     comment.creationDate,
@@ -141,6 +142,39 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
             {
                 return false;
             }
+        }
+
+        public void UpdateComment(long userId, long commentId, string text)
+        {
+            User user = UserDao.Find(userId);
+
+            Comment comment = CommentDao.Find(commentId);
+
+            if (user.usrId != comment.usrId)
+            {
+                throw new OperationNotAllowedException();
+            }
+            if (text.Length > 200)
+            {
+                throw new ExceededLengthException();
+            }
+            comment.text = text;
+
+            CommentDao.Update(comment);
+        }
+
+        public CommentOutput FindCommentsById(long commentId)
+        {
+            Comment comment = CommentDao.Find(commentId);
+            User user = UserDao.Find(comment.usrId);
+
+            return new CommentOutput(
+                    comment.commentId,
+                    user.loginName,
+                    comment.usrId,
+                    comment.creationDate,
+                    comment.text
+                    );
         }
     }
 }

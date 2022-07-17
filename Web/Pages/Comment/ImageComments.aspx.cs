@@ -1,10 +1,12 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources.Output;
 using Es.Udc.DotNet.PracticaMaD.Web.Properties;
 using Es.Udc.DotNet.PracticaMaD.Web.Session;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -89,6 +91,22 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
                 this.lnkNext.NavigateUrl =
                     Response.ApplyAppPathModifier(url);
                 this.lnkNext.Visible = true;
+            }
+        }
+
+        protected void gv_ImageComments_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            UserSession userSession = SessionManager.GetUserSession(Context);
+            long userId = userSession.UserProfileId;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                CommentOutput output = (CommentOutput)e.Row.DataItem;
+
+                if (output.UserId != userId)
+                {
+                    e.Row.Cells[3].Visible = false;
+                    e.Row.Cells[4].Visible = false;
+                }
             }
         }
     }

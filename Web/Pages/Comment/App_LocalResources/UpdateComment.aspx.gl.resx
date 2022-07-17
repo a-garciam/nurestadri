@@ -117,19 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="commentTitle.HeaderText" xml:space="preserve">
-    <value>Comment</value>
+  <data name="btnCommentResource1.Text" xml:space="preserve">
+    <value>Gardar</value>
   </data>
-  <data name="creationDateTitle.HeaderText" xml:space="preserve">
-    <value>Date</value>
+  <data name="lblErrorLength.Text" xml:space="preserve">
+    <value>Máximo de caracteres:</value>
   </data>
-  <data name="hlCreateComment.Text" xml:space="preserve">
-    <value>Add new comment</value>
+  <data name="lblSuccess.Text" xml:space="preserve">
+    <value>Comentario actualizado</value>
   </data>
-  <data name="hlUpdate.Text" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="userNameTitle.HeaderText" xml:space="preserve">
-    <value>Username</value>
+  <data name="lblUpdateCommentResource1.Text" xml:space="preserve">
+    <value>Modifica o teu comentario</value>
   </data>
 </root>

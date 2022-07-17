@@ -9,14 +9,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources.Outp
     [Serializable]
     public class CommentOutput
     {
-        public CommentOutput(string userName, long userId, DateTime creationDate, string commentText)
+        public CommentOutput(long commentId, string userName, long userId, DateTime creationDate, string commentText)
         {
+            CommentId = commentId;
             UserName = userName;
             UserId = userId;
             CreationDate = creationDate;
             CommentText = commentText;
         }
 
+        public long CommentId { get; private set; }
         public string UserName { get; private set; }
         public long UserId { get; private set; }
         public DateTime CreationDate { get; private set; }
