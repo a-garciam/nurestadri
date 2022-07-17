@@ -156,4 +156,7 @@
   <data name="hlFollowers.Text" xml:space="preserve">
     <value>Ver Seguidores</value>
   </data>
+  <data name="btnLike.Text" xml:space="preserve">
+    <value>Gústame</value>
+  </data>
 </root>

@@ -45,5 +45,16 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
 
             return commentsList;
         }
+
+        public bool FindLike(long userId, long imageId)
+        {
+            DbSet<Image> image = Context.Set<Image>();
+
+            var result = (from i in image
+                          where i.imageId == imageId && i.UserLikes.Any(u => u.usrId == userId)
+                          select i).Any();
+
+            return result;
+        }
     }
 }

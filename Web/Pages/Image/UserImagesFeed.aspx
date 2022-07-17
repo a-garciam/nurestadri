@@ -43,6 +43,7 @@
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:BoundField>
                     <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="ImageDetails.aspx?imageID={0}" meta:resourcekey="HyperLinkImageDetails" />
+                    <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="~/Pages/Comment/LikeImage.aspx?imageID={0}" meta:resourcekey="btnLike" />
                 </Columns>
             </asp:GridView>
             <div class="previousNextLinks">

@@ -117,40 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblApertureTitleResource1.Text" xml:space="preserve">
-    <value>Apertura</value>
+  <data name="btnLikeResource1.Text" xml:space="preserve">
+    <value>Aceptar</value>
   </data>
-  <data name="lblBalanceTitleResource1.Text" xml:space="preserve">
-    <value>Balance</value>
+  <data name="btnNotLikeResource1.Text" xml:space="preserve">
+    <value>Volver</value>
   </data>
-  <data name="lblCategoryTitleResource1.Text" xml:space="preserve">
-    <value>Categoría</value>
+  <data name="lblLikeImageResource1.Text" xml:space="preserve">
+    <value>¿Quieres dar "me gusta" a esta imagen?</value>
   </data>
-  <data name="lblCreationDateTitleResource1.Text" xml:space="preserve">
-    <value>Data de creación</value>
-  </data>
-  <data name="lblDescriptionTitleResource1.Text" xml:space="preserve">
-    <value>Descripcion</value>
-  </data>
-  <data name="lblErrorDeleteImage" xml:space="preserve">
-    <value>Non se puido eliminar a imaxe</value>
-  </data>
-  <data name="lblExposureTitleResource1.Text" xml:space="preserve">
-    <value>Exposición</value>
-  </data>
-  <data name="lblLike.Text" xml:space="preserve">
-    <value>Gústache esta imaxe</value>
-  </data>
-  <data name="lblLikesTitleResource1.Text" xml:space="preserve">
-    <value>Gústame</value>
-  </data>
-  <data name="lblPermissionError.Text" xml:space="preserve">
-    <value>Solo o autor da imaxe pode eliminala</value>
-  </data>
-  <data name="lblTitleTitleResource1.Text" xml:space="preserve">
+  <data name="lblTitleTitle.Text" xml:space="preserve">
     <value>Título</value>
   </data>
-  <data name="lblUserTitleResource1.Text" xml:space="preserve">
+  <data name="lblUserTitle.Text" xml:space="preserve">
     <value>Usuario</value>
   </data>
 </root>

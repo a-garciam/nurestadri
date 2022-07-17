@@ -12,7 +12,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 {
     public class CommentService : ICommentService
     {
-
         [Inject]
         public ICommentDao CommentDao { private get; set; }
 
@@ -22,14 +21,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         [Inject]
         public IUserDao UserDao { private get; set; }
 
-
         // Añadir comentario.
         // Un usuario puede añadir comentarios relativos a una imagen.
         // Si el usuario no estaba autenticado, cuando selecciona el enlace
         // para añadir un comentario, se le redirige al formulario de autenticación
         // y tras autenticarse correctamente, se le muestra el formulario para añadir comentario.
         // Un usuario también podrá modificar o eliminar los comentarios realizados por él mismo.
-
 
         /// <summary>
         /// Adds a comment to an image.
@@ -40,7 +37,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         public long CommentImage(long userId, long imageId, String text)
         {
-
             if (UserDao.Exists(userId) && ImageDao.Exists(imageId))
             {
                 Comment comment = new Comment();
@@ -78,7 +74,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
                 return comment.commentId;
             }
             else return -1;
-
         }
 
         /// <summary>
@@ -115,7 +110,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
                     Console.WriteLine(str);
                 }
             }
-
         }
 
         // Indicar “Me gusta”.
@@ -127,34 +121,47 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         // No será posible indicar “Me gusta” más de una vez sobre la misma imagen,
         // pero sí podrá eliminarse un “Me gusta” especificado previamente.
 
-
         /// <summary>
         /// Adds (or deletes if already exists) a like to an image.
         /// </summary>
         /// <param name="imageId"> The image id. </param>
         /// <param name="userId"> The user id. </param>
 
-        public long LikeImage(long imageId, long userId)
+        public int LikeImage(long imageId, long userId)
         {
-            if (ImageDao.Exists(imageId) && UserDao.Exists(userId))
+            Image image = ImageDao.Find(imageId);
+            User user = UserDao.Find(userId);
+
+            if (image.UserLikes.Contains(user))
             {
-                Image image = ImageDao.Find(imageId);
-                User user = UserDao.Find(userId);
-                if (image.UserLikes.Contains(user))
-                {
-                    image.UserLikes.Remove(user);
-                    image.likes--;
-                    return image.likes;
-                }
-                else
-                {
-                    image.UserLikes.Add(user);
-                    image.likes++;
-                    return image.likes;
-                }
+                image.likes--;
+                image.UserLikes.Remove(user);
+                user.ImageLikes.Remove(image);
+                ImageDao.Update(image);
+                UserDao.Update(user);
+                return image.likes;
             }
             else
-                return -1;
+            {
+                image.likes++;
+                image.UserLikes.Add(user);
+                user.ImageLikes.Add(image);
+                return image.likes;
+            }
+        }
+
+        public bool FindLike(long imageId, long userId)
+        {
+            Image image = ImageDao.Find(imageId);
+            User user = UserDao.Find(userId);
+            if (image.UserLikes.Contains(user))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

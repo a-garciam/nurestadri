@@ -138,6 +138,9 @@
   <data name="lblExposureTitleResource1.Text" xml:space="preserve">
     <value>Exposure</value>
   </data>
+  <data name="lblLike.Text" xml:space="preserve">
+    <value>You like this image</value>
+  </data>
   <data name="lblLikesTitleResource1.Text" xml:space="preserve">
     <value>Likes</value>
   </data>

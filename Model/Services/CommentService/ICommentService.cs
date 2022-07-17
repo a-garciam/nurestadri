@@ -32,7 +32,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         // No será posible indicar “Me gusta” más de una vez sobre la misma imagen,
         // pero sí podrá eliminarse un “Me gusta” especificado previamente.
 
-        long LikeImage(long image, long user); // Si se llama a la función y el Like ya existe, se elimina.
+        int LikeImage(long imageId, long userId); // Si se llama a la función y el Like ya existe, se elimina. Devuelve el numero de likes de la foto tras la operacion
 
+        bool FindLike(long imageId, long userId);
     }
 }

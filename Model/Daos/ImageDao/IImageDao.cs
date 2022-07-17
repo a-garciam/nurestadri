@@ -12,6 +12,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos
         IList<Image> FindByUser(long userId, int startIndex, int count);
 
         Image FindByTitle(string title);
+
         IList<Image> FindAll(int startIndex, int count);
     }
 }

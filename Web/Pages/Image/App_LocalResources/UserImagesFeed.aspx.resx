@@ -156,4 +156,7 @@
   <data name="hlFollowers.Text" xml:space="preserve">
     <value>Followers</value>
   </data>
+  <data name="btnLike.Text" xml:space="preserve">
+    <value>Like</value>
+  </data>
 </root>

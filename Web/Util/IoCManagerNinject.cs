@@ -2,6 +2,7 @@
 using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.UserService;
 using Ninject;
@@ -36,6 +37,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Util
             kernel.Bind<IImageService>().To<ImageService>();
 
             kernel.Bind<IUserService>().To<UserService>();
+
+            kernel.Bind<ICommentService>().To<CommentService>();
 
             /*** DbContext ***/
             string connectionString =

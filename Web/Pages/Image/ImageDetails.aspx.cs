@@ -1,5 +1,6 @@
 ﻿using Es.Udc.DotNet.ModelUtil.Exceptions;
 using Es.Udc.DotNet.ModelUtil.IoC;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService.Resources.Output;
@@ -20,6 +21,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             btnDeleteImage.Visible = false;
             lblDeleteError.Visible = false;
             lblPermissionError.Visible = false;
+            lblLike.Visible = false;
             UserSession userSession = SessionManager.GetUserSession(Context);
             if (userSession == null)
             {
@@ -32,10 +34,12 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             long imageId = Int64.Parse(Request.Params.Get("imageID"));
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
             IImageService imageService = iocManager.Resolve<IImageService>();
+            ICommentService commentService = iocManager.Resolve<ICommentService>();
             try
             {
                 ImageDetailsOutput image = imageService.FindImageById(imageId);
 
+                lblLike.Visible = commentService.FindLike(imageId, userSession.UserProfileId);
                 imgFile.ImageUrl = image.ImagePath;
                 lblUser.Text = image.UserName;
                 lblTitle.Text = image.Title;
