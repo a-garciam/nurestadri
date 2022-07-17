@@ -47,14 +47,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             {
                 try
                 {
-                    UserSession userSession = SessionManager.GetUserSession(Context);
-                    if (userSession == null)
-                    {
-                        Response.Redirect("~/Pages/User/Authentication.aspx");
-                    }
                     string keyword = tbKeyword.Text.Trim();
-                    string url =
-                    String.Format("./ImageFeed.aspx?keyword={0}", keyword);
+                    string url = String.Format("./ImageFeed.aspx?keyword={0}", keyword);
                     if (ddlCategory.SelectedValue != null && ddlCategory.SelectedValue != "")
                     {
                         long categoryId = Convert.ToInt64(ddlCategory.SelectedValue);

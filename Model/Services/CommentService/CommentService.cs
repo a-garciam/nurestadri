@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Es.Udc.DotNet.ModelUtil.Transactions;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
@@ -38,6 +39,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         /// <param name="imageId"> The image id. </param>
         /// <param name="text"> The text of the comment. </param>
 
+        [Transactional]
         public long CommentImage(long userId, long imageId, String text)
         {
             User user = UserDao.Find(userId);
@@ -67,7 +69,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         /// Displays all the comments of an image.
         /// </summary>
         /// <param name="imageId"> The image id. </param>
-
+        [Transactional]
         public CommentBlock FindCommentsByImage(long imageId, int startIndex, int count)
         {
             ImageDao.Find(imageId);
@@ -108,7 +110,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         /// </summary>
         /// <param name="imageId"> The image id. </param>
         /// <param name="userId"> The user id. </param>
-
+        [Transactional]
         public int LikeImage(long imageId, long userId)
         {
             Image image = ImageDao.Find(imageId);
@@ -130,6 +132,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
             }
         }
 
+        [Transactional]
         public bool FindLike(long imageId, long userId)
         {
             Image image = ImageDao.Find(imageId);
@@ -144,6 +147,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
             }
         }
 
+        [Transactional]
         public void UpdateComment(long userId, long commentId, string text)
         {
             User user = UserDao.Find(userId);
@@ -163,6 +167,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
             CommentDao.Update(comment);
         }
 
+        [Transactional]
         public CommentOutput FindCommentsById(long commentId)
         {
             Comment comment = CommentDao.Find(commentId);
@@ -175,6 +180,18 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
                     comment.creationDate,
                     comment.text
                     );
+        }
+
+        [Transactional]
+        public void DeleteComment(long userId, long commentId)
+        {
+            Comment comment = CommentDao.Find(commentId);
+
+            if (userId != comment.usrId)
+            {
+                throw new OperationNotAllowedException();
+            }
+            CommentDao.Remove(comment.commentId);
         }
     }
 }

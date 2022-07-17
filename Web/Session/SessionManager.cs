@@ -62,8 +62,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
             userSession.UserProfileId = usrId;
             userSession.FirstName = userDetails.FirstName;
 
+            Locale locale = new Locale(userDetails.Language,
+                userDetails.Country);
 
-            context.Session.Add(USER_SESSION_ATTRIBUTE, userSession);
+            UpdateSessionForAuthenticatedUser(context, userSession, locale);
 
             FormsAuthentication.SetAuthCookie(loginName, false);
         }
@@ -84,7 +86,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
              * objects for an authenticated user. */
             LoginResult loginResult = DoLogin(context, loginName,
                 clearPassword, false, rememberMyPassword);
-
         }
 
         /// <summary>
@@ -230,7 +231,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
 
             userService.ChangePassword(userSession.UserProfileId,
                 oldClearPassword, newClearPassword);
-
         }
 
         /// <summary>
@@ -240,13 +240,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Session
         /// <param name="context">Http Context includes request, response, etc.</param>
         public static void Logout(HttpContext context)
         {
-
             /* Invalidate session. */
             context.Session.Abandon();
 
             /* Invalidate Authentication Ticket */
             FormsAuthentication.SignOut();
         }
-
     }
 }

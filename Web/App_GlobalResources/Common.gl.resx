@@ -144,4 +144,7 @@
   <data name="lblError" xml:space="preserve">
     <value>Produciuse un erro</value>
   </data>
+  <data name="lblSuccess" xml:space="preserve">
+    <value>Operacion realizada correctamente</value>
+  </data>
 </root>

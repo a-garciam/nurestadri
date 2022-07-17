@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,34 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lclPageTitle" xml:space="preserve">
-    <value>nurestadri</value>
-  </data>
-  <data name="mandatoryField" xml:space="preserve">
-    <value>Campo obligatorio</value>
-  </data>
-  <data name="lblNoImages" xml:space="preserve">
-    <value>No se ha encontrado ninguna imagen :(</value>
-  </data>
-  <data name="btnDelete" xml:space="preserve">
-    <value>Eliminar</value>
-  </data>
-  <data name="lblNoFollows" xml:space="preserve">
-    <value>No hay nadie aquí</value>
-  </data>
-  <data name="Next" xml:space="preserve">
-    <value>Siguiente</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Anterior</value>
-  </data>
-  <data name="lblNoComments" xml:space="preserve">
-    <value>No hay comentarios</value>
-  </data>
-  <data name="lblError" xml:space="preserve">
-    <value>Se ha producido un error</value>
-  </data>
-  <data name="lblSuccess" xml:space="preserve">
-    <value>Operacion realizada correctamente</value>
+  <data name="lblSuccessResource1.Text" xml:space="preserve">
+    <value>Comentario eliminado correctamente</value>
   </data>
 </root>

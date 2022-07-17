@@ -14,7 +14,7 @@
                 <asp:HyperLinkField DataNavigateUrlFields="userId" DataNavigateUrlFormatString="~/Pages/Image/UserImagesFeed.aspx?userID={0}" DataTextField="UserName" meta:resourcekey="userNameTitle" />
                 <asp:BoundField DataField="CreationDate" HeaderText="Date" meta:resourcekey="creationDateTitle" />
                 <asp:HyperLinkField DataNavigateUrlFields="commentId" DataNavigateUrlFormatString="~/Pages/Comment/UpdateComment.aspx?commentID={0}" meta:resourcekey="hlUpdate" />
-                <asp:HyperLinkField DataNavigateUrlFields="commentId" DataNavigateUrlFormatString="~/Pages/Comment/DeleteComment.aspx?commentID={0}" meta:resourcekey="hlDelete" />
+                <asp:HyperLinkField DataNavigateUrlFields="commentId" DataNavigateUrlFormatString="~/Pages/Comment/DeleteComment.aspx?commentID={0}" Text="<%$ Resources: Common, btnDelete %>" />
             </Columns>
         </asp:GridView>
         <div class="previousNextLinks" align="left">

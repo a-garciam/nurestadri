@@ -25,6 +25,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         CommentOutput FindCommentsById(long commentId);
 
+        void DeleteComment(long userId, long commentId);
+
         // Indicar “Me gusta”.
         // Un usuario puede indicar que le gusta una imagen.
         // Si el usuario no estaba autenticado, cuando selecciona el enlace

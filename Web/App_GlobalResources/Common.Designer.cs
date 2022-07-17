@@ -106,6 +106,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Operation was successful.
+        /// </summary>
+        internal static string lblSuccess {
+            get {
+                return ResourceManager.GetString("lblSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a nurestadri.
         /// </summary>
         internal static string lclPageTitle {

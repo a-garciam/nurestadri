@@ -24,10 +24,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
 
             lblNoImages.Visible = false;
             UserSession userSession = SessionManager.GetUserSession(Context);
-            if (userSession == null)
-            {
-                Response.Redirect("~/Pages/User/Authentication.aspx");
-            }
+
             /* Get Start Index */
             try
             {
