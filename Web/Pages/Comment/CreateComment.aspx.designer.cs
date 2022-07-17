@@ -11,7 +11,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
 {
 
 
-    public partial class ImageComments
+    public partial class CreateComment
     {
 
         /// <summary>
@@ -24,48 +24,57 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control lblNoComments.
+        /// Control lblError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNoComments;
+        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// Control hlCreateComment.
+        /// Control lblErrorLength.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlCreateComment;
+        protected global::System.Web.UI.WebControls.Label lblErrorLength;
 
         /// <summary>
-        /// Control gv_ImageComments.
+        /// Control lblNewComment.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_ImageComments;
+        protected global::System.Web.UI.WebControls.Label lblNewComment;
 
         /// <summary>
-        /// Control lnkPrevious.
+        /// Control tbComment.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkPrevious;
+        protected global::System.Web.UI.WebControls.TextBox tbComment;
 
         /// <summary>
-        /// Control lnkNext.
+        /// Control rfvComment.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkNext;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvComment;
+
+        /// <summary>
+        /// Control btnComment.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnComment;
     }
 }

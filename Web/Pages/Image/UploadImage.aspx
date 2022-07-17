@@ -9,7 +9,7 @@
     runat="server">
     <form id="form1" runat="server">
         <div class="field">
-            <asp:Label ID="lblError" runat="server" CssClass="errorMessage" Text="Error" meta:resourcekey="lblErrorResource1"></asp:Label>
+            <asp:Label ID="lblError" runat="server" CssClass="errorMessage" Text="<%$Resources: Common, lblError %>"></asp:Label>
             <br />
             <asp:Label ID="lblTitle" runat="server" Text="Title" meta:resourcekey="lblTitleResource1" CssClass="label"></asp:Label>
             <br />

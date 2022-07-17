@@ -117,31 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lclPageTitle" xml:space="preserve">
-    <value>nurestadri</value>
+  <data name="btnCommentResource1.Text" xml:space="preserve">
+    <value>Guardar</value>
   </data>
-  <data name="mandatoryField" xml:space="preserve">
-    <value>Mandatory field</value>
+  <data name="lblErrorLength.Text" xml:space="preserve">
+    <value>Máximo de caracteres: </value>
   </data>
-  <data name="lblNoImages" xml:space="preserve">
-    <value>No images to be found here :(</value>
-  </data>
-  <data name="btnDelete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="lblNoFollows" xml:space="preserve">
-    <value>There's no one here</value>
-  </data>
-  <data name="Next" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Previous</value>
-  </data>
-  <data name="lblNoComments" xml:space="preserve">
-    <value>There is no comments</value>
-  </data>
-  <data name="lblError" xml:space="preserve">
-    <value>An error has occurred</value>
+  <data name="lblNewCommentResource1.Text" xml:space="preserve">
+    <value>Escribe tu comentario</value>
   </data>
 </root>

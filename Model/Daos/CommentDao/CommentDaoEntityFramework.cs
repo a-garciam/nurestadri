@@ -35,7 +35,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
             var result =
                 (from comment in comments
                  where comment.Image.imageId == imageId
-                 orderby comment.creationDate
+                 orderby comment.creationDate descending
                  select comment).Skip(startIndex).Take(count);
 
             commentsList = result.ToList();

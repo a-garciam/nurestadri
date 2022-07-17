@@ -351,11 +351,11 @@ SET IDENTITY_INSERT [Image] OFF
 
 SET IDENTITY_INSERT [Comment] ON
 INSERT INTO [Comment] ([commentId],[creationDate],[imageId],[usrId],[text])
-    VALUES(1,"05-10-2021",1,1,"nuevo comentario <3");
+    VALUES(1,"04-10-2021",1,1,"nuevo comentario <3");
 INSERT INTO [Comment] ([commentId],[creationDate],[imageId],[usrId],[text])
     VALUES(2,"05-10-2021",1,1,"otro comentario <3");
 INSERT INTO [Comment] ([commentId],[creationDate],[imageId],[usrId],[text])
-    VALUES(3,"05-10-2021",1,1,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo");
+    VALUES(3,"06-10-2021",1,1,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo");
 SET IDENTITY_INSERT [Comment] OFF
 
 -- --------------------------------------------------

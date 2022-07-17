@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a An error has occurred.
+        /// </summary>
+        internal static string lblError {
+            get {
+                return ResourceManager.GetString("lblError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a There is no comments.
         /// </summary>
         internal static string lblNoComments {

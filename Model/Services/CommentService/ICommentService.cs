@@ -18,10 +18,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         long CommentImage(long userId, long imageId, String text);
 
-        long DeleteComment(int commentId);
-
-        long EditComment(long commentId, String newText);
-
         CommentBlock FindCommentsByImage(long imageId, int startIndex, int count);
 
         // Indicar “Me gusta”.

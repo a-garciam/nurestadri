@@ -58,7 +58,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
             ICommentService commentService = iocManager.Resolve<ICommentService>();
 
             CommentBlock commentBlock = commentService.FindCommentsByImage(imageId, startIndex, count);
-
+            hlCreateComment.NavigateUrl = Response.ApplyAppPathModifier("~/Pages/Comment/CreateComment.aspx?imageID=" + imageId);
             if (commentBlock.Comments.Count() == 0)
             {
                 lblNoComments.Visible = true;
@@ -85,7 +85,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
             {
                 String url = "~/Pages/Comment/ImageComments.aspx" + "?imageID=" + imageId +
                 "&startIndex=" + (startIndex + count) + "&count=" + count;
-                Trace.Warn(url);
+
                 this.lnkNext.NavigateUrl =
                     Response.ApplyAppPathModifier(url);
                 this.lnkNext.Visible = true;

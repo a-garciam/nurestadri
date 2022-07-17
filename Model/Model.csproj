@@ -131,6 +131,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CommentService\Resources\CommentBlock.cs" />
     <Compile Include="Services\CommentService\Resources\Output\CommentOutput.cs" />
+    <Compile Include="Services\Exceptions\EmptyCommentException.cs" />
+    <Compile Include="Services\Exceptions\ExceededLengthException.cs" />
     <Compile Include="Services\Exceptions\IncorrectApertureFormatException.cs" />
     <Compile Include="Services\Exceptions\IncorrectBalanceFormatException.cs" />
     <Compile Include="Services\Exceptions\IncorrectExposureFormatException.cs" />

@@ -114,6 +114,7 @@
   <ItemGroup>
     <Content Include="Css\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Comment\CreateComment.aspx" />
     <Content Include="Pages\Comment\ImageComments.aspx" />
     <Content Include="Pages\Comment\LikeImage.aspx" />
     <Content Include="Pages\Feedback\InternalError.aspx" />
@@ -151,6 +152,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Comment\CreateComment.aspx.cs">
+      <DependentUpon>CreateComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Comment\CreateComment.aspx.designer.cs">
+      <DependentUpon>CreateComment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Comment\ImageComments.aspx.cs">
       <DependentUpon>ImageComments.aspx</DependentUpon>
@@ -453,6 +461,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Comment\App_LocalResources\ImageComments.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Comment\App_LocalResources\CreateComment.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Comment\App_LocalResources\CreateComment.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Comment\App_LocalResources\CreateComment.aspx.gl.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

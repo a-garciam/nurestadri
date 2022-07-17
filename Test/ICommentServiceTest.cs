@@ -160,5 +160,29 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 Assert.AreEqual(comment1.usrId, comment.UserId);
             }
         }
+
+        [TestMethod]
+        public void TestCommentImage()
+        {
+            using (var scope = new TransactionScope())
+            {
+                categoryDao.Create(category);
+                userDao.Create(user1);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
+
+                imageDao.Create(image1);
+
+                long commentId = commentService.CommentImage(user1.usrId, image1.imageId, "Nuevo comentario hola hola");
+                Comment comment = commentDao.Find(commentId);
+                Assert.AreEqual("Nuevo comentario hola hola", comment.text);
+                Assert.AreEqual(user1.usrId, comment.usrId);
+
+                commentId = commentService.CommentImage(user1.usrId, image1.imageId, "Nuevo comentario 2 hola hola");
+                comment = commentDao.Find(commentId);
+                Assert.AreEqual("Nuevo comentario 2 hola hola", comment.text);
+                Assert.AreEqual(user1.usrId, comment.usrId);
+            }
+        }
     }
 }

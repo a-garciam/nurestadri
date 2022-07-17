@@ -3,10 +3,14 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <form id="form1" runat="server">
         <asp:Label ID="lblNoComments" runat="server" Text="<%$ Resources:Common, lblNoComments %>" meta:resourcekey="lblNoCommentsResource1"></asp:Label>
+
         <br />
+        <div align="left">
+            <asp:HyperLink ID="hlCreateComment" runat="server" meta:resourcekey="hlCreateComment"></asp:HyperLink>
+        </div>
         <asp:GridView ID="gv_ImageComments" runat="server" AutoGenerateColumns="False">
             <Columns>
-                <asp:BoundField DataField="CommentText" HeaderText="Comment" meta:resourcekey="commentTitle" />
+                <asp:BoundField DataField="CommentText" HeaderText="Comment" meta:resourcekey="commentTitle" ItemStyle-HorizontalAlign="Justify" ItemStyle-Wrap="True" ControlStyle-Width="300px" ItemStyle-CssClass="maxWidthGrid" />
                 <asp:HyperLinkField DataNavigateUrlFields="userId" DataNavigateUrlFormatString="~/Pages/Image/UserImagesFeed.aspx?userID={0}" DataTextField="UserName" meta:resourcekey="userNameTitle" />
                 <asp:BoundField DataField="CreationDate" HeaderText="Date" meta:resourcekey="creationDateTitle" />
             </Columns>

@@ -123,6 +123,9 @@
   <data name="creationDateTitle.HeaderText" xml:space="preserve">
     <value>Fecha</value>
   </data>
+  <data name="hlCreateComment.Text" xml:space="preserve">
+    <value>Añade un comentario</value>
+  </data>
   <data name="userNameTitle.HeaderText" xml:space="preserve">
     <value>Usuario</value>
   </data>

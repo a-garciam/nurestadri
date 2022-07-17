@@ -8,6 +8,7 @@ using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources;
 using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources.Output;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.Exceptions;
 using Ninject;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
@@ -39,61 +40,27 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         public long CommentImage(long userId, long imageId, String text)
         {
-            if (UserDao.Exists(userId) && ImageDao.Exists(imageId))
+            User user = UserDao.Find(userId);
+            Image image = ImageDao.Find(imageId);
+            string textComment = text.Trim();
+            if (textComment.Length <= 0)
             {
-                Comment comment = new Comment();
-                Image image = ImageDao.Find(imageId);
-                User user = UserDao.Find(userId);
-                comment.User = user;
-                comment.Image = image;
-                comment.text = text;
-                CommentDao.Create(comment);
-                image.Comments.Add(comment);
-                user.Comments.Add(comment);
-
-                return image.Comments.Count;
+                throw new EmptyCommentException("Comment must not be empty");
             }
-            else
-                return -1;
-        }
-
-        /// <summary>
-        /// Deletes a comment from an image.
-        /// </summary>
-        /// <param name="commentId"> The comment id. </param>
-
-        public long DeleteComment(int commentId)
-        {
-            if (CommentDao.Exists(commentId))
+            if (textComment.Length > 200)
             {
-                Comment comment = CommentDao.Find(commentId);
-                User user = UserDao.Find(comment.usrId);
-                Image image = ImageDao.Find(comment.usrId);
-                CommentDao.Remove(commentId);
-                user.Comments.Remove(comment);
-                image.Comments.Remove(comment);
-
-                return comment.commentId;
+                throw new ExceededLengthException();
             }
-            else return -1;
-        }
-
-        /// <summary>
-        /// Edits a comment from an image.
-        /// </summary>
-        /// <param name="commId"> The comment id. </param>
-        /// <param name="newText"> The new text of the comment. </param>
-
-        public long EditComment(long commId, String newText)
-        {
-            if (CommentDao.Exists(commId))
+            Comment comment = new Comment()
             {
-                Comment comment = CommentDao.Find(commId);
-                comment.text = newText;
-                CommentDao.Update(comment);
-                return comment.commentId;
-            }
-            else return -1;
+                text = textComment,
+                creationDate = DateTime.Now,
+                Image = image,
+                User = user
+            };
+
+            CommentDao.Create(comment);
+            return comment.commentId;
         }
 
         /// <summary>
@@ -151,8 +118,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
                 image.likes--;
                 image.UserLikes.Remove(user);
                 user.ImageLikes.Remove(image);
-                ImageDao.Update(image);
-                UserDao.Update(user);
                 return image.likes;
             }
             else

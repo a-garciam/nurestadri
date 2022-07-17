@@ -83,6 +83,10 @@ p.info {
     font-size: 16px;
 }
 
+.maxWidthGrid {
+    max-width: 300px;
+    overflow: hidden;
+}
 /* Images */
 
 .img-feed {

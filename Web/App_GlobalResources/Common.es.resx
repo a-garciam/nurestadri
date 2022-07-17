@@ -141,4 +141,7 @@
   <data name="lblNoComments" xml:space="preserve">
     <value>No hay comentarios</value>
   </data>
+  <data name="lblError" xml:space="preserve">
+    <value>Se ha producido un error</value>
+  </data>
 </root>
