@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a There is no comments.
+        /// </summary>
+        internal static string lblNoComments {
+            get {
+                return ResourceManager.GetString("lblNoComments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a There&apos;s no one here.
         /// </summary>
         internal static string lblNoFollows {

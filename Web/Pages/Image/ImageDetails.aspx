@@ -13,6 +13,8 @@
             <asp:Image ID="imgFile" runat="server" CssClass="img-details" meta:resourcekey="imgFileResource1" />
             <br />
             <asp:Label ID="lblLike" runat="server" meta:resourcekey="lblLike"></asp:Label>
+            <br />
+            <asp:HyperLink ID="hlComments" runat="server" meta:resourcekey="hlComments"></asp:HyperLink>
             <div align="left" style="width: 600px">
                 <asp:Label ID="lblUserTitle" runat="server" meta:resourcekey="lblUserTitleResource1"></asp:Label>
                 <asp:Label ID="lblColon" runat="server" Text=": "></asp:Label>

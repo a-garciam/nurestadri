@@ -114,6 +114,7 @@
   <ItemGroup>
     <Content Include="Css\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Comment\ImageComments.aspx" />
     <Content Include="Pages\Comment\LikeImage.aspx" />
     <Content Include="Pages\Feedback\InternalError.aspx" />
     <Content Include="Pages\Feedback\SuccessfulOperation.aspx" />
@@ -150,6 +151,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Comment\ImageComments.aspx.cs">
+      <DependentUpon>ImageComments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Comment\ImageComments.aspx.designer.cs">
+      <DependentUpon>ImageComments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Comment\LikeImage.aspx.cs">
       <DependentUpon>LikeImage.aspx</DependentUpon>
@@ -436,6 +444,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Comment\App_LocalResources\LikeImage.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Comment\App_LocalResources\ImageComments.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Comment\App_LocalResources\ImageComments.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Comment\App_LocalResources\ImageComments.aspx.gl.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

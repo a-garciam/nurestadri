@@ -7,10 +7,6 @@ using Es.Udc.DotNet.ModelUtil.Dao;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
 {
-
-    
-
-
     public interface ICommentDao : IGenericDao<Comment, long>
     {
         /// <summary>
@@ -20,6 +16,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
         /// <param name="userId">the id of the user</param>
         /// <returns>Boolean</returns>
         /// <exception cref="InstanceNotFoundException"/>
-        List<Comment> FindByImageId(long imageId);
+        IList<Comment> FindByImageId(long imageId, int startIndex, int count);
     }
 }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao;
 using Es.Udc.DotNet.PracticaMaD.Model.Daos.UserDao;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources.Output;
 using Ninject;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
@@ -99,17 +101,29 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
         /// </summary>
         /// <param name="imageId"> The image id. </param>
 
-        public void DisplayComments(long imageId)
+        public CommentBlock FindCommentsByImage(long imageId, int startIndex, int count)
         {
-            if (ImageDao.Exists(imageId))
+            ImageDao.Find(imageId);
+            IList<Comment> comments = CommentDao.FindByImageId(imageId, startIndex, count + 1);
+            bool existMore = (comments.Count == count + 1);
+
+            if (existMore)
+                comments.RemoveAt(count);
+
+            IList<CommentOutput> commentList = new List<CommentOutput>();
+            User user = new User();
+            foreach (Comment comment in comments)
             {
-                List<Comment> comments = CommentDao.FindByImageId(imageId);
-                for (int i = 0; comments[i] != null; i++)
-                {
-                    string str = comments[i].ToString();
-                    Console.WriteLine(str);
-                }
+                user = UserDao.Find(comment.usrId);
+                commentList.Add(new CommentOutput(
+                    user.loginName,
+                    comment.usrId,
+                    comment.creationDate,
+                    comment.text
+                    ));
             }
+
+            return new CommentBlock(commentList, existMore);
         }
 
         // Indicar “Me gusta”.

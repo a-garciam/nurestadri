@@ -349,6 +349,14 @@ INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance
     VALUES (11, 0, 'Vermello', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\vermello.jpg', 1, 1, "04-10-2021");
 SET IDENTITY_INSERT [Image] OFF
 
+SET IDENTITY_INSERT [Comment] ON
+INSERT INTO [Comment] ([commentId],[creationDate],[imageId],[usrId],[text])
+    VALUES(1,"05-10-2021",1,1,"nuevo comentario <3");
+INSERT INTO [Comment] ([commentId],[creationDate],[imageId],[usrId],[text])
+    VALUES(2,"05-10-2021",1,1,"otro comentario <3");
+INSERT INTO [Comment] ([commentId],[creationDate],[imageId],[usrId],[text])
+    VALUES(3,"05-10-2021",1,1,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo");
+SET IDENTITY_INSERT [Comment] OFF
 
 -- --------------------------------------------------
 -- Script has ended

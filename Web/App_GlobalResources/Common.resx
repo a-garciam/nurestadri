@@ -138,4 +138,7 @@
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
+  <data name="lblNoComments" xml:space="preserve">
+    <value>There is no comments</value>
+  </data>
 </root>

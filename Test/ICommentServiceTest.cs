@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
 using System.Data.Entity.Validation;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources;
+using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources.Output;
 
 namespace Es.Udc.DotNet.PracticaMaD.Test
 {
@@ -54,11 +56,18 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             name = "Paisajes"
         };
 
+        private Comment comment1 = new Comment()
+        {
+            text = "Nuevo comentario",
+            creationDate = System.DateTime.Now
+        };
+
         private static IKernel kernel;
         private static IImageService imageService;
         private static IUserService userService;
         private static IImageDao imageDao;
         private static IUserDao userDao;
+        private static ICommentDao commentDao;
         private static ICommentService commentService;
         private static ICategoryDao categoryDao;
 
@@ -76,6 +85,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
             userService = kernel.Get<IUserService>();
             imageDao = kernel.Get<IImageDao>();
             imageService = kernel.Get<IImageService>();
+            commentDao = kernel.Get<ICommentDao>();
             commentService = kernel.Get<ICommentService>();
             categoryDao = kernel.Get<ICategoryDao>();
         }
@@ -114,126 +124,41 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 image1.Category = categoryDao.Find(category.categoryId);
 
                 imageDao.Create(image1);
+
                 Assert.IsTrue(image1.likes == 0);
                 int likes = commentService.LikeImage(image1.imageId, user1.usrId);
                 Assert.AreEqual(1, likes);
                 likes = commentService.LikeImage(image1.imageId, user1.usrId);
                 Assert.AreEqual(0, likes);
 
-                likes = commentService.LikeImage(image1.imageId, user1.usrId);
-                Assert.AreEqual(1, likes);
+                //likes = commentService.LikeImage(image1.imageId, user1.usrId);
+                //Assert.AreEqual(1, likes);
             }
         }
 
-        //[TestMethod]
-        //public void TestCommentImage()
-        //{
-        //    using (var scope = new TransactionScope())
-        //    {
-        //categoryDao.Create(category);
-        //        userDao.Create(user1);
-        //        image1.User = userDao.Find(user1.usrId);
-        //        image1.Category = categoryDao.Find(category.categoryId);
+        [TestMethod]
+        public void TestFindCommentsByImage()
+        {
+            using (var scope = new TransactionScope())
+            {
+                categoryDao.Create(category);
+                userDao.Create(user1);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
 
-        //        imageDao.Create(image1);
+                imageDao.Create(image1);
 
-        //        int commentId = (int) commentService.CommentImage(user1.usrId, image1.imageId, txt);
+                comment1.Image = image1;
+                comment1.User = image1.User;
+                commentDao.Create(comment1);
 
-        //        Comment saved = commentDao.Find(commentId);
+                CommentBlock comments = commentService.FindCommentsByImage(image1.imageId, 0, 10);
 
-        //        Assert.AreEqual(commentId, saved.commentId);
-        //        Assert.AreEqual(saved.text, txt);
-        //        Assert.AreEqual(saved.Image.imageId, image1.imageId);
-        //        Assert.AreEqual(saved.User.usrId, user1.usrId);
-
-        //    }
+                CommentOutput comment = comments.Comments.FirstOrDefault();
+                Assert.AreEqual(comment1.text, comment.CommentText);
+                Assert.AreEqual(comment1.creationDate, comment.CreationDate);
+                Assert.AreEqual(comment1.usrId, comment.UserId);
+            }
+        }
     }
-
-    //[TestMethod]
-    //public void TestDeleteComment()
-    //{
-    //    using (var scope = new TransactionScope())
-    //    {
-    //        userDao.Create(user1);
-    //        imageDao.Create(image1);
-
-    //        long commentId = commentService.CommentImage(user1, image1, txt);
-
-    //        Comment saved = commentDao.Find(commentId);
-
-    //        Assert.AreEqual(commentId, saved.commentId);
-    //        Assert.AreEqual(saved.text, txt);
-
-    //        long deletedId = commentService.DeleteComment(commentId);
-
-    //        Assert.AreEqual(saved.commentId, deletedId);
-    //        Assert.isNull(commentDao.Find(commentId));
-
-    //    }
-    //}
-
-    //[TestMethod]
-    //public void TestEditComment()
-    //{
-    //    using (var scope = new TransactionScope())
-    //    {
-    //        userDao.Create(user1);
-    //        imageDao.Create(image1);
-
-    //        long commentId = commentService.CommentImage(user1, image1, txt);
-
-    //        Comment saved = commentDao.Find(commentId);
-
-    //        Assert.AreEqual(commentId, saved.commentId);
-    //        Assert.AreEqual(saved.text, txt);
-    //        Assert.AreEqual(saved.Image.imageId, image1.imageId);
-    //        Assert.AreEqual(saved.User.usrId, user1.usrId);
-
-    //    }
-    //}
-
-    //[TestMethod]
-    //public void TestGetComments()
-    //{
-    //    using (var scope = new TransactionScope())
-    //    {
-    //        userDao.Create(user1);
-    //        imageDao.Create(image1);
-
-    //        Image image = imageService.Find(image1.imageId);
-
-    //        IList<Comment> comments = commentService.DisplayComments(image);
-    //        Assert.AreEqual(0, comments.Count());
-
-    //        commentService.CommentImage(user1, image1, txt);
-    //        IList<Comment> comments = commentService.DisplayComments(image);
-    //        Assert.AreEqual(1, comments.Count());
-    //    }
-    //}
-
-    //[TestMethod]
-    //public void TestLikeImage()
-    //{
-    //    using (var scope = new TransactionScope())
-    //    {
-    //        userDao.Create(user1);
-    //        imageDao.Create(image1);
-
-    //        Image image = imageService.Find(image1.imageId);
-    //        User user = userService.Find(user1.usrId);
-
-    //        // Verify that image has no likes
-    //        Assert.AreEqual(0, image.likes);
-
-    //        // Check if the like is added correctly
-    //        int likeId = commentService.LikeImage(image, user);
-    //        Assert.AreEqual(1, image.likes);
-    //        Assert.AreEqual(likeId, likeDao.Find(likeId).likeId);
-
-    //        //Check if the like is removed when it was already created
-    //        commentService.LikeImage(image, user);
-    //        Assert.AreEqual(0, image.likes);
-    //        Assert.IsNull(likeDao.Find(likeId));
-    //    }
-    //}
 }

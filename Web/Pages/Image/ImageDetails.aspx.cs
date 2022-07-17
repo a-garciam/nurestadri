@@ -54,6 +54,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
                 {
                     btnDeleteImage.Visible = true;
                 }
+                hlComments.NavigateUrl = "~/Pages/Comment/ImageComments.aspx" + "?imageID=" + imageId;
             }
             catch (InstanceNotFoundException)
             {

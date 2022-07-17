@@ -26,22 +26,19 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
         /// <param name="userId">the id of the user</param>
         /// <returns>Boolean</returns>
         /// <exception cref="InstanceNotFoundException"/>
-        public List<Comment> FindByImageId(long imageId)
+        public IList<Comment> FindByImageId(long imageId, int startIndex, int count)
         {
-            List<Comment> commentsList = null;
+            IList<Comment> commentsList = null;
 
             DbSet<Comment> comments = Context.Set<Comment>();
 
             var result =
                 (from comment in comments
                  where comment.Image.imageId == imageId
-                 select comment);
+                 orderby comment.creationDate
+                 select comment).Skip(startIndex).Take(count);
 
             commentsList = result.ToList();
-
-            if (commentsList == null)
-                throw new InstanceNotFoundException(imageId,
-                    typeof(Comment).FullName);
 
             return commentsList;
         }

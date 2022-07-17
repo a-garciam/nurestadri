@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
 
         long EditComment(long commentId, String newText);
 
-        void DisplayComments(long imageId);
+        CommentBlock FindCommentsByImage(long imageId, int startIndex, int count);
 
         // Indicar “Me gusta”.
         // Un usuario puede indicar que le gusta una imagen.
