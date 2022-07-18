@@ -192,10 +192,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.ImageService
             {
                 throw new OperationNotAllowedException();
             }
-            foreach (Comment comment in image.Comments)
-            {
-                CommentDao.Remove(comment.commentId);
-            }
             ImageDao.Remove(imageId);
         }
 

@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <form id="form1" runat="server">
+        <asp:Label ID="lblError" runat="server" CssClass="errorMessage" Text="<%$Resources: Common, lblError %>"></asp:Label>
+        <br />
         <asp:Image ID="imgFile" runat="server" CssClass="img-details" meta:resourcekey="imgFile" />
         <br />
         <asp:Label ID="lblUserTitle" runat="server" meta:resourcekey="lblUserTitle"></asp:Label>
@@ -16,6 +18,7 @@
         <br />
 
         <asp:Label ID="lblLikeImage" runat="server" Text="Label" meta:resourcekey="lblLikeImageResource1"></asp:Label>
+        <asp:Label ID="lblAlreadyLike" runat="server" Text="Label" meta:resourcekey="lblAlreadyLike"></asp:Label>
         <br />
         <asp:Button ID="btnLike" runat="server" Text="Button" OnClick="btnLike_Click" meta:resourcekey="btnLikeResource1" />
     </form>

@@ -23,7 +23,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             lnkNext.Visible = false;
 
             lblNoImages.Visible = false;
-            UserSession userSession = SessionManager.GetUserSession(Context);
 
             /* Get Start Index */
             try
@@ -79,6 +78,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
                 String url = "~/Pages/Image/ImageFeed.aspx" +
                     "?startIndex=" + (startIndex - count) + "&count=" +
                     count;
+                if (keyword != null)
+                {
+                    url += "&keyword=" + keyword;
+                    if (Request.Params.Get("categoryID") != null)
+                    {
+                        url += "&categoryID=" + Request.Params.Get("categoryID");
+                    }
+                }
 
                 this.lnkPrevious.NavigateUrl =
                     Response.ApplyAppPathModifier(url);
@@ -92,7 +99,14 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
                     "~/Pages/Image/ImageFeed.aspx" +
                     "?startIndex=" + (startIndex + count) + "&count=" +
                     count;
-
+                if (keyword != null)
+                {
+                    url += "&keyword=" + keyword;
+                    if (Request.Params.Get("categoryID") != null)
+                    {
+                        url += "&categoryID=" + Request.Params.Get("categoryID");
+                    }
+                }
                 this.lnkNext.NavigateUrl =
                     Response.ApplyAppPathModifier(url);
                 this.lnkNext.Visible = true;

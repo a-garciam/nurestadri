@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true" CodeBehind="CreateComment.aspx.cs" Trace="true" Inherits="Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment.CreateComment" meta:resourcekey="PageResource1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PracticaMaD.Master" AutoEventWireup="true" CodeBehind="CreateComment.aspx.cs" Inherits="Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment.CreateComment" meta:resourcekey="PageResource1" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <form id="form1" runat="server">

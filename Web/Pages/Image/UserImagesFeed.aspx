@@ -30,7 +30,7 @@
             <br />
             <asp:Label ID="lblNoImages" runat="server" Text="<%$ Resources: Common, lblNoImages %>"></asp:Label>
             <br />
-            <asp:GridView ID="gvUserImages" runat="server" AutoGenerateColumns="False" GridLines="Horizontal" meta:resourcekey="gvUserImagesResource1">
+            <asp:GridView ID="gvUserImages" runat="server" AutoGenerateColumns="False" GridLines="Horizontal" meta:resourcekey="gvUserImagesResource1" EnableViewState="False">
                 <Columns>
                     <asp:TemplateField HeaderText="Image" meta:resourcekey="TemplateFieldResource1">
                         <ItemTemplate>

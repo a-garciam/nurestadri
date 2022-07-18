@@ -15,27 +15,30 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            UserSession userSession = SessionManager.GetUserSession(Context);
-            if (userSession == null)
+            if (!IsPostBack)
             {
-                Response.Redirect("~/Pages/User/Authentication.aspx");
-            }
-            if (Request.Params.Get("commentID") == null)
-            {
-                Response.Redirect("~/Pages/Feedback/InternalError.aspx");
-            }
-            long commentId = Int64.Parse(Request.Params.Get("commentID"));
-            long userId = userSession.UserProfileId;
-            try
-            {
-                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-                ICommentService commentService = iocManager.Resolve<ICommentService>();
+                UserSession userSession = SessionManager.GetUserSession(Context);
+                if (userSession == null)
+                {
+                    Response.Redirect("~/Pages/User/Authentication.aspx");
+                }
+                if (Request.Params.Get("commentID") == null)
+                {
+                    Response.Redirect("~/Pages/Feedback/InternalError.aspx");
+                }
+                long commentId = Int64.Parse(Request.Params.Get("commentID"));
+                long userId = userSession.UserProfileId;
+                try
+                {
+                    IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+                    ICommentService commentService = iocManager.Resolve<ICommentService>();
 
-                commentService.DeleteComment(userId, commentId);
-            }
-            catch (Exception)
-            {
-                Response.Redirect("~/Pages/Feedback/InternalError.aspx");
+                    commentService.DeleteComment(userId, commentId);
+                }
+                catch (Exception)
+                {
+                    Response.Redirect("~/Pages/Feedback/InternalError.aspx");
+                }
             }
         }
     }

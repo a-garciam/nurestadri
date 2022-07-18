@@ -17,5 +17,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Daos.CommentDao
         /// <returns>Boolean</returns>
         /// <exception cref="InstanceNotFoundException"/>
         IList<Comment> FindByImageId(long imageId, int startIndex, int count);
+
+        bool FindLike(long userId, long imageId);
     }
 }

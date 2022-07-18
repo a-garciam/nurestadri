@@ -18,9 +18,12 @@
                     </asp:ImageField>
                     <asp:BoundField DataField="title" HeaderText="Title" meta:resourcekey="BoundFieldResource1" />
                     <asp:BoundField DataField="likes" HeaderText="Likes" meta:resourcekey="BoundFieldResource2" />
+                    <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="~/Pages/Comment/LikeImage.aspx?imageID={0}" meta:resourcekey="btnLike" />
                     <asp:BoundField DataField="categoryName" HeaderText="Category" SortExpression="categoryName" meta:resourcekey="BoundFieldResource3" />
                     <asp:HyperLinkField DataNavigateUrlFields="userId" DataNavigateUrlFormatString="UserImagesFeed.aspx?userID={0}" HeaderText="userName" DataTextField="userName" meta:resourcekey="HyperLinkFieldResource1" />
                     <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="ImageDetails.aspx?imageID={0}" meta:resourcekey="HyperLinkImageDetails" />
+                    <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="~/Pages/Comment/ImageComments.aspx?imageID={0}" meta:resourcekey="btnReadComments" />
+                    <asp:HyperLinkField DataNavigateUrlFields="imageId" DataNavigateUrlFormatString="~/Pages/Comment/CreateComment.aspx?imageID={0}" meta:resourcekey="btnComment" />
                 </Columns>
             </asp:GridView>
             <div class="previousNextLinks">

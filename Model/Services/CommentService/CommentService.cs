@@ -116,18 +116,25 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Services.CommentService
             Image image = ImageDao.Find(imageId);
             User user = UserDao.Find(userId);
 
-            if (image.UserLikes.Contains(user))
-            {
-                image.likes--;
-                image.UserLikes.Remove(user);
-                user.ImageLikes.Remove(image);
-                return image.likes;
-            }
-            else
+            if (!image.UserLikes.Contains(user))
             {
                 image.likes++;
                 image.UserLikes.Add(user);
                 user.ImageLikes.Add(image);
+                ImageDao.Update(image);
+                UserDao.Update(user);
+                return image.likes;
+            }
+            else
+            {
+                if (image.likes >= 0)
+                {
+                    image.likes--;
+                    image.UserLikes.Remove(user);
+                    user.ImageLikes.Remove(image);
+                    ImageDao.Update(image);
+                    UserDao.Update(user);
+                }
                 return image.likes;
             }
         }

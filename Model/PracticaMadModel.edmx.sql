@@ -319,10 +319,10 @@ INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance
     VALUES (1, 0, 'Arbore', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\arbore.jpg', 1, 2, "06-10-2021");
 
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
-    VALUES (2, 0, 'Azul', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\azul.jpg', 1, 1, "04-10-2021");
+    VALUES (2, 0, 'Azul', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\azul.jpg', 2, 1, "04-10-2021");
 
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
-    VALUES (3, 0, 'Buratos', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\buratos.jpg', 1, 2, "04-10-2021");
+    VALUES (3, 0, 'Buratos', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\buratos.jpg', 3, 2, "04-10-2021");
 
 INSERT INTO [Image] ([imageId],[likes],[title],[description],[aperture],[balance],[exposure],[imagePath],[usrId],[categoryId],[creationDate])
     VALUES (4, 0, 'Can', 'jpg', 'f/8.9', '2000', '1/80', '\images\1\can.jpg', 1, 2, "07-10-2021");

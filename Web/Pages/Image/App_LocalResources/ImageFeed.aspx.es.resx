@@ -141,4 +141,13 @@
   <data name="HyperLinkImageDetails.Text" xml:space="preserve">
     <value>Más detalles...</value>
   </data>
+  <data name="btnComment.Text" xml:space="preserve">
+    <value>Añadir comentario</value>
+  </data>
+  <data name="btnLike.Text" xml:space="preserve">
+    <value>Me gusta</value>
+  </data>
+  <data name="btnReadComments.Text" xml:space="preserve">
+    <value>Leer comentarios</value>
+  </data>
 </root>

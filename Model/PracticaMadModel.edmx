@@ -258,7 +258,9 @@
           <NavigationProperty Name="ImageLikes" Relationship="Self.Like" FromRole="User" ToRole="Image" />
         </EntityType>
         <Association Name="FK_ImageComment">
-          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Image">
@@ -298,8 +300,10 @@
           <End Role="User1" Type="Self.User" Multiplicity="*" />
         </Association>
         <Association Name="Like">
-          <End Role="Image" Type="Self.Image" Multiplicity="*" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" >
+          </End>
+          <End Role="User" Type="Self.User" Multiplicity="*" >
+          </End>
         </Association>
         <EntityContainer Name="PracticaMaDEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Comments" EntityType="Self.Comment" />

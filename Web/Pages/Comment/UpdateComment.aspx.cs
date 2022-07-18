@@ -16,11 +16,11 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblErrorLength.Visible = false;
+            lblError.Visible = false;
+            lblSuccess.Visible = false;
             if (!IsPostBack)
             {
-                lblErrorLength.Visible = false;
-                lblError.Visible = false;
-                lblSuccess.Visible = false;
                 UserSession userSession = SessionManager.GetUserSession(Context);
                 if (userSession == null)
                 {

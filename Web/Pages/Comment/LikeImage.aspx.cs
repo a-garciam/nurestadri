@@ -17,6 +17,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblError.Visible = false;
+            lblAlreadyLike.Visible = false;
             if (!IsPostBack)
             {
                 UserSession userSession = SessionManager.GetUserSession(Context);
@@ -28,17 +30,25 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
                 {
                     Response.Redirect("~/Pages/Feedback/InternalError.aspx");
                 }
+                long userId = userSession.UserProfileId;
                 long imageId = Int64.Parse(Request.Params.Get("imageID"));
-                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-                IImageService imageService = iocManager.Resolve<IImageService>();
+
                 try
                 {
+                    IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+                    IImageService imageService = iocManager.Resolve<IImageService>();
                     ImageDetailsOutput image = imageService.FindImageById(imageId);
 
                     imgFile.ImageUrl = image.ImagePath;
 
                     lblUser.Text = image.UserName;
                     lblTitle.Text = image.Title;
+                    ICommentService commentService = iocManager.Resolve<ICommentService>();
+                    if (commentService.FindLike(imageId, userId))
+                    {
+                        lblLikeImage.Visible = false;
+                        lblAlreadyLike.Visible = true;
+                    }
                 }
                 catch (InstanceNotFoundException)
                 {
@@ -63,6 +73,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
             }
             catch (Exception)
             {
+                lblError.Visible = true;
             }
         }
     }

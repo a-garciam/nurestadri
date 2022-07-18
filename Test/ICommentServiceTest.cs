@@ -131,8 +131,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 likes = commentService.LikeImage(image1.imageId, user1.usrId);
                 Assert.AreEqual(0, likes);
 
-                //likes = commentService.LikeImage(image1.imageId, user1.usrId);
-                //Assert.AreEqual(1, likes);
+                likes = commentService.LikeImage(image1.imageId, user1.usrId);
+                Assert.AreEqual(1, likes);
             }
         }
 
@@ -182,6 +182,51 @@ namespace Es.Udc.DotNet.PracticaMaD.Test
                 comment = commentDao.Find(commentId);
                 Assert.AreEqual("Nuevo comentario 2 hola hola", comment.text);
                 Assert.AreEqual(user1.usrId, comment.usrId);
+            }
+        }
+
+        [TestMethod]
+        public void TestDeleteComment()
+        {
+            using (var scope = new TransactionScope())
+            {
+                categoryDao.Create(category);
+                userDao.Create(user1);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
+                imageDao.Create(image1);
+                Image image = imageDao.Find(image1.imageId);
+
+                comment1.Image = image1;
+                comment1.User = image1.User;
+                commentDao.Create(comment1);
+
+                Assert.IsTrue(commentDao.GetAllElements().Contains(comment1));
+                commentService.DeleteComment(user1.usrId, comment1.commentId);
+                Assert.IsFalse(commentDao.GetAllElements().Contains(comment1));
+            }
+        }
+
+        [TestMethod]
+        public void TestUpdateComment()
+        {
+            using (var scope = new TransactionScope())
+            {
+                categoryDao.Create(category);
+                userDao.Create(user1);
+                image1.User = userDao.Find(user1.usrId);
+                image1.Category = categoryDao.Find(category.categoryId);
+                imageDao.Create(image1);
+                Image image = imageDao.Find(image1.imageId);
+
+                comment1.Image = image1;
+                comment1.User = image1.User;
+                commentDao.Create(comment1);
+
+                Assert.AreEqual("Nuevo comentario", commentDao.Find(comment1.commentId).text);
+                commentService.UpdateComment(user1.usrId, comment1.commentId, "Comentario nuevo");
+
+                Assert.AreEqual("Comentario nuevo", commentDao.Find(comment1.commentId).text);
             }
         }
     }

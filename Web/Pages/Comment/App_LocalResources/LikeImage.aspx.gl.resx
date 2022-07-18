@@ -123,6 +123,9 @@
   <data name="btnNotLikeResource1.Text" xml:space="preserve">
     <value>Voltar</value>
   </data>
+  <data name="lblAlreadyLike.Text" xml:space="preserve">
+    <value>Xa che gusta esta imaxe, queres eliminar o teu "gústame"?</value>
+  </data>
   <data name="lblLikeImageResource1.Text" xml:space="preserve">
     <value>Queres darlle "gústame" a esta imaxe?</value>
   </data>

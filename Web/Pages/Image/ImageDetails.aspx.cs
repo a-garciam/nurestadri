@@ -22,43 +22,46 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Image
             lblDeleteError.Visible = false;
             lblPermissionError.Visible = false;
             lblLike.Visible = false;
-            UserSession userSession = SessionManager.GetUserSession(Context);
-            if (userSession == null)
+            if (!IsPostBack)
             {
-                Response.Redirect("~/Pages/User/Authentication.aspx");
-            }
-            if (Request.Params.Get("imageID") == null)
-            {
-                Response.Redirect("~/Pages/Feedback/InternalError.aspx");
-            }
-            long imageId = Int64.Parse(Request.Params.Get("imageID"));
-            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-            IImageService imageService = iocManager.Resolve<IImageService>();
-            ICommentService commentService = iocManager.Resolve<ICommentService>();
-            try
-            {
-                ImageDetailsOutput image = imageService.FindImageById(imageId);
-
-                lblLike.Visible = commentService.FindLike(imageId, userSession.UserProfileId);
-                imgFile.ImageUrl = image.ImagePath;
-                lblUser.Text = image.UserName;
-                lblTitle.Text = image.Title;
-                lblDescription.Text = image.Description;
-                lblCategory.Text = image.CategoryName;
-                lblCreationDate.Text = image.CreationDate.ToString();
-                lblAperture.Text = image.Aperture;
-                lblBalance.Text = image.Balance;
-                lblExposure.Text = image.Exposure;
-                lblLikes.Text = image.Likes.ToString();
-                if (image.UserId == userSession.UserProfileId)
+                UserSession userSession = SessionManager.GetUserSession(Context);
+                if (userSession == null)
                 {
-                    btnDeleteImage.Visible = true;
+                    Response.Redirect("~/Pages/User/Authentication.aspx");
                 }
-                hlComments.NavigateUrl = "~/Pages/Comment/ImageComments.aspx" + "?imageID=" + imageId;
-            }
-            catch (InstanceNotFoundException)
-            {
-                Response.Redirect("~/Pages/Feedback/InternalError.aspx");
+                if (Request.Params.Get("imageID") == null)
+                {
+                    Response.Redirect("~/Pages/Feedback/InternalError.aspx");
+                }
+                long imageId = Int64.Parse(Request.Params.Get("imageID"));
+                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+                IImageService imageService = iocManager.Resolve<IImageService>();
+                ICommentService commentService = iocManager.Resolve<ICommentService>();
+                try
+                {
+                    ImageDetailsOutput image = imageService.FindImageById(imageId);
+
+                    lblLike.Visible = commentService.FindLike(imageId, userSession.UserProfileId);
+                    imgFile.ImageUrl = image.ImagePath;
+                    lblUser.Text = image.UserName;
+                    lblTitle.Text = image.Title;
+                    lblDescription.Text = image.Description;
+                    lblCategory.Text = image.CategoryName;
+                    lblCreationDate.Text = image.CreationDate.ToString();
+                    lblAperture.Text = image.Aperture;
+                    lblBalance.Text = image.Balance;
+                    lblExposure.Text = image.Exposure;
+                    lblLikes.Text = image.Likes.ToString();
+                    if (image.UserId == userSession.UserProfileId)
+                    {
+                        btnDeleteImage.Visible = true;
+                    }
+                    hlComments.NavigateUrl = "~/Pages/Comment/ImageComments.aspx" + "?imageID=" + imageId;
+                }
+                catch (InstanceNotFoundException)
+                {
+                    Response.Redirect("~/Pages/Feedback/InternalError.aspx");
+                }
             }
         }
 

@@ -24,6 +24,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+
+        /// <summary>
         /// Control imgFile.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLikeImage;
+
+        /// <summary>
+        /// Control lblAlreadyLike.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlreadyLike;
 
         /// <summary>
         /// Control btnLike.

@@ -23,13 +23,13 @@ namespace Es.Udc.DotNet.PracticaMaD.Web
             lblErrorBalance.Visible = false;
             lblUploadCompleted.Visible = false;
 
-            UserSession userSession = SessionManager.GetUserSession(Context);
-            if (userSession == null)
-            {
-                Response.Redirect("~/Pages/User/Authentication.aspx");
-            }
             if (!IsPostBack)
             {
+                UserSession userSession = SessionManager.GetUserSession(Context);
+                if (userSession == null)
+                {
+                    Response.Redirect("~/Pages/User/Authentication.aspx");
+                }
                 InitDDLCategories();
             }
         }

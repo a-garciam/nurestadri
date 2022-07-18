@@ -126,8 +126,17 @@
   <data name="BoundFieldResource3.HeaderText" xml:space="preserve">
     <value>Category</value>
   </data>
+  <data name="btnComment.Text" xml:space="preserve">
+    <value>Add comment</value>
+  </data>
   <data name="btnFilterImagesResource1.Text" xml:space="preserve">
     <value>Filter</value>
+  </data>
+  <data name="btnLike.Text" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="btnReadComments.Text" xml:space="preserve">
+    <value>Read comments</value>
   </data>
   <data name="HyperLinkFieldResource1.HeaderText" xml:space="preserve">
     <value>Username</value>

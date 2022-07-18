@@ -17,14 +17,17 @@ namespace Es.Udc.DotNet.PracticaMaD.Web.Pages.Comment
         {
             lblErrorLength.Visible = false;
             lblError.Visible = false;
-            UserSession userSession = SessionManager.GetUserSession(Context);
-            if (userSession == null)
+            if (!IsPostBack)
             {
-                Response.Redirect("~/Pages/User/Authentication.aspx");
-            }
-            if (Request.Params.Get("imageID") == null)
-            {
-                Response.Redirect("~/Pages/Feedback/InternalError.aspx");
+                UserSession userSession = SessionManager.GetUserSession(Context);
+                if (userSession == null)
+                {
+                    Response.Redirect("~/Pages/User/Authentication.aspx");
+                }
+                if (Request.Params.Get("imageID") == null)
+                {
+                    Response.Redirect("~/Pages/Feedback/InternalError.aspx");
+                }
             }
         }
 

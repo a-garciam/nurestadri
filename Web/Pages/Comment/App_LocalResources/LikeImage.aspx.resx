@@ -118,10 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnLikeResource1.Text" xml:space="preserve">
-    <value>Like</value>
+    <value>Yes</value>
   </data>
   <data name="btnNotLikeResource1.Text" xml:space="preserve">
     <value>Go back</value>
+  </data>
+  <data name="lblAlreadyLike.Text" xml:space="preserve">
+    <value>You like this image already, do you want to remove your like?</value>
   </data>
   <data name="lblLikeImageResource1.Text" xml:space="preserve">
     <value>Do you want to like this image?</value>
